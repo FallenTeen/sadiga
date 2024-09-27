@@ -18,8 +18,4 @@ document.getElementById('dropdownButton').addEventListener('click', function() {
   document.addEventListener('click', function(event) {
     var isClickInside = document.getElementById('dropdownButton').contains(event.target) || document.getElementById('dropdownMenu').contains(event.target);
     var dropdownMenu = document.getElementById('dropdownMenu');
- 
-    if (!isClickInside) {
-      dropdownMenu.classList.add('hidden');
-    }
   });

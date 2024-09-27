@@ -1,3 +1,8 @@
 import './bootstrap';
 import './nav';
-import './navsearch';
+import './mainnav';
+import 'taos';
+
+document.addEventListener('DOMContentLoaded', () => {
+    taos.init();
+  });

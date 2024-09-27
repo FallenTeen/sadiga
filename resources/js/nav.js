@@ -15,7 +15,7 @@ document.addEventListener("DOMContentLoaded", function() {
     // User Dropdown
     const userDropdownButton = document.getElementById("userDropdownButton1");
     userDropdownButton.addEventListener("click", function(event) {
-        event.stopPropagation(); // Prevent the click event from bubbling up
+        event.stopPropagation();
         const myCartDropdown = document.getElementById("myCartDropdown1");
         if (!myCartDropdown.classList.contains("hidden")) {
             myCartDropdown.classList.add("hidden");
@@ -32,6 +32,18 @@ document.addEventListener("DOMContentLoaded", function() {
             userDropdown.classList.add("hidden");
         }
         toggleDropdown("myCartDropdown1");
+    });
+
+    // Hide dropdowns when clicking outside
+    window.addEventListener('mouseup', function(event) {
+        const userDropdown = document.getElementById("userDropdown1");
+        const myCartDropdown = document.getElementById("myCartDropdown1");
+        if (event.target != userDropdown && event.target.parentNode != userDropdown && event.target.id != "userDropdownButton1") {
+            userDropdown.classList.add("hidden");
+        }
+        if (event.target != myCartDropdown && event.target.parentNode != myCartDropdown && event.target.id != "myCartDropdownButton1") {
+            myCartDropdown.classList.add("hidden");
+        }
     });
 });
 
@@ -51,11 +63,21 @@ let lastScrollY = window.scrollY;
             var mainNav = document.getElementById('mainnav');
 
             if (window.scrollY === 0) {
-                // Jika berada di ujung atas, tampilkan mainnav
+                mainSearch.classList.add("")
             } else if (window.scrollY > lastScrollY) {
-                // Jika scroll ke bawah, tampilkan mainsearch
+                mainSearch.classList.remove("")
             }
-
-            // Update posisi scroll terakhir
             lastScrollY = window.scrollY;
         });
+
+        document.getElementById('download-app').addEventListener('click', function() {
+            var qrCode = document.getElementById('qr-code');
+            qrCode.classList.toggle('hidden');
+          });
+          
+          window.addEventListener('mouseup', function(event) {
+            var qrCode = document.getElementById('qr-code');
+            if (event.target != qrCode && !qrCode.contains(event.target) && event.target.id != 'download-app') {
+              qrCode.classList.add('hidden');
+            }
+          });
