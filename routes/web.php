@@ -6,9 +6,10 @@ Route::view('/', 'mainpage');
 
 Route::middleware(['auth', 'role.redir'])->group(function () {
     Route::get('/dashboard', function () {
-        return view('backoffice.dashboard'); 
-    });
+        return view('backoffice.dashboard');
+    })->name('dashboard');
 });
+
 
 Route::middleware(['auth', 'role.redir'])->group(function () {
     Route::get('/', function () {

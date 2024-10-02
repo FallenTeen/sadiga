@@ -20,7 +20,7 @@ class RoleRedir
     {
         $user = Auth::user();
         $adminRoutes = [
-            'dashboard',
+            '/dashboard',
             '/',
         ];
         $userRoutes = [
