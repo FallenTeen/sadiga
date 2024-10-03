@@ -52,7 +52,7 @@
                         </ul>
                         <a href="#barang"
                             class="inline-block px-6 py-3 bg-maincolor text-lg rounded-full font-semibold shadow-lg hover:bg-blue-700 transform hover:scale-105 transition-all duration-300">
-                            Belanja sekarang
+                            Mulai Lihat Barang
                         </a>
                     </div>
                 </div>
@@ -60,7 +60,6 @@
         </div>
     </section>
     <section id="barang">
-        aa
         @livewire('component.barang-display')   
     </section>
 

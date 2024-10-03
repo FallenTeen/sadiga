@@ -15,14 +15,17 @@ return new class extends Migration
             $table->id();
             $table->string('nama_barang');
             $table->decimal('harga', 10, 2);
+            $table->decimal('diskon', 10, 2)->default(0);
+            $table->decimal('harga_akhir', 10, 2);
             $table->string('stok');
             $table->unsignedBigInteger('kategori_id');
             $table->text('deskripsi')->nullable();
             $table->string('gambar')->nullable();
             $table->timestamps();
-
+        
             $table->foreign('kategori_id')->references('id')->on('tb_kategori')->onDelete('cascade');
         });
+        
     }
 
     /**

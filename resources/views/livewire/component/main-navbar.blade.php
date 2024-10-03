@@ -88,7 +88,7 @@
                         d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12Z" />
                 </svg>
 
-                <span class="hidden sm:flex">Item Disukai</span>
+                <span class="sm:flex px-2">Item Disukai</span>
                 <svg class="hidden sm:flex w-4 h-4 text-white dark:text-gray-100 ms-1" aria-hidden="true"
                     xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
                     <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -160,42 +160,55 @@
 
 
         <div class="relative inline-block text-left">
-            <button id="userDropdownButton1" data-dropdown-toggle="userDropdown1" type="button"
-                class="inline-flex items-center rounded-lg justify-center p-2 hover:duration-300 hover:scale-105 hover:bg-blue-900 dark:hover:bg-maincolordark text-sm font-medium leading-none text-white dark:text-gray-100">
-                <svg class="w-5 h-5 me-1" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-                    fill="none" viewBox="0 0 24 24">
-                    <path stroke="currentColor" stroke-width="2"
-                        d="M7 17v1a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1v-1a3 3 0 0 0-3-3h-4a3 3 0 0 0-3 3Zm8-9a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" />
-                </svg>
-                Akun Anda
-                <svg class="w-4 h-4 text-white dark:text-white ms-1" aria-hidden="true"
-                    xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
-                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                        d="m19 9-7 7-7-7" />
-                </svg>
-            </button>
+            @auth
+                <!-- Jika pengguna sudah login -->
+                <button id="userDropdownButton1" data-dropdown-toggle="userDropdown1" type="button"
+                    class="inline-flex items-center rounded-lg justify-center p-2 hover:duration-300 hover:scale-105 hover:bg-blue-900 dark:hover:bg-maincolordark text-sm font-medium leading-none text-white dark:text-gray-100">
+                    <svg class="w-5 h-5 me-1" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                        fill="none" viewBox="0 0 24 24">
+                        <path stroke="currentColor" stroke-width="2"
+                            d="M7 17v1a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1v-1a3 3 0 0 0-3-3h-4a3 3 0 0 0-3 3Zm8-9a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" />
+                    </svg>
+                    Akun Anda
+                    <svg class="w-4 h-4 text-white dark:text-white ms-1" aria-hidden="true"
+                        xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="m19 9-7 7-7-7" />
+                    </svg>
+                </button>
 
-            <div id="userDropdown1"
-                class="hidden absolute z-20 mt-2 w-44 max-w-sm rounded-lg bg-white p-4 antialiased shadow-lg dark:bg-gray-800">
-                <div class="space-y-4">
-                    <div>
-                        <a href="#" title=""
-                            class="truncate text-sm font-semibold leading-none text-gray-900 dark:text-white hover:underline">
-                            Dashboard</a>
+                <div id="userDropdown1"
+                    class="hidden absolute z-20 mt-2 w-44 max-w-sm rounded-lg bg-white p-4 antialiased shadow-lg dark:bg-gray-800">
+                    <div class="space-y-4">
+                        <div>
+                            <a href="{{ route('dashboard') }}" title=""
+                                class="truncate text-sm font-semibold leading-none text-gray-900 dark:text-white hover:underline">
+                                Dashboard</a>
+                        </div>
+                        <div>
+                            <a href="#" title=""
+                                class="truncate text-sm font-semibold leading-none text-gray-900 dark:text-white hover:underline">Settings</a>
+                        </div>
                     </div>
-                    <div>
-                        <a href="#" title=""
-                            class="truncate text-sm font-semibold leading-none text-gray-900 dark:text-white hover:underline">Settings</a>
-                    </div>
-                </div>
-                <div class="mt-4 border-t border-gray-200 dark:border-gray-600"></div>
-                <div class="mt-2">
-                    <a href="#" title=""
-                        class="inline-flex w-full items-center gap-2 rounded-md justify-center py-2 text-sm text-red-600 hover:bg-gray-100 dark:hover:bg-gray-600">
-                        Sign Out
+                    <div class="mt-4 border-t border-gray-200 dark:border-gray-600"></div>
+                    <div class="mt-2">
+                    <a wire:click="\App\Livewire\Actions\Logout::__invoke()" title=""
+                        class="inline-flex w-full items-center gap-2 rounded-md justify-center py-2 text-sm text-red-600 hover:bg-gray-100 dark:hover:bg-gray-600 cursor-pointer">
+                        Sign Out (Belum jd)
                     </a>
+                    </div>
                 </div>
-            </div>
+            @else
+                <!-- Jika pengguna belum login -->
+                <a href="{{ route('login') }}"
+                    class="inline-flex items-center rounded-lg justify-center p-2 hover:duration-300 hover:scale-105 hover:bg-blue-900 dark:hover:bg-maincolordark text-sm font-medium leading-none text-white dark:text-gray-100">
+                    Login
+                </a>
+                <a href="{{ route('register') }}"
+                    class="inline-flex items-center rounded-lg justify-center p-2 ml-2 hover:duration-300 hover:scale-105 hover:bg-blue-900 dark:hover:bg-maincolordark text-sm font-medium leading-none text-white dark:text-gray-100">
+                    Register
+                </a>
+            @endauth
         </div>
     </div>
 </div>
