@@ -192,7 +192,7 @@
                     </div>
                     <div class="mt-4 border-t border-gray-200 dark:border-gray-600"></div>
                     <div class="mt-2">
-                    <a wire:click="\App\Livewire\Actions\Logout::__invoke()" title=""
+                    <a wire:click="logout" title=""
                         class="inline-flex w-full items-center gap-2 rounded-md justify-center py-2 text-sm text-red-600 hover:bg-gray-100 dark:hover:bg-gray-600 cursor-pointer">
                         Sign Out (Belum jd)
                     </a>
