@@ -34,7 +34,7 @@
         <div
             class="absolute flex bg-white w-[240px] h-[280px] rounded-xl top-10 left-32 font-poppins font-normal text-md flex-col justify-center items-center text-center border border-maincolordark">
             <span class="mx-8">Download E-Katalog Untuk Mobile</span>
-            <img src="{{ asset('assets/images/qrex.png') }}" alt="Deskripsi Gambar" class="mt-2 w-[200px] h-[190px]">
+            <img src="{{ asset('assets/images/QR.png') }}" alt="Deskripsi Gambar" class="mt-2 w-[200px] h-[190px]">
         </div>
     </div>
     </div>

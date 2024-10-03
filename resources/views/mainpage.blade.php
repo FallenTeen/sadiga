@@ -18,20 +18,21 @@
     <link
         href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
         rel="stylesheet">
-    <title>Laravel</title>
+    <title>Sadiga</title>
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
 
 <body>
     <div id="mainnav" class="sticky z-20 show">
-    @livewire('component.secondary-navbar')
+        @livewire('component.secondary-navbar')
     </div>
     <div id="mainsearch" class="sticky top-0 z-10 show">
-       @livewire('component.main-navbar')
+        @livewire('component.main-navbar')
     </div>
     <section class="h-100vh relative">
         <div class="h-screen bg-cover bg-center bg-fixed bg-bglight">
-            <div class="h-full flex items-center justify-between bg-gradient-to-b from-white/40 via-white/10 to-transparent text-white px-8 -translate-y-24">
+            <div
+                class="h-full flex items-center justify-between bg-gradient-to-b from-white/40 via-white/10 to-transparent text-white px-8 -translate-y-24">
                 <div class="w-1/2 h-full flex items-center justify-center">
                     <img src="https://i0.wp.com/allabouttherock.co.uk/wp-content/uploads/2017/07/4f47d9add8a27fc3e20303b4fc82cda8-grey-tattoo-alien-alien.jpg?resize=690%2C641&ssl=1"
                         alt="Satria Dirgantara" class="rounded-lg shadow-2xl max-h-full h-1/2 object-cover">
@@ -59,9 +60,11 @@
             </div>
         </div>
     </section>
+
     <section id="barang">
-        @livewire('component.barang-display')   
+        @livewire('component.barang-display', ['jumlahPerHalaman' => 2, 'kategori' => 'elektronik'])
     </section>
+
 
     </div>
     <script src="{{ mix('js/app.js') }}"></script>
@@ -72,17 +75,17 @@
     function smoothScroll(target, duration) {
         const targetPosition = target.getBoundingClientRect().top;
         const startPosition = window.pageYOffset;
-        const distance = targetPosition + startPosition; // target position relative to the whole document
+        const distance = targetPosition + startPosition;
         const startTime = performance.now();
 
         function animation(currentTime) {
             const timeElapsed = currentTime - startTime;
-            const progress = Math.min(timeElapsed / duration, 1); // Ensure it doesn't exceed 1
-            const ease = easeInOutCubic(progress); // Easing function
+            const progress = Math.min(timeElapsed / duration, 1);
+            const ease = easeInOutCubic(progress);
             window.scrollTo(0, startPosition + (distance - startPosition) * ease);
 
             if (progress < 1) {
-                requestAnimationFrame(animation); // Keep animating until we reach the target
+                requestAnimationFrame(animation);
             }
         }
 
@@ -99,7 +102,7 @@
 
             const target = document.querySelector(this.getAttribute('href'));
             if (target) {
-                const duration = 1000; // Duration in milliseconds (1 second)
+                const duration = 1000;
                 smoothScroll(target, duration);
             }
         });
