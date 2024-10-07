@@ -10,8 +10,7 @@ class BarangDisplay extends Component
 {
     use WithPagination;
 
-    public $jumlahPerHalaman;
-    public $kategori;
+    public $jumlahPerHalama, $kategori, $class;
 
     public function mount($jumlahPerHalaman = 2, $kategori = null)
     {
@@ -27,7 +26,6 @@ class BarangDisplay extends Component
             })->paginate($this->jumlahPerHalaman)
             : Barang::paginate($this->jumlahPerHalaman);
 
-        // Mengirimkan data barang ke view
         return view('livewire.component.barang-display', [
             'barangs' => $barangs,
         ]);

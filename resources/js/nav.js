@@ -1,5 +1,5 @@
 function toggleDropdown(dropdownId) {
-    const dropdowns = document.querySelectorAll('.dropdown-content'); // Select all dropdowns
+    const dropdowns = document.querySelectorAll(".dropdown-content"); // Select all dropdowns
     const currentDropdown = document.getElementById(dropdownId);
 
     dropdowns.forEach((dropdown) => {
@@ -11,73 +11,100 @@ function toggleDropdown(dropdownId) {
     currentDropdown.classList.toggle("hidden");
 }
 
-document.addEventListener("DOMContentLoaded", function() {
-    // User Dropdown
-    const userDropdownButton = document.getElementById("userDropdownButton1");
-    userDropdownButton.addEventListener("click", function(event) {
-        event.stopPropagation();
-        const myCartDropdown = document.getElementById("myCartDropdown1");
-        if (!myCartDropdown.classList.contains("hidden")) {
-            myCartDropdown.classList.add("hidden");
-        }
-        toggleDropdown("userDropdown1");
-    });
-
-    // Item Disukai
-    const myCartDropdownButton = document.getElementById("myCartDropdownButton1");
-    myCartDropdownButton.addEventListener("click", function(event) {
-        event.stopPropagation();
-        const userDropdown = document.getElementById("userDropdown1");
-        if (!userDropdown.classList.contains("hidden")) {
-            userDropdown.classList.add("hidden");
-        }
-        toggleDropdown("myCartDropdown1");
-    });
-
-    // Hide dropdowns when clicking outside
-    window.addEventListener('mouseup', function(event) {
-        const userDropdown = document.getElementById("userDropdown1");
-        const myCartDropdown = document.getElementById("myCartDropdown1");
-        if (event.target != userDropdown && event.target.parentNode != userDropdown && event.target.id != "userDropdownButton1") {
-            userDropdown.classList.add("hidden");
-        }
-        if (event.target != myCartDropdown && event.target.parentNode != myCartDropdown && event.target.id != "myCartDropdownButton1") {
-            myCartDropdown.classList.add("hidden");
-        }
-    });
-});
-
 function scrollFunction() {
-    const dropdowns = document.querySelectorAll('.dropdown-content'); 
+    const dropdowns = document.querySelectorAll(".dropdown-content");
     dropdowns.forEach((dropdown) => {
-        dropdown.classList.add("hidden"); 
+        dropdown.classList.add("hidden");
     });
 }
 
-window.onscroll = scrollFunction;
+// Hilangin Navbar pas discroll
+let lastScrollTop = 0;
+const mainNav = document.getElementById("mainnav");
+mainNav.style.transition = "transform 0.3s ease-in-out";
 
-let lastScrollY = window.scrollY;
+window.addEventListener("scroll", function () {
+    let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
 
-        window.addEventListener('scroll', function() {
-            var mainSearch = document.getElementById('mainsearch');
-            var mainNav = document.getElementById('mainnav');
+    if (scrollTop > lastScrollTop) {
+        mainNav.style.transform = "translateY(-100%)";
+    } else {
+        mainNav.style.transform = "translateY(0)";
+    }
 
-            if (window.scrollY === 0) {
-                mainSearch.classList.add("")
-            } else if (window.scrollY > lastScrollY) {
-                mainSearch.classList.remove("")
-            }
-            lastScrollY = window.scrollY;
-        });
+    lastScrollTop = scrollTop;
+});
 
-        document.getElementById('download-app').addEventListener('click', function() {
-            var qrCode = document.getElementById('qr-code');
-            qrCode.classList.toggle('hidden');
-          });
-          
-          window.addEventListener('mouseup', function(event) {
-            var qrCode = document.getElementById('qr-code');
-            if (event.target != qrCode && !qrCode.contains(event.target) && event.target.id != 'download-app') {
-              qrCode.classList.add('hidden');
-            }
-          });
+document.addEventListener("DOMContentLoaded", function () {
+    const userDropdownButton = document.getElementById("userDropdownButton1");
+    userDropdownButton.addEventListener("click", function (event) {
+        event.stopPropagation();
+        const userDropdown = document.getElementById("userDropdown1");
+        toggleDropdown(userDropdown);
+    });
+    const modal = document.getElementById("likedItemsModal");
+    const openModalButton = document.getElementById("myCartDropdownButton1");
+    const closeModalButton = document.getElementById("closeModalButton");
+    const closeModalButtonBottom = document.getElementById(
+        "closeModalButtonBottom"
+    );
+
+    openModalButton.addEventListener("click", function (event) {
+        event.stopPropagation();
+        toggleModal(modal);
+    });
+
+    closeModalButton.addEventListener("click", function () {
+        closeModal(modal);
+    });
+
+    closeModalButtonBottom.addEventListener("click", function () {
+        closeModal(modal);
+    });
+    const downloadAppButton = document.getElementById("download-app");
+    const qrCode = document.getElementById("qr-code");
+
+    downloadAppButton.addEventListener("click", function (event) {
+        event.stopPropagation();
+        toggleQR(qrCode);
+    });
+    window.addEventListener("mouseup", function (event) {
+        const userDropdown = document.getElementById("userDropdown1");
+        const myCartDropdown = document.getElementById("myCartDropdown1");
+        if (
+            !event.target.closest("#userDropdown1") &&
+            event.target.id !== "userDropdownButton1"
+        ) {
+            userDropdown.classList.add("hidden");
+        }
+        if (
+            !event.target.closest("#likedItemsModal") &&
+            event.target.id !== "myCartDropdownButton1"
+        ) {
+            closeModal(modal);
+        }
+        if (
+            event.target !== qrCode &&
+            !qrCode.contains(event.target) &&
+            event.target.id !== "download-app"
+        ) {
+            qrCode.classList.add("hidden");
+        }
+    });
+    function toggleDropdown(dropdown) {
+        if (dropdown.classList.contains("hidden")) {
+            dropdown.classList.remove("hidden");
+        } else {
+            dropdown.classList.add("hidden");
+        }
+    }
+    function toggleModal(modal) {
+        modal.classList.toggle("hidden");
+    }
+    function closeModal(modal) {
+        modal.classList.add("hidden");
+    }
+    function toggleQR(qrCodeElement) {
+        qrCodeElement.classList.toggle("hidden");
+    }
+});

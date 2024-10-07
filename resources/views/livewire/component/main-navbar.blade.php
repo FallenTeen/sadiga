@@ -79,7 +79,7 @@
     </div>
     <div class="flex items-center lg:space-x-2">
         <div class="relative">
-            <button id="myCartDropdownButton1" data-dropdown-toggle="myCartDropdown1" type="button"
+            <button id="myCartDropdownButton1" type="button"
                 class="inline-flex items-center rounded-lg justify-center p-2 hover:duration-300 hover:scale-105 hover:bg-blue-900 dark:hover:bg-maincolordark text-sm font-medium leading-none text-white dark:text-gray-100">
                 <span class="sr-only">Cart</span>
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
@@ -95,67 +95,42 @@
                         d="m19 9-7 7-7-7" />
                 </svg>
             </button>
-
-            <div id="myCartDropdown1"
-                class="hidden absolute z-20 mt-30 w-64 max-w-sm space-y-4 overflow-hidden rounded-lg bg-white p-4 antialiased shadow-lg dark:bg-gray-800">
-                <div class="grid grid-cols-2">
-                    <div>
-                        <a href="#"
-                            class="truncate text-sm font-semibold leading-none text-gray-900 dark:text-white hover:underline">Apple
-                            iPhone 15</a>
-                        <p class="mt-0.5 truncate text-sm font-normal text-gray-500 dark:text-gray-400">Rp.
-                            15.000.000</p>
-                    </div>
-                    <div class="flex items-center justify-end gap-6">
-                        <p class="text-sm font-normal leading-none text-gray-500 dark:text-gray-400 underline">
-                            Lihat Detail</p>
-                        <button data-tooltip-target="tooltipRemoveItem1a" type="button"
-                            class="text-red-600 hover:text-red-700 dark:text-red-500 dark:hover:text-red-600">
-                            <span class="sr-only"> Remove </span>
-                            <svg class="h-4 w-4" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
-                                fill="currentColor" viewBox="0 0 24 24">
-                                <path fill-rule="evenodd"
-                                    d="M2 12a10 10 0 1 1 20 0 10 10 0 0 1-20 0Zm7.7-3.7a1 1 0 0 0-1.4 1.4l2.3 2.3-2.3 2.3a1 1 0 1 0 1.4 1.4l2.3-2.3 2.3 2.3a1 1 0 0 0 1.4-1.4L13.4 12l2.3-2.3a1 1 0 0 0-1.4-1.4L12 10.6 9.7 8.3Z"
-                                    clip-rule="evenodd" />
-                            </svg>
-                        </button>
-                        <div id="tooltipRemoveItem1a" role="tooltip"
-                            class="tooltip invisible absolute z-10 inline-block rounded-lg bg-gray-900 px-3 py-2 text-sm font-medium text-white opacity-0 shadow-sm transition-opacity duration-300 dark:bg-gray-700">
-                            Remove item
-                            <div class="tooltip-arrow" data-popper-arrow></div>
-                        </div>
-                    </div>
-                </div>
-                <div class="grid grid-cols-2">
-                    <div>
-                        <a href="#"
-                            class="truncate text-sm font-semibold leading-none text-gray-900 dark:text-white hover:underline">Apple
-                            iPad Air</a>
-                        <p class="mt-0.5 truncate text-sm font-normal text-gray-500 dark:text-gray-400">Rp.
-                            7.500.000</p>
-                    </div>
-                    <div class="flex items-center justify-end gap-6">
-                        <p class="text-sm font-normal leading-none text-gray-500 dark:text-gray-400 underline">
-                            Lihat Detail</p>
-                        <button data-tooltip-target="tooltipRemoveItem2a" type="button"
-                            class="text-red-600 hover:text-red-700 dark:text-red-500 dark:hover:text-red-600">
-                            <span class="sr-only"> Remove </span>
-                            <svg class="h-4 w-4" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
-                                fill="currentColor" viewBox="0 0 24 24">
-                                <path fill-rule="evenodd"
-                                    d="M2 12a10 10 0 1 1 20 0 10 10 0 0 1-20 0Zm7.7-3.7a1 1 0 0 0-1.4 1.4l2.3 2.3-2.3 2.3a1 1 0 1 0 1.4 1.4l2.3-2.3 2.3 2.3a1 1 0 0 0 1.4-1.4L13.4 12l2.3-2.3a1 1 0 0 0-1.4-1.4L12 10.6 9.7 8.3Z"
-                                    clip-rule="evenodd" />
-                            </svg>
-                        </button>
-                        <div id="tooltipRemoveItem2a" role="tooltip"
-                            class="tooltip invisible absolute z-10 inline-block rounded-lg bg-gray-900 px-3 py-2 text-sm font-medium text-white opacity-0 shadow-sm transition-opacity duration-300 dark:bg-gray-700">
-                            Remove item
-                            <div class="tooltip-arrow" data-popper-arrow></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
         </div>
+<!-- Dropdown Modal Content -->
+<div id="likedItemsModal"
+    class="hidden absolute z-30 bg-white dark:bg-gray-800 rounded-lg shadow-lg p-4 top-20 w-72 right-64">
+    <div class="flex justify-between items-center">
+        <h2 class="text-lg font-semibold text-gray-900 dark:text-gray-100">Item Disukai</h2>
+        <button id="closeModalButton"
+            class="text-gray-600 dark:text-gray-100 hover:text-gray-900 dark:hover:text-gray-300">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                stroke="currentColor" class="w-6 h-6">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+            </svg>
+        </button>
+    </div>
+    <div class="mt-4">
+        <p class="text-gray-700 dark:text-gray-300">Anda memiliki 2 item disukai:</p>
+        <ul class="mt-2 space-y-2">
+            <li class="flex justify-between items-center">
+                <span class="text-gray-900 dark:text-gray-100">Apple iPhone 15</span>
+                <span class="text-gray-500 dark:text-gray-400">Rp. 15.000.000</span>
+            </li>
+            <li class="flex justify-between items-center">
+                <span class="text-gray-900 dark:text-gray-100">Apple iPad Air</span>
+                <span class="text-gray-500 dark:text-gray-400">Rp. 7.500.000</span>
+            </li>
+        </ul>
+    </div>
+    <div class="mt-6 flex justify-end">
+        <button id="closeModalButtonBottom" class="px-4 py-2 bg-blue-700 text-white rounded-lg hover:bg-blue-700">
+            Tutup
+        </button>
+    </div>
+</div>
+
+
+
         <div>
             @livewire('component.main-navbar-user')
         </div>
