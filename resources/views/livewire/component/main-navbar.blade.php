@@ -1,5 +1,5 @@
 <div>
-    <div id="nav-search" class="sticky top-0 text-white flex justify-center bg-maincolor space-x-16">
+    <div id="nav-search" class="sticky top-0 text-white flex justify-center lg:bg-maincolor space-x-16">
         <div class="flex items-center">
             <div class="relative group shrink-0 pr-8">
                 <a href="#mainsearch" title="" class="flex items-center">
@@ -10,7 +10,6 @@
                 </a>
             </div>
 
-            <!-- Elemen kategori -->
             <a href="#barang" class="w-full h-full">
                 <div class="relative flex px-4 h-full items-center font-poppins font-semibold cursor-pointer hover:bg-white hover:text-gray-800 group"
                     id="kategori">
@@ -18,7 +17,6 @@
                 </div>
             </a>
 
-            <!-- Elemen rekomendasi -->
             <div class="relative flex px-4 h-full items-center font-poppins font-semibold cursor-pointer hover:bg-white hover:text-gray-800 group"
                 id="rekomendasi">
                 Rekomendasi
@@ -62,7 +60,6 @@
                 </button>
             </div>
 
-            <!-- Dropdown Modal Content -->
             <div id="likedItemsModal"
                 class="hidden absolute z-30 bg-white dark:bg-gray-800 rounded-lg shadow-lg p-4 top-20 w-72 right-64">
                 <div class="flex justify-between items-center">
@@ -75,31 +72,38 @@
                         </svg>
                     </button>
                 </div>
-                <div class="mt-4">
-                    <p class="text-gray-700 dark:text-gray-300">Anda memiliki 2 item disukai:</p>
-                    <ul class="mt-2 space-y-2">
-                        <li class="flex justify-between items-center">
-                            <span class="text-gray-900 dark:text-gray-100">Apple iPhone 15</span>
-                            <span class="text-gray-500 dark:text-gray-400">Rp. 15.000.000</span>
-                        </li>
-                        <li class="flex justify-between items-center">
-                            <span class="text-gray-900 dark:text-gray-100">Apple iPad Air</span>
-                            <span class="text-gray-500 dark:text-gray-400">Rp. 7.500.000</span>
-                        </li>
+                <div wire:listen="likeUpdated">
+                    <ul class="mt-2">
+                        @if (count($likedItems) > 0)
+                            @foreach($likedItems as $item)
+                                <li class="flex justify-between items-center">
+                                    <span class="text-gray-900 dark:text-gray-100">{{ $item->nama_barang }}</span>
+                                    <span class="text-gray-500 dark:text-gray-400">Rp.
+                                        {{ number_format($item->harga, 0, ',', '.') }}</span>
+                                </li>
+                            @endforeach
+                        @else
+                            <div class="text-black opacity-50">
+                                <p>Tidak ada barang disukai</p>
+                                <p class="text-[12px] -mt-1">Barang yang anda sukai akan muncul disini</p>
+                            </div>
+                        @endif
                     </ul>
                 </div>
+
+
                 <div class="mt-6 flex justify-end">
                     <button id="closeModalButtonBottom"
                         class="px-4 py-2 bg-blue-700 text-white rounded-lg hover:bg-blue-700">Tutup</button>
                 </div>
             </div>
+
             <div>
                 @livewire('component.main-navbar-user')
             </div>
         </div>
     </div>
 
-    <!-- Div konten yang muncul saat meng-hover Kategori -->
     <div id="hover-content"
         class="hidden z-20 bg-white text-gray-800 p-4 rounded-b-md justify-center absolute w-11/12 -translate-x-1/2 left-1/2">
         <p class="cursor-pointer hover:bg-gray-200">Item 1</p>
@@ -107,7 +111,6 @@
         <p class="cursor-pointer hover:bg-gray-200">Item 3</p>
     </div>
 
-    <!-- Div konten yang muncul saat meng-hover Rekomendasi -->
     <div id="hover-content-rekomendasi"
         class="hidden z-20 bg-white text-gray-800 p-4 rounded-b-md justify-center absolute w-11/12 -translate-x-1/2 left-1/2">
         <p class="cursor-pointer hover:bg-gray-200">Item </p>

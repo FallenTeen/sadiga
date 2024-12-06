@@ -21,7 +21,7 @@
 </head>
 
 <body data-logged-in="{{ Auth::check() ? 'true' : 'false' }}">
-    <div id="mainsearch" class="sticky z-10 show">
+    <div id="mainsearch" class="sticky z-20 show">
         @livewire('component.secondary-navbar')
         <div id="mainnav" class="sticky top-0 left-0 w-full z-10 show">
             @livewire('component.main-navbar')
@@ -72,7 +72,7 @@
         </div>
     </section>
 
-    <section id="mengapakami" class="w-full bg-white py-8 font-poppins">
+    <section id="mengapakami" class="w-full bg-white to-blue-200 py-8 font-poppins">
         <div id="titleatas" class="max-w-screen-lg mx-auto text-center mb-8">
             <p class="font-poppins font-semibold text-2xl text-gray-900">Mengapa Kami?</p>
             <h2 class="font-poppins text-gray-900">
@@ -114,7 +114,6 @@
                     </div>
                 </div>
 
-
                 <div
                     class="max-w-sm bg-white border border-gray-200 rounded-lg shadow-sm overflow-hidden hover:shadow-md transition-shadow duration-300 m-4 flex flex-col">
                     <div class="p-6 flex flex-col items-center text-center flex-grow">
@@ -147,8 +146,6 @@
                         </div>
                     </div>
                 </div>
-
-
                 <div
                     class="max-w-sm bg-white border border-gray-200 rounded-lg shadow-sm overflow-hidden hover:shadow-md transition-shadow duration-300 m-4 flex flex-col">
                     <div class="p-6 flex flex-col items-center text-center flex-grow">
@@ -181,19 +178,19 @@
                     </div>
                 </div>
             </div>
-            <div class="p-6 mt-8 text-black">
+            <div class="p-6 mt-8 text-white bg-maincolor">
                 <h2 class="text-3xl font-semibold mb-4 text-center">Siap untuk Meningkatkan Kenyamanan Anda?</h2>
-                <p class="mb-4 text-center text-gray-700">
+                <p class="mb-4 text-center text-white">
                     Bergabunglah dengan ribuan pelanggan puas yang telah memilih layanan kami. Dapatkan produk AC
                     berkualitas dan layanan profesional dari tim kami!
                 </p>
                 <div class="flex justify-center gap-10">
                     <a href="#"
-                        class="bg-blue-500 text-white font-bold py-2 px-6 rounded-full hover:bg-blue-600 transition duration-300 shadow-md hover:shadow-lg">
+                        class="bg-none border border-white text-white font-bold py-2 px-6 rounded-md hover:bg-white hover:text-gray-900 transition duration-300 hover:shadow-lg">
                         Hubungi Kami
                     </a>
                     <a href="#barang"
-                        class="bg-blue-500 text-white font-bold py-2 px-6 rounded-full hover:bg-blue-600 transition duration-300 shadow-md hover:shadow-lg">
+                        class="bg-none border border-white text-white font-bold py-2 px-6 rounded-md hover:bg-white hover:text-gray-900 transition duration-300 hover:shadow-lg">
                         Jelajahi Produk kami
                     </a>
                 </div>
@@ -209,12 +206,12 @@
                 </div>
 
                 <div class="flex justify-around">
-                    @livewire('component.barang-display', ['jumlahPerHalaman' => 3, 'kategori' => 'ponsel', 'class' => 'flex justify-around grid grid-cols-3 gap-x-[10vh] gap-y-8 scale-125 pt-20 pb-24'])
+                    @livewire('component.barang-display', ['jumlahPerHalaman' => 3, 'kategori' => 'AC', 'class' => 'flex justify-around grid grid-cols-3 gap-x-[10vh] gap-y-8 scale-125 pt-20 pb-24'])
 
                 </div>
 
                 <div class="flex justify-center">
-                    <a href="#barang"
+                    <a href="/produk"
                         class="flex justify-center items-center w-48 border border-black text-black text-lg font-semibold hover:bg-gray-900 hover:text-white hover:border-gray-900 transform hover:scale-105 transition-all duration-300 py-2 px-4">
                         Lihat Lainnya...
                     </a>
@@ -248,34 +245,38 @@
             <div class="flex transition-transform duration-300 ease-in-out" id="carousel">
                 <div class="min-w-full bg-white p-4 rounded-lg shadow-md text-gray-800">
                     <div class="bg-white p-6 shadow-lg text-gray-800">
-                        <div class="flex items-center gap-4 pb-6">
-                            <h1 class="font-poppins font-bold text-4xl text-gray-900">Ponsel</h1>
+                        <div class="flex items-center justify-between gap-4 pb-6">
+                            <h1 class="font-poppins font-bold text-4xl text-gray-900">Unit Pendingin Ruangan</h1>
+                            <a href="/produk"
+                                class="flex justify-center items-center border border-black text-black text-lg font-semibold hover:bg-gray-900 hover:text-white hover:border-gray-900 transform hover:scale-105 transition-all duration-300 py-2 px-4">
+                                Telusuri Selengkapnya
+                            </a>
                         </div>
 
                         <div>
-                            @livewire('component.barang-display', ['jumlahPerHalaman' => 5, 'kategori' => 'ponsel', 'class' => 'flex justify-around grid grid-cols-4 gap-x-[10vh] gap-y-8'])
+                            @livewire('component.barang-display', ['jumlahPerHalaman' => 8, 'kategori' => 'AC', 'class' => 'flex justify-around grid grid-cols-4 gap-x-[10vh] gap-y-8'])
                         </div>
                     </div>
                 </div>
                 <div class="min-w-full bg-white p-4 rounded-lg shadow-md text-gray-800">
                     <div class="bg-white p-6 shadow-lg text-gray-800">
                         <div class="flex items-center gap-4 pb-6">
-                            <h1 class="font-poppins font-bold text-4xl text-gray-900">Ponsel</h1>
+                            <h1 class="font-poppins font-bold text-4xl text-gray-900">Layanan Jasa</h1>
                         </div>
 
                         <div>
-                            @livewire('component.barang-display', ['jumlahPerHalaman' => 5, 'kategori' => 'ponsel', 'class' => 'flex justify-around grid grid-cols-4 gap-x-[10vh] gap-y-8'])
+                            @livewire('component.barang-display', ['jumlahPerHalaman' => 8, 'kategori' => 'Jasa', 'class' => 'flex justify-around grid grid-cols-4 gap-x-[10vh] gap-y-8'])
                         </div>
                     </div>
                 </div>
                 <div class="min-w-full bg-white p-4 rounded-lg shadow-md text-gray-800">
                     <div class="bg-white p-6 shadow-lg text-gray-800">
                         <div class="flex items-center gap-4 pb-6">
-                            <h1 class="font-poppins font-bold text-4xl text-gray-900">Ponsel</h1>
+                            <h1 class="font-poppins font-bold text-4xl text-gray-900">Aksesoris Lain</h1>
                         </div>
 
                         <div>
-                            @livewire('component.barang-display', ['jumlahPerHalaman' => 5, 'kategori' => 'ponsel', 'class' => 'flex justify-around grid grid-cols-4 gap-x-[10vh] gap-y-8'])
+                            @livewire('component.barang-display', ['jumlahPerHalaman' => 8, 'kategori' => 'produk', 'class' => 'flex justify-around grid grid-cols-4 gap-x-[10vh] gap-y-8'])
                         </div>
                     </div>
                 </div>
@@ -326,52 +327,9 @@
     </section>
 
     <section>
-        <div class="flex flex-col items-center justify-center min-h-screen bg-white font-poppins">
-            <h2 class="text-4xl font-bold text-blue-800 mb-16">Feedback Corner</h2>
-            <div class="flex justify-center space-x-24 my-24">
-                <!-- Feedback 1 -->
-                <div class="max-w-sm p-6 bg-white">
-                    <p class="text-6xl text-blue-800">“</p>
-                    <h3 class="text-lg font-semibold text-blue-800 mb-2">Danu Ardiansyah</h3>
-                    <p class="text-sm text-gray-700">"Pelayanan di toko ini benar-benar mengesankan. Karyawannya sangat
-                        ramah, sabar dalam menjelaskan produk, dan selalu siap membantu. Saya merasa sangat dihargai
-                        sebagai
-                        pelanggan."</p>
-                </div>
-
-                <!-- Feedback 2 (Highlighted) -->
-                <div class="max-w-sm p-6 bg-blue-800 text-white text-start">
-                    <p class="text-6xl">“</p>
-                    <h3 class="text-lg font-semibold mb-2">Hanafi Dana</h3>
-                    <p class="text-sm">Saya sangat menyukai berbagai pilihan warna dan model produk yang ditawarkan.
-                        Desainnya sangat stylish dan cocok untuk berbagai acara.</p>
-                </div>
-
-                <!-- Feedback 3 -->
-                <div class="max-w-sm p-6 bg-white">
-                    <p class="text-6xl text-blue-800">“</p>
-                    <h3 class="text-lg font-semibold text-blue-800 mb-2">Muhammad Iqrom</h3>
-                    <p class="text-sm text-gray-700">"Suasana toko yang nyaman dan tenang membuat saya betah
-                        berlama-lama di
-                        sini. Musik yang lembut dan penataan produk yang rapi menambah kenyamanan berbelanja."</p>
-                </div>
-            </div>
-            <div class="flex items-center justify-center mt-8 space-x-4">
-                <button class="p-2 rounded-full bg-gray-300 hover:bg-gray-400 focus:outline-none">
-                    <svg class="w-6 h-6 text-gray-700" fill="none" stroke="currentColor" viewBox="0 0 24 24"
-                        xmlns="http://www.w3.org/2000/svg">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7">
-                        </path>
-                    </svg>
-                </button>
-                <button class="p-2 rounded-full bg-blue-800 hover:bg-blue-800 focus:outline-none">
-                    <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"
-                        xmlns="http://www.w3.org/2000/svg">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
-                    </svg>
-                </button>
-            </div>
-        </div>
+        <div>
+            @livewire('component.feedback-carousel')
+        </div>  
     </section>
 
     <footer class="bg-blue-600 text-white font-poppins">

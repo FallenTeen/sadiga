@@ -19,9 +19,14 @@ class Barang extends Model
         'kategori_id',
         'deskripsi',
         'gambar',
+        'gambar_desk',
     ];
     public function kategori()
     {
         return $this->belongsTo(Kategori::class, 'kategori_id');
+    }
+    public function likedByUsers()
+    {
+        return $this->belongsToMany(User::class, 'user_barang_likes')->withTimestamps();
     }
 }

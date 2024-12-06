@@ -17,6 +17,7 @@ class DatabaseSeeder extends Seeder
             Users::class,
             Kategori::class,
             Barang::class,
+            FeedbackSeeder::class,
         ]);
     }
 }

@@ -38,7 +38,6 @@
             </div>
         </div>
     @else
-        <!-- Jika pengguna belum login -->
         <div class="inline-flex items-center rounded-lg justify-center px-2 py-1 hover:duration-300 hover:scale-105 hover:bg-blue-900 dark:hover:bg-maincolordark text-sm font-medium leading-none text-white dark:text-gray-100">
         <svg class="w-5 h-5 me-1" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
                 fill="none" viewBox="0 0 24 24">

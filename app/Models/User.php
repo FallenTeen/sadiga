@@ -44,4 +44,7 @@ class User extends Authenticatable
             'password' => 'hashed',
         ];
     }
+    public function likedBarangs(){
+        return $this->belongsToMany(Barang::class, 'user_barang_likes')->withTimestamps();
+    }
 }
