@@ -21,7 +21,7 @@ class Barangindex extends Component
         $this->resetPage();
     }
 
-    public function updatingFilterKategori()
+    public function updatedFilterKategori()
     {
         $this->resetPage();
     }
@@ -62,6 +62,8 @@ class Barangindex extends Component
     public function render()
     {
         $query = Barang::query();
+        $query->whereIn('kategori_id', [2, 3]);
+
 
         if ($this->search) {
             $query->where('nama_barang', 'like', '%' . $this->search . '%');
@@ -73,7 +75,7 @@ class Barangindex extends Component
 
         return view('livewire.barang.barangindex', [
             'barangList' => $query->with('kategori')->paginate(10),
-            'kategoriList' => Kategori::all(),
+            'kategoriList' => Kategori::whereIn('id', [2,3])->get(),
         ])->layout('layouts.app');
     }
 }

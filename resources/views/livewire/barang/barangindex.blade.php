@@ -9,28 +9,38 @@
         </div>
 
         <!-- Filter Dropdown -->
-        <div>
-            <label for="kategori" class="sr-only">Filter Kategori</label>
-            <select wire:model="filterKategori" id="kategori"
+        <div class="mb-4">
+            <label for="kategori" class="block text-sm font-medium text-gray-700 mb-2">Filter Kategori</label>
+            <select wire:model.change="filterKategori" id="kategori"
                 class="block text-sm w-80 px-4 py-2 border rounded-lg focus:ring-blue-500 focus:border-blue-500">
                 <option value="">Semua Kategori</option>
                 @foreach ($kategoriList as $kategori)
-                    <option value="{{ $kategori->id }}">{{ $kategori->nama }}</option>
+                    <option value="{{ $kategori->id }}">{{ $kategori->nama_kategori }}</option>
                 @endforeach
             </select>
         </div>
+
     </div>
 
     <!-- Barang Table -->
     <div class="overflow-x-auto">
         <table class="min-w-full divide-y divide-gray-200 border rounded-lg">
-            <thead>
+            <thead class="">
                 <tr class="bg-gray-100">
                     <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                         Nama Barang
                     </th>
                     <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                         Harga
+                    </th>
+                    <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                        Diskon
+                    </th>
+                    <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                        Harga Jual
+                    </th>
+                    <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                        Keuntungan/pcs
                     </th>
                     <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                         Stok
@@ -44,7 +54,10 @@
                 @forelse ($barangList as $barang)
                     <tr>
                         <td class="px-6 py-4 whitespace-nowrap">{{ $barang->nama_barang }}</td>
+                        <td class="px-6 py-4 whitespace-nowrap">Rp {{ number_format($barang->harga_akhir, 0, ',', '.') }}</td>
+                        <td class="px-6 py-4 whitespace-nowrap">{{ $barang->diskon }} %</td>
                         <td class="px-6 py-4 whitespace-nowrap">Rp {{ number_format($barang->harga, 0, ',', '.') }}</td>
+                        <td class="px-6 py-4 whitespace-nowrap">Rp {{ number_format($barang->margin, 0, ',', '.') }}</td>
                         <td class="px-6 py-4 whitespace-nowrap">{{ $barang->stok }}</td>
                         <td class="px-6 py-4 whitespace-nowrap">
                             <button wire:click="editBarang({{ $barang->id }})"

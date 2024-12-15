@@ -11,6 +11,7 @@ class Barang extends Model
     use HasFactory;
     protected $table = 'tb_barang';
     protected $fillable = [
+        'merk',
         'nama_barang',
         'harga',
         'diskon',
@@ -20,6 +21,7 @@ class Barang extends Model
         'deskripsi',
         'gambar',
         'gambar_desk',
+        'rating',
     ];
     public function kategori()
     {

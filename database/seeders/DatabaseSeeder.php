@@ -18,6 +18,8 @@ class DatabaseSeeder extends Seeder
             Kategori::class,
             Barang::class,
             FeedbackSeeder::class,
+            JasaSeeder::class,
+            PekerjaSeeder::class,
         ]);
     }
 }

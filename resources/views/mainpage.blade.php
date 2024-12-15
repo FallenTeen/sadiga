@@ -261,17 +261,6 @@
                 <div class="min-w-full bg-white p-4 rounded-lg shadow-md text-gray-800">
                     <div class="bg-white p-6 shadow-lg text-gray-800">
                         <div class="flex items-center gap-4 pb-6">
-                            <h1 class="font-poppins font-bold text-4xl text-gray-900">Layanan Jasa</h1>
-                        </div>
-
-                        <div>
-                            @livewire('component.barang-display', ['jumlahPerHalaman' => 8, 'kategori' => 'Jasa', 'class' => 'flex justify-around grid grid-cols-4 gap-x-[10vh] gap-y-8'])
-                        </div>
-                    </div>
-                </div>
-                <div class="min-w-full bg-white p-4 rounded-lg shadow-md text-gray-800">
-                    <div class="bg-white p-6 shadow-lg text-gray-800">
-                        <div class="flex items-center gap-4 pb-6">
                             <h1 class="font-poppins font-bold text-4xl text-gray-900">Aksesoris Lain</h1>
                         </div>
 

@@ -17,8 +17,8 @@ class Kategori extends Seeder
         // 2 Jasa
         // 3 Produk atau aksesoris
         DB::table('tb_kategori')->insert([
-            ['nama_kategori' => 'AC', 'deskripsi' => 'Unit pendingin udara', 'created_at' => now(), 'updated_at' => now()],
             ['nama_kategori' => 'Jasa', 'deskripsi' => 'Layanan AC', 'created_at' => now(), 'updated_at' => now()],
+            ['nama_kategori' => 'AC', 'deskripsi' => 'Unit pendingin udara', 'created_at' => now(), 'updated_at' => now()],
             ['nama_kategori' => 'Produk', 'deskripsi' => 'Aksesoris AC', 'created_at' => now(), 'updated_at' => now()],
         ]);
 
