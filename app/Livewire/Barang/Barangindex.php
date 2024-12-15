@@ -16,9 +16,8 @@ class Barangindex extends Component
     public $filterKategori = '';
     public $barangId, $nama_barang, $harga, $diskon, $harga_akhir, $stok, $kategori_id, $deskripsi, $gambar, $gambar_desk = [];
 
-    // Variabel untuk sorting
-    public $sortColumn = 'nama_barang';  // Default kolom yang disort
-    public $sortDirection = 'asc';       // Default arah sorting
+    public $sortColumn = 'nama_barang'; 
+    public $sortDirection = 'asc';      
 
     public function updatingSearch()
     {
@@ -30,19 +29,16 @@ class Barangindex extends Component
         $this->resetPage();
     }
 
-    // Fungsi untuk menangani sorting
     public function sortBy($column)
     {
         if ($this->sortColumn === $column) {
-            // Jika kolom yang sama, toggle arah sorting
             $this->sortDirection = $this->sortDirection === 'asc' ? 'desc' : 'asc';
         } else {
-            // Jika kolom berbeda, set kolom baru dan arahkan ke ascending
             $this->sortColumn = $column;
             $this->sortDirection = 'asc';
         }
 
-        $this->resetPage();  // Reset halaman setiap kali sorting berubah
+        $this->resetPage(); 
     }
 
     public function addBarang()
@@ -83,17 +79,13 @@ class Barangindex extends Component
         $query = Barang::query();
         $query->whereIn('kategori_id', [2, 3]);
 
-        // Apply search filter
         if ($this->search) {
             $query->where('nama_barang', 'like', '%' . $this->search . '%');
         }
 
-        // Apply kategori filter
         if ($this->filterKategori) {
             $query->where('kategori_id', $this->filterKategori);
         }
-
-        // Apply sorting
         $query->orderBy($this->sortColumn, $this->sortDirection);
 
         return view('livewire.barang.barangindex', [
