@@ -15,15 +15,16 @@ return new class extends Migration
             $table->id();
             $table->string('merk');
             $table->string('nama_barang');
-            $table->decimal('harga_beli', 15,2);
-            $table->decimal('harga', 15, 2);
-            $table->decimal('diskon',3,0)->default(0);
-            $table->decimal('margin',15,2)->default(0);
-            $table->decimal('harga_akhir', 15, 2);
-            $table->string('stok');
-            $table->unsignedBigInteger('kategori_id');
-            $table->text('deskripsi')->nullable();
             $table->string('gambar')->nullable();
+
+            $table->decimal('harga_beli', 15,2)->nullable();
+            $table->decimal('harga', 15, 2)->nullable();
+            $table->decimal('diskon',3,0)->default(0)->nullable();
+            $table->decimal('margin',15,2)->default(0)->nullable();
+            $table->decimal('harga_akhir', 15, 2)->nullable();
+            $table->string('stok')->nullable();
+            $table->unsignedBigInteger('kategori_id')->nullable();
+            $table->text('deskripsi')->nullable();
             $table->json('gambar_desk')->nullable();
             $table->timestamps();
         
