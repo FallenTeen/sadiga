@@ -12,20 +12,21 @@ Route::middleware(['auth', 'role.redir'])->group(function () {
     })->name('dashboard');
 
 
-    Route::get('/productmanage', \App\Livewire\Barang\Barangindex::class
+    Route::get(
+        '/productmanage',
+        \App\Livewire\Barang\Barangindex::class
     )->name('productmanage.index');
-    
-    Route::get('/productmanage/create',\App\Livewire\Barang\BarangCreate::class
+
+    Route::get(
+        '/productmanage/create',
+        \App\Livewire\Barang\BarangCreate::class
     )->name('productmanage.create');
 
     Route::get('/productmanage/{barangId}/edit', \App\Livewire\Barang\Barangedit::class)
         ->name('productmanage.edit');
 
-
-
-    Route::get('/servicemanage', function () {
-        return view('backoffice.servicemanage');
-    })->name('servicemanage');
+    Route::get('/servicemanage', \App\Livewire\Service\ServiceIndex::class)
+        ->name('servicemanage');
 
     Route::get('/notifikasi', function () {
         return view('backoffice.notifikasi');

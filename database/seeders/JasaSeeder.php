@@ -21,7 +21,6 @@ class JasaSeeder extends Seeder
                 'tarif' => 150000,
                 'pekerja_id' => 1,  // Ensure this pekerja_id exists in tb_pekerja table
                 'status' => 'TERSEDIA',
-                'rating' => 4.5,
                 'snk' => 'Layanan meliputi pengecekan dan perawatan AC.',
                 'created_at' => now(),
                 'updated_at' => now(),
@@ -33,7 +32,6 @@ class JasaSeeder extends Seeder
                 'tarif' => 500000,
                 'pekerja_id' => null,  // Ensure pekerja_id can be null
                 'status' => 'PENDING',
-                'rating' => 4.8,
                 'snk' => 'Pemasangan dilakukan dengan bahan yang sudah disiapkan.',
                 'created_at' => now(),
                 'updated_at' => now(),

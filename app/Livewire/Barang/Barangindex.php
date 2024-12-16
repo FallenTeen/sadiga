@@ -14,10 +14,10 @@ class Barangindex extends Component
 
     public $search = '';
     public $filterKategori = '';
-    public $barangId, $nama_barang, $harga, $diskon, $harga_akhir, $stok, $kategori_id, $deskripsi, $gambar, $gambar_desk = [];
+    public $barangId, $nama_barang, $harga, $diskon, $harga_akhir, $stok, $kategori_id, $rekomendasi, $deskripsi, $gambar, $gambar_desk = [];
 
-    public $sortColumn = 'nama_barang'; 
-    public $sortDirection = 'asc';      
+    public $sortColumn = 'nama_barang';
+    public $sortDirection = 'asc';
 
     public function updatingSearch()
     {
@@ -38,7 +38,7 @@ class Barangindex extends Component
             $this->sortDirection = 'asc';
         }
 
-        $this->resetPage(); 
+        $this->resetPage();
     }
 
     public function addBarang()
@@ -73,6 +73,17 @@ class Barangindex extends Component
         session()->flash('message', 'Barang berhasil dihapus!');
         $this->resetPage();
     }
+    public function toggleRecommended($barangId)
+    {
+        $barang = Barang::find($barangId);
+
+        if ($barang) {
+            $barang->rekomendasi = !$barang->rekomendasi;
+            $barang->save();
+
+            session()->flash('message', 'Status rekomendasi berhasil diperbarui!');
+        }
+    }
 
     public function render()
     {
@@ -89,8 +100,8 @@ class Barangindex extends Component
         $query->orderBy($this->sortColumn, $this->sortDirection);
 
         return view('livewire.barang.barangindex', [
-            'barangList' => $query->with('kategori')->paginate(10),
+            'barangList' => $query->with('kategori')->paginate(6),
             'kategoriList' => Kategori::whereIn('id', [2, 3])->get(),
-        ])->layout('layouts.app');
+        ])->layout('layouts.custom');
     }
 }

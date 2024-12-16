@@ -17,6 +17,7 @@ return new class extends Migration
             $table->string('nama_barang');
             $table->string('gambar')->nullable();
 
+            $table->boolean('rekomendasi')->default(false);
             $table->decimal('harga_beli', 15,2)->nullable();
             $table->decimal('harga', 15, 2)->nullable();
             $table->decimal('diskon',3,0)->default(0)->nullable();

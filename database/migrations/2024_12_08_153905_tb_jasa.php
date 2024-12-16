@@ -18,7 +18,6 @@ return new class extends Migration {
             $table->decimal('tarif', 8, 2);
             $table->unsignedBigInteger('pekerja_id')->nullable();
             $table->enum('status', ['TERSEDIA', 'SELESAI', 'PENDING', 'ONGOING'])->default('TERSEDIA');
-            $table->decimal('rating', 2, 1)->nullable();
             $table->text('snk');
             $table->timestamps();
 
