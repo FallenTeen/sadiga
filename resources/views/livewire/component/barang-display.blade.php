@@ -1,11 +1,11 @@
-<div class="{{ $class }}">
+<div class="{{ $class ?? '' }} {{ Str::contains($class, 'grid-cols') ? '' : 'grid-cols-4' }} grid gap-6 px-4 py-6">
     @if($barangs->count())
         @foreach($barangs as $barang)
             <a href="{{ route('barang.show', $barang->id) }}"
-                class="relative w-full bg-white rounded-lg max-w-xs flex flex-col h-96 hover:scale-105 duration-300">
+                class="relative bg-white rounded-lg flex flex-col h-96 hover:scale-105 duration-300 shadow">
                 <div class="flex items-center justify-center h-48 relative">
-                    <img wire:ignore src="{{ asset($barang->gambar) }}" alt="{{ $barang->nama_barang }}" loading="lazy"
-                        class="w-full h-full object-contain rounded-lg" />
+                    <img wire:ignore src="{{ asset('storage/' . $barang->gambar) }}" alt="{{ $barang->nama_barang }}"
+                        loading="lazy" class="w-full h-full object-contain rounded-lg" />
                     <button wire:click.prevent="like({{ $barang->id }})"
                         class="absolute top-2 right-2 bg-gray-100 p-2 rounded-full shadow hover:bg-blue-400 hover:text-white transition duration-300">
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
@@ -43,8 +43,7 @@
                 </div>
             </a>
         @endforeach
-
     @else
-        <p>Tidak ada Barang</p>
+        <p class="text-center text-gray-500">Tidak ada Barang</p>
     @endif
 </div>

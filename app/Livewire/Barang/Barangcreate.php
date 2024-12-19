@@ -71,8 +71,9 @@ class Barangcreate extends Component
 
     public function nextStep()
     {
-        $this->validateStep();
-        if ($this->currentStep < 3) {
+        if ($this->currentStep == 3) {
+            return redirect()->route('product.index');
+        } else {
             $this->currentStep++;
         }
     }
@@ -83,12 +84,17 @@ class Barangcreate extends Component
     }
     public function removeTemporaryImage($index)
     {
+        $path = $this->gambar_desk[$index]->getRealPath();
+        if (Storage::exists($path)) {
+            Storage::delete($path);
+        }
         unset($this->gambar_desk[$index]);
         $this->gambar_desk = array_values($this->gambar_desk);
     }
+
     public function save()
     {
-        $this->validate([
+        $this->validate([ // Validasi untuk semua langkah
             'merk' => 'required|string|max:255',
             'nama_barang' => 'required|string|max:255',
             'kategori_id' => 'required|exists:tb_kategori,id',
@@ -104,6 +110,7 @@ class Barangcreate extends Component
             'merk' => $this->merk,
             'nama_barang' => $this->nama_barang,
             'kategori_id' => $this->kategori_id,
+            'rekomendasi' => false,
             'harga_beli' => $this->harga_beli,
             'harga' => $this->harga,
             'stok' => $this->stok,
@@ -115,6 +122,7 @@ class Barangcreate extends Component
         session()->flash('message', 'Barang successfully created!');
         return redirect('/productmanage');
     }
+
 
     private function uploadImages($images)
     {

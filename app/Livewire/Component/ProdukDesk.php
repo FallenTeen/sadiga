@@ -7,7 +7,7 @@ use App\Models\Barang;
 
 class ProdukDesk extends Component
 {
-    public $barangId, $barang;
+    public $barangId, $barang, $gambar_desk = [];
     public $isLiked = false;
 
     public function mount($id)
@@ -17,7 +17,13 @@ class ProdukDesk extends Component
         if (auth()->check()) {
             $this->isLiked = auth()->user()->likedBarangs()->where('barang_id', $this->barangId)->exists();
         }
+        if ($this->barang->gambar_desk) {
+            $this->gambar_desk = json_decode($this->barang->gambar_desk, true);
+        }
+
+
     }
+
 
     public function toggleLike()
     {
@@ -46,6 +52,7 @@ class ProdukDesk extends Component
     {
         return view('livewire.component.produk-desk', [
             'barang' => $this->barang,
+            'gambar_desk' => $this->gambar_desk,
         ])->layout('layouts.custom');
     }
 }

@@ -22,23 +22,25 @@
 
 <body data-logged-in="{{ Auth::check() ? 'true' : 'false' }}">
     <div id="mainsearch" class="sticky z-10 show">
-        @livewire('component.secondary-navbar')
-        <div id="mainnav" class="fixed top-0 left-0 w-full z-10 show">
+        <div id="mainnav" class="fixed left-0 w-full z-10 transition-transform">
             @livewire('component.main-navbar')
         </div>
     </div>
 
 
     <section id="section1main" class="h-100vh relative">
-        <div class="h-screen bg-cover bg-center bg-fixed bg-bglight -translate-y-24 bg-black">
+        <div class="h-screen bg-cover bg-center bg-fixed bg-bglight relative">
+            <!-- Overlay untuk opacity di bagian bawah -->
             <div
-                class="h-full flex items-center justify-between bg-gradient-to-b from-white/40 via-white/10 to-transparent text-white px-8">
+                class="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-white/100 pointer-events-none">
+            </div>
+
+            <div class="h-full flex items-center justify-between text-white px-8">
                 <div class="relative w-2/3 h-2/3 flex items-center justify-center">
                     <div>
                         <img class="object-none object-center bg-green-200 5/6 h-5/6 drop-shadow-md rounded-md"
                             src="{{ asset('assets/images/Clean.jpg') }}" alt="Images harusnya disini hehe">
                     </div>
-
                 </div>
                 <div id="profiletop" class="w-3/4 h-full flex flex-col items-start justify-center">
                     <div>
@@ -60,8 +62,6 @@
                                 class="text-blue-600 ease-in-out hover:scale-105 inline-block hover:text-white transition-all duration-500 cursor-pointer">KENYAMANAN</span>
                             ANDA.
                         </p>
-
-
                         <a href="#mengapakami"
                             class="inline-block px-6 py-4 mt-10 bg-blue-600 text-lg rounded-xl font-semibold shadow-lg hover:bg-blue-700 transform hover:scale-105 transition-all duration-300">
                             Mulai Lihat Barang
@@ -71,6 +71,7 @@
             </div>
         </div>
     </section>
+
 
     <section id="mengapakami" class="w-full bg-white to-blue-200 py-8 font-poppins">
         <div id="titleatas" class="max-w-screen-lg mx-auto text-center mb-8">
@@ -205,8 +206,8 @@
                     <h2 class="font-poppins text-gray-900">Segera dapatkan produk-produk unggulan kami di bawah ini</h2>
                 </div>
 
-                <div class="flex justify-around">
-                    @livewire('component.barang-display', ['jumlahPerHalaman' => 3, 'kategori' => ['AC','Produk'], 'rekomendasi' => true, 'class' => 'flex justify-around gap-x-[10vh] gap-y-8 scale-125 pt-20 pb-24'])
+                <div class="flex">
+                    @livewire('component.barang-display', ['jumlahPerHalaman' => 3, 'kategori' => ['AC', 'Produk'], 'rekomendasi' => true, 'class' => 'flex items-center grid grid-cols-3 gap-x-[10vh] gap-y-8 mx-32 pt-20 pb-24'])
 
                 </div>
 

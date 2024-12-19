@@ -298,12 +298,11 @@
                                 wire:click="previousStep">
                                 Kembali
                             </button>
-                            <button type="submit"
+                            <button wire:click="save"
                                 class="bg-blue-500 w-32 hover:bg-blue-600 text-white font-semibold py-2 px-4 rounded shadow focus:outline-none focus:ring focus:ring-blue-300">
                                 Simpan
                             </button>
                         </div>
-
                     </div>
                 </div>
             </div>

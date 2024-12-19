@@ -1,10 +1,12 @@
 <?php
 
+use Database\Seeders\Barang;
 use Illuminate\Support\Facades\Route;
 
 Route::view('/', 'mainpage')->middleware('role.redir')->name('/');
-Route::view('/produk', 'livewire.produk.produk-index')->name('produk');
+Route::view('/produk', 'livewire.barang.katalog')->name('produk');
 Route::get('/barang/{id}', \App\Livewire\Component\ProdukDesk::class)->name('barang.show');
+
 
 
 

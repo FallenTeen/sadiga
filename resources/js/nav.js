@@ -119,41 +119,22 @@ document.addEventListener("DOMContentLoaded", function () {
             dropdown.classList.add("hidden");
         });
     }
-
-    
-    const section1 = document.getElementById("section1main");
-    let isSticky = false;
-
-    window.addEventListener("scroll", function () {
-        let scrollTop = window.scrollY || document.documentElement.scrollTop;
-        const section1Height = section1.offsetHeight;
-
-        if (scrollTop > section1Height + 90 && !isSticky) {
-            mainNav.classList.remove("sticky");
-            mainNav.classList.add("fixed");
-            isSticky = true;
-        } else if (scrollTop < section1Height - 90 && isSticky) {
-            // Jika masih di section 1, dengan buffer zona, ganti class menjadi sticky
-            mainNav.classList.remove("fixed");
-            mainNav.classList.add("sticky");
-            isSticky = false;
-        }
-    });
-
     window.onscroll = scrollFunction;
 
     let lastScrollTop = 0;
     const mainNav = document.getElementById("mainnav");
     mainNav.style.transition = "transform 0.3s ease-in-out";
+    const scrollThreshold = mainNav.offsetHeight;
 
     window.addEventListener("scroll", function () {
         let scrollTop =
             window.pageYOffset || document.documentElement.scrollTop;
-
-        if (scrollTop > lastScrollTop) {
-            mainNav.style.transform = "translateY(-100%)";
-        } else {
-            mainNav.style.transform = "translateY(0)";
+        if (scrollTop > scrollThreshold) {
+            if (scrollTop > lastScrollTop) {
+                mainNav.style.transform = "translateY(-100%)";
+            } else {
+                mainNav.style.transform = "translateY(0)";
+            }
         }
 
         lastScrollTop = scrollTop;

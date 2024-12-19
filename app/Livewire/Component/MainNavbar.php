@@ -8,7 +8,7 @@ use Livewire\WithPagination;
 
 class MainNavbar extends Component
 {
-    public $likedItems = [];
+    public $likedItems = [], $searchTerm = '';
 
     protected $listeners = ['likeUpdated' => 'updateLikedItems'];
 
@@ -29,6 +29,7 @@ class MainNavbar extends Component
             $this->likedItems = collect();
         }
     }
+    
 
     public function render()
     {
