@@ -2,8 +2,10 @@
 
 use Illuminate\Support\Facades\Route;
 
-Route::view('/', 'mainpage')->middleware('role.redir');
-Route::view('/produk', 'livewire.produk-index')->name('produk');
+Route::view('/', 'mainpage')->middleware('role.redir')->name('/');
+Route::view('/produk', 'livewire.produk.produk-index')->name('produk');
+Route::get('/barang/{id}', \App\Livewire\Component\ProdukDesk::class)->name('barang.show');
+
 
 
 Route::middleware(['auth', 'role.redir'])->group(function () {

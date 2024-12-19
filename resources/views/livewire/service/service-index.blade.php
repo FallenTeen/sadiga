@@ -2,7 +2,8 @@
     <div class="fixed w-full z-20">
         @livewire('layout.navigation')
     </div>
-    <aside id="default-sidebar" class="fixed top-0 left-0 w-64 h-screen pt-20 transition-transform bg-white dark:bg-gray-800 sm:translate-x-0">
+    <aside id="default-sidebar"
+        class="fixed top-0 left-0 w-64 h-screen pt-20 transition-transform bg-white dark:bg-gray-800 sm:translate-x-0">
         <div class="h-full px-3 py-4 overflow-y-auto">
             <div class="grid mb-6">
                 <h1 class="text-lg font-semibold">Manage Sevice</h1>
@@ -48,18 +49,79 @@
         </div>
     </aside>
 
-    <!-- Main Content -->
     <main class="sm:ml-64 p-4 pt-20 px-12">
-        <!-- Tabel Kategori (Jika currentTab == kategori) -->
+        <!-- Tabel Kategori -->
         @if($currentTab == 'kategori')
+            <!-- Tombol Tambah Kategori -->
+            <div class="mb-4 flex justify-end">
+                <button class="px-4 py-2 bg-maincolor text-white rounded" wire:click="showAddKategoriModal">
+                    Tambah Kategori
+                </button>
+            </div>
+
+            <!-- Modal Add Kategori -->
+            @if($showKategoriModal)
+                <div class="fixed inset-0 flex justify-center items-center z-50 bg-black bg-opacity-50">
+                    <div class="bg-white rounded-lg p-6 w-1/3">
+                        <h2 class="text-xl font-semibold mb-4">Tambah Kategori</h2>
+                        <form wire:submit.prevent="storeKategori">
+                            <div class="mb-4">
+                                <label for="nama_kategori" class="block text-sm font-medium text-gray-700">Nama Kategori</label>
+                                <input type="text" wire:model="nama_kategori" id="nama_kategori"
+                                    class="w-full p-2 border rounded">
+                                @error('nama_kategori') <span class="text-red-600 text-xs">{{ $message }}</span> @enderror
+                            </div>
+                            <div class="mb-4">
+                                <label for="deskripsi" class="block text-sm font-medium text-gray-700">Deskripsi</label>
+                                <textarea wire:model="deskripsi" id="deskripsi" class="w-full p-2 border rounded"></textarea>
+                                @error('deskripsi') <span class="text-red-600 text-xs">{{ $message }}</span> @enderror
+                            </div>
+                            <div class="flex justify-end">
+                                <button type="button" wire:click="$set('showKategoriModal', false)"
+                                    class="px-4 py-2 bg-gray-300 rounded">Tutup</button>
+                                <button type="submit" class="px-4 py-2 bg-blue-600 text-white rounded ml-2">Simpan</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            @endif
+
+            <!-- Modal Edit Kategori -->
+            @if($showEditKategoriModal)
+                <div class="fixed inset-0 flex justify-center items-center z-50 bg-black bg-opacity-50">
+                    <div class="bg-white rounded-lg p-6 w-1/3">
+                        <h2 class="text-xl font-semibold mb-4">Edit Kategori</h2>
+                        <form wire:submit.prevent="updateKategori">
+                            <div class="mb-4">
+                                <label for="nama_kategori" class="block text-sm font-medium text-gray-700">Nama Kategori</label>
+                                <input type="text" wire:model="nama_kategori" id="nama_kategori"
+                                    class="w-full p-2 border rounded">
+                                @error('nama_kategori') <span class="text-red-600 text-xs">{{ $message }}</span> @enderror
+                            </div>
+                            <div class="mb-4">
+                                <label for="deskripsi" class="block text-sm font-medium text-gray-700">Deskripsi</label>
+                                <textarea wire:model="deskripsi" id="deskripsi" class="w-full p-2 border rounded"></textarea>
+                                @error('deskripsi') <span class="text-red-600 text-xs">{{ $message }}</span> @enderror
+                            </div>
+                            <div class="flex justify-end">
+                                <button type="button" wire:click="$set('showEditKategoriModal', false)"
+                                    class="px-4 py-2 bg-gray-300 rounded">Tutup</button>
+                                <button type="submit" class="px-4 py-2 bg-blue-600 text-white rounded ml-2">Update</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            @endif
+
+            <!-- Tabel Kategori -->
             <div class="overflow-x-auto bg-white shadow-md rounded-lg">
                 <table class="min-w-full border border-gray-200">
-                    <thead class="bg-gray-100">
-                        <tr>
-                            <th class="px-6 py-3 text-left text-sm font-medium text-gray-600">ID</th>
-                            <th class="px-6 py-3 text-left text-sm font-medium text-gray-600">Nama Kategori</th>
-                            <th class="px-6 py-3 text-left text-sm font-medium text-gray-600">Deskripsi</th>
-                            <th class="px-6 py-3 text-left text-sm font-medium text-gray-600">Aksi</th>
+                    <thead class="bg-maincolor text-white">
+                        <tr class="text-left font-semibold">
+                            <th class="px-6 py-3">ID</th>
+                            <th class="px-6 py-3">Nama Kategori</th>
+                            <th class="px-6 py-3">Deskripsi</th>
+                            <th class="px-6 py-3">Aksi</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -69,6 +131,8 @@
                                 <td class="px-6 py-4 text-sm text-gray-800">{{ $kategori->nama_kategori }}</td>
                                 <td class="px-6 py-4 text-sm text-gray-800">{{ $kategori->deskripsi }}</td>
                                 <td class="px-6 py-4 text-sm text-gray-800">
+                                    <button wire:click="editKategori({{ $kategori->id }})"
+                                        class="px-4 py-2 bg-maincolor text-white rounded">Edit</button>
                                     <button wire:click="deleteKategori({{ $kategori->id }})"
                                         class="px-4 py-2 bg-red-600 text-white rounded">Hapus</button>
                                 </td>
@@ -78,18 +142,92 @@
                 </table>
             </div>
         @endif
-
         <!-- Tabel Jasa (Jika currentTab == jasa) -->
         @if($currentTab == 'jasa')
+            <div class="mb-4 flex justify-end">
+                <button class="px-4 py-2 bg-maincolor text-white rounded" wire:click="showAddJasaModal">
+                    Tambah Layanan
+                </button>
+            </div>
+            @if($showJasaModal)
+                <div class="fixed inset-0 flex justify-center items-center z-50 bg-black bg-opacity-50">
+                    <div class="bg-white rounded-lg p-6 w-1/3">
+                        <h2 class="text-xl font-semibold mb-4">Tambah Jasa</h2>
+                        <form wire:submit.prevent="storeJasa">
+                            <div class="mb-4">
+                                <label for="nama_jasa" class="block text-sm font-medium text-gray-700">Nama Jasa</label>
+                                <input type="text" wire:model="nama_jasa" id="nama_jasa" class="w-full p-2 border rounded">
+                                @error('nama_jasa') <span class="text-red-600 text-xs">{{ $message }}</span> @enderror
+                            </div>
+                            <div class="mb-4">
+                                <label for="deskripsi" class="block text-sm font-medium text-gray-700">Deskripsi</label>
+                                <textarea wire:model="deskripsi" id="deskripsi" class="w-full p-2 border rounded"></textarea>
+                                @error('deskripsi') <span class="text-red-600 text-xs">{{ $message }}</span> @enderror
+                            </div>
+                            <div class="mb-4">
+                                <label for="tarif" class="block text-sm font-medium text-gray-700">Tarif</label>
+                                <input type="number" wire:model="tarif" id="tarif" step="0.01"
+                                    class="w-full p-2 border rounded">
+                                @error('tarif') <span class="text-red-600 text-xs">{{ $message }}</span> @enderror
+                            </div>
+                            <div class="mb-4">
+                                <label for="snk" class="block text-sm font-medium text-gray-700">Syarat dan Ketentuan</label>
+                                <textarea wire:model="snk" id="snk" class="w-full p-2 border rounded"></textarea>
+                                @error('snk') <span class="text-red-600 text-xs">{{ $message }}</span> @enderror
+                            </div>
+                            <div class="flex justify-end">
+                                <button type="button" wire:click="$set('showJasaModal', false)"
+                                    class="px-4 py-2 bg-gray-300 rounded">Tutup</button>
+                                <button type="submit" class="px-4 py-2 bg-blue-600 text-white rounded ml-2">Simpan</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            @endif
+
+            @if($showEditJasaModal)
+                <div class="fixed inset-0 flex justify-center items-center z-50 bg-black bg-opacity-50">
+                    <div class="bg-white rounded-lg p-6 w-1/3">
+                        <h2 class="text-xl font-semibold mb-4">Edit Jasa</h2>
+                        <form wire:submit.prevent="updateJasa">
+                            <div class="mb-4">
+                                <label for="nama_jasa" class="block text-sm font-medium text-gray-700">Nama Jasa</label>
+                                <input type="text" wire:model="nama_jasa" id="nama_jasa" class="w-full p-2 border rounded">
+                                @error('nama_jasa') <span class="text-red-600 text-xs">{{ $message }}</span> @enderror
+                            </div>
+                            <div class="mb-4">
+                                <label for="deskripsi" class="block text-sm font-medium text-gray-700">Deskripsi</label>
+                                <textarea wire:model="deskripsi" id="deskripsi" class="w-full p-2 border rounded"></textarea>
+                                @error('deskripsi') <span class="text-red-600 text-xs">{{ $message }}</span> @enderror
+                            </div>
+                            <div class="mb-4">
+                                <label for="tarif" class="block text-sm font-medium text-gray-700">Tarif</label>
+                                <input type="number" wire:model="tarif" id="tarif" class="w-full p-2 border rounded">
+                                @error('tarif') <span class="text-red-600 text-xs">{{ $message }}</span> @enderror
+                            </div>
+                            <div class="mb-4">
+                                <label for="snk" class="block text-sm font-medium text-gray-700">Syarat dan Ketentuan</label>
+                                <textarea wire:model="snk" id="snk" class="w-full p-2 border rounded"></textarea>
+                                @error('snk') <span class="text-red-600 text-xs">{{ $message }}</span> @enderror
+                            </div>
+                            <div class="flex justify-end">
+                                <button type="button" wire:click="$set('showEditJasaModal', false)"
+                                    class="px-4 py-2 bg-gray-300 rounded">Tutup</button>
+                                <button type="submit" class="px-4 py-2 bg-blue-600 text-white rounded ml-2">Simpan</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            @endif
             <div class="overflow-x-auto bg-white shadow-md rounded-lg">
                 <table class="min-w-full border border-gray-200">
-                    <thead class="bg-gray-100">
+                    <thead class="bg-maincolor text-white">
                         <tr>
-                            <th class="px-6 py-3 text-left text-sm font-medium text-gray-600">ID</th>
-                            <th class="px-6 py-3 text-left text-sm font-medium text-gray-600">Nama Jasa</th>
-                            <th class="px-6 py-3 text-left text-sm font-medium text-gray-600">Deskripsi</th>
-                            <th class="px-6 py-3 text-left text-sm font-medium text-gray-600">Tarif</th>
-                            <th class="px-6 py-3 text-left text-sm font-medium text-gray-600">Aksi</th>
+                            <th class="px-6 py-3 text-left">ID</th>
+                            <th class="px-6 py-3 text-left">Nama Jasa</th>
+                            <th class="px-6 py-3 text-left">Deskripsi</th>
+                            <th class="px-6 py-3 text-left">Tarif</th>
+                            <th class="px-6 py-3 text-left">Aksi</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -98,8 +236,11 @@
                                 <td class="px-6 py-4 text-sm text-gray-800">{{ $jasa->id }}</td>
                                 <td class="px-6 py-4 text-sm text-gray-800">{{ $jasa->nama_jasa }}</td>
                                 <td class="px-6 py-4 text-sm text-gray-800">{{ $jasa->deskripsi }}</td>
-                                <td class="px-6 py-4 text-sm text-gray-800">Rp. {{ number_format( $jasa->tarif,0,',','.') }}</td>
+                                <td class="px-6 py-4 text-sm text-gray-800">Rp. {{ number_format($jasa->tarif, 0, ',', '.') }}
+                                </td>
                                 <td class="px-6 py-4 text-sm text-gray-800">
+                                    <button wire:click="editJasa({{ $jasa->id }})"
+                                        class="px-4 py-2 bg-maincolor text-white rounded">Edit</button>
                                     <button wire:click="deleteJasa({{ $jasa->id }})"
                                         class="px-4 py-2 bg-red-600 text-white rounded">Hapus</button>
                                 </td>
@@ -112,17 +253,103 @@
 
         <!-- Tabel Pekerja (Jika currentTab == pekerja) -->
         @if($currentTab == 'pekerja')
+            <div class="mb-4 flex justify-end">
+                <button class="px-4 py-2 bg-maincolor text-white rounded" wire:click="showAddPekerjaModal">
+                    Tambah Pekerja
+                </button>
+            </div>
+
+            @if($showPekerjaModal)
+                <div class="fixed inset-0 flex justify-center items-center z-50 bg-black bg-opacity-50">
+                    <div class="bg-white rounded-lg p-6 w-1/3">
+                        <h2 class="text-xl font-semibold mb-4">Tambah Pekerja</h2>
+                        <form wire:submit.prevent="storePekerja">
+                            <div class="mb-4">
+                                <label for="nama_pekerja" class="block text-sm font-medium text-gray-700">Nama Pekerja</label>
+                                <input type="text" wire:model="nama_pekerja" id="nama_pekerja"
+                                    class="w-full p-2 border rounded">
+                                @error('nama_pekerja') <span class="text-red-600 text-xs">{{ $message }}</span> @enderror
+                            </div>
+                            <div class="mb-4">
+                                <label for="email" class="block text-sm font-medium text-gray-700">Email</label>
+                                <input type="email" wire:model="email" id="email" class="w-full p-2 border rounded">
+                                @error('email') <span class="text-red-600 text-xs">{{ $message }}</span> @enderror
+                            </div>
+                            <div class="mb-4">
+                                <label for="telepon" class="block text-sm font-medium text-gray-700">Telepon</label>
+                                <input type="text" wire:model="telepon" id="telepon" class="w-full p-2 border rounded">
+                                @error('telepon') <span class="text-red-600 text-xs">{{ $message }}</span> @enderror
+                            </div>
+                            <div class="mb-4">
+                                <label for="alamat" class="block text-sm font-medium text-gray-700">Alamat</label>
+                                <textarea wire:model="alamat" id="alamat" class="w-full p-2 border rounded"></textarea>
+                                @error('alamat') <span class="text-red-600 text-xs">{{ $message }}</span> @enderror
+                            </div>
+                            <div class="flex justify-end">
+                                <button type="button" wire:click="$set('showPekerjaModal', false)"
+                                    class="px-4 py-2 bg-gray-300 rounded">Tutup</button>
+                                <button type="submit" class="px-4 py-2 bg-blue-600 text-white rounded ml-2">Simpan</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            @endif
+
+            @if($showEditPekerjaModal)
+                <div class="fixed inset-0 flex justify-center items-center z-50 bg-black bg-opacity-50">
+                    <div class="bg-white rounded-lg p-6 w-1/3">
+                        <h2 class="text-xl font-semibold mb-4">Edit Pekerja</h2>
+                        <form wire:submit.prevent="updatePekerja">
+                            <div class="mb-4">
+                                <label for="nama_pekerja" class="block text-sm font-medium text-gray-700">Nama Pekerja</label>
+                                <input type="text" wire:model="nama_pekerja" id="nama_pekerja"
+                                    class="w-full p-2 border rounded">
+                                @error('nama_pekerja') <span class="text-red-600 text-xs">{{ $message }}</span> @enderror
+                            </div>
+                            <div class="mb-4">
+                                <label for="email" class="block text-sm font-medium text-gray-700">Email</label>
+                                <input type="email" wire:model="email" id="email" class="w-full p-2 border rounded">
+                                @error('email') <span class="text-red-600 text-xs">{{ $message }}</span> @enderror
+                            </div>
+                            <div class="mb-4">
+                                <label for="telepon" class="block text-sm font-medium text-gray-700">Telepon</label>
+                                <input type="text" wire:model="telepon" id="telepon" class="w-full p-2 border rounded">
+                                @error('telepon') <span class="text-red-600 text-xs">{{ $message }}</span> @enderror
+                            </div>
+                            <div class="mb-4">
+                                <label for="alamat" class="block text-sm font-medium text-gray-700">Alamat</label>
+                                <textarea wire:model="alamat" id="alamat" class="w-full p-2 border rounded"></textarea>
+                                @error('alamat') <span class="text-red-600 text-xs">{{ $message }}</span> @enderror
+                            </div>
+                            <div class="mb-4">
+                                <label for="status" class="block text-sm font-medium text-gray-700">Status</label>
+                                <select wire:model="status" id="status" class="w-full p-2 border rounded">
+                                    <option value="TERSEDIA">Tersedia</option>
+                                    <option value="ONGOING">Ongoing</option>
+                                </select>
+                                @error('status') <span class="text-red-600 text-xs">{{ $message }}</span> @enderror
+                            </div>
+                            <div class="flex justify-end">
+                                <button type="button" wire:click="$set('showEditPekerjaModal', false)"
+                                    class="px-4 py-2 bg-gray-300 rounded">Tutup</button>
+                                <button type="submit" class="px-4 py-2 bg-blue-600 text-white rounded ml-2">Simpan</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            @endif
+
             <div class="overflow-x-auto bg-white shadow-md rounded-lg">
                 <table class="min-w-full border border-gray-200">
-                    <thead class="bg-gray-100">
+                    <thead class="bg-maincolor text-white">
                         <tr>
-                            <th class="px-6 py-3 text-left text-sm font-medium text-gray-600">ID</th>
-                            <th class="px-6 py-3 text-left text-sm font-medium text-gray-600">Nama Pekerja</th>
-                            <th class="px-6 py-3 text-left text-sm font-medium text-gray-600">Email</th>
-                            <th class="px-6 py-3 text-left text-sm font-medium text-gray-600">Kontak</th>
-                            <th class="px-6 py-3 text-left text-sm font-medium text-gray-600">Status</th>
-                            <th class="px-6 py-3 text-left text-sm font-medium text-gray-600">Alamat</th>
-                            <th class="px-6 py-3 text-left text-sm font-medium text-gray-600">Aksi</th>
+                            <th class="px-6 py-3 text-left">ID</th>
+                            <th class="px-6 py-3 text-left">Nama Pekerja</th>
+                            <th class="px-6 py-3 text-left">Email</th>
+                            <th class="px-6 py-3 text-left">Kontak</th>
+                            <th class="px-6 py-3 text-left">Status</th>
+                            <th class="px-6 py-3 text-left">Alamat</th>
+                            <th class="px-6 py-3 text-left">Aksi</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -132,9 +359,23 @@
                                 <td class="px-6 py-4 text-sm text-gray-800">{{ $pekerja->nama_pekerja }}</td>
                                 <td class="px-6 py-4 text-sm text-gray-800">{{ $pekerja->email }}</td>
                                 <td class="px-6 py-4 text-sm text-gray-800">{{ $pekerja->telepon }}</td>
-                                <td class="px-6 py-4 text-sm text-gray-800">{{ $pekerja->status }}</td>
+                                <td class="px-6 py-4 text-sm text-gray-800">
+                                    <select wire:model="status_pekerja.{{ $pekerja->id }}"
+                                        wire:change="updateStatusPekerja({{ $pekerja->id }})"
+                                        class="px-4 py-2 border rounded-md bg-gray-50 text-gray-800">
+                                        <option value="TERSEDIA" {{ $pekerja->status == 'TERSEDIA' ? 'selected' : '' }}>TERSEDIA
+                                        </option>
+                                        <option value="ONGOING" {{ $pekerja->status == 'ONGOING' ? 'selected' : '' }}>ONGOING
+                                        </option>
+                                        <option value="TIDAK TERSEDIA" {{ $pekerja->status == 'TIDAK TERSEDIA' ? 'selected' : '' }}>TIDAK TERSEDIA</option>
+                                    </select>
+                                </td>
+
+
                                 <td class="px-6 py-4 text-sm text-gray-800">{{ $pekerja->alamat }}</td>
                                 <td class="px-6 py-4 text-sm text-gray-800">
+                                    <button wire:click="editPekerja({{ $pekerja->id }})"
+                                        class="px-4 py-2 bg-maincolor text-white rounded">Edit</button>
                                     <button wire:click="deletePekerja({{ $pekerja->id }})"
                                         class="px-4 py-2 bg-red-600 text-white rounded">Hapus</button>
                                 </td>

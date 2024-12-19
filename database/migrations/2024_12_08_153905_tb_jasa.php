@@ -12,10 +12,10 @@ return new class extends Migration {
     {
         Schema::create('tb_jasa', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('kategori_id');
+            $table->unsignedBigInteger('kategori_id')->default(1);
             $table->string('nama_jasa');
             $table->text('deskripsi');
-            $table->decimal('tarif', 8, 2);
+            $table->decimal('tarif', 15, 2);
             $table->unsignedBigInteger('pekerja_id')->nullable();
             $table->enum('status', ['TERSEDIA', 'SELESAI', 'PENDING', 'ONGOING'])->default('TERSEDIA');
             $table->text('snk');

@@ -61,9 +61,12 @@
             </div>
 
             <div id="likedItemsModal"
-                class="hidden absolute z-30 bg-white dark:bg-gray-800 rounded-lg shadow-lg p-4 top-20 w-72 right-64">
-                <div class="flex justify-between items-center">
-                    <h2 class="text-lg font-semibold text-gray-900 dark:text-gray-100">Item Disukai</h2>
+                class="hidden absolute z-30 bg-white dark:bg-gray-800 rounded-lg shadow-lg p-4 top-20 right-64">
+                <div class="flex justify-between items-center px-2">
+                    <div class="grid">
+                        <h2 class="text-lg font-semibold text-gray-900 dark:text-gray-100">Item Disukai</h2>
+                        <h3 class="text-sm text-gray-900 dark:text-gray-100">Klik item untuk melihat detail</h3>
+                    </div>
                     <button id="closeModalButton"
                         class="text-gray-600 dark:text-gray-100 hover:text-gray-900 dark:hover:text-gray-300">
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
@@ -73,13 +76,17 @@
                     </button>
                 </div>
                 <div wire:listen="likeUpdated">
-                    <ul class="mt-2">
+                    <ul class="mt-4">
                         @if (count($likedItems) > 0)
                             @foreach($likedItems as $item)
-                                <li class="flex justify-between items-center">
-                                    <span class="text-gray-900 dark:text-gray-100">{{ $item->nama_barang }}</span>
-                                    <span class="text-gray-500 dark:text-gray-400">Rp.
-                                        {{ number_format($item->harga, 0, ',', '.') }}</span>
+                                <li>
+                                    <a class="flex justify-between gap-8 items-center hover:bg-gray-100 hover:rounded-md dark:hover:bg-gray-800 transition-all duration-200 p-2 rounded"
+                                        href="{{ route('barang.show', $item->id) }}">
+                                        <span
+                                            class="text-gray-900 dark:text-gray-100 transition-colors duration-200">{{ $item->nama_barang }}</span>
+                                        <span class="text-gray-500 dark:text-gray-400 transition-colors duration-200">Rp.
+                                            {{ number_format($item->harga, 0, ',', '.') }}</span>
+                                    </a>
                                 </li>
                             @endforeach
                         @else

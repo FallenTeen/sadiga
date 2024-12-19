@@ -7,23 +7,26 @@ use Livewire\WithPagination;
 use App\Models\Barang;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
+use Carbon\Carbon;
 
 class BarangDisplay extends Component
 {
     use WithPagination;
 
-    public $jumlahPerHalaman, $kategori, $class;
+    public $jumlahPerHalaman, $kategori = [], $class, $rekomendasi;
     public $likedBarangs = [];
-
-    public function mount($jumlahPerHalaman = 2, $kategori = null)
+    public function mount($jumlahPerHalaman = 2, $kategori = [], $rekomendasi = false)
     {
         $this->jumlahPerHalaman = $jumlahPerHalaman;
-        $this->kategori = $kategori;
+        $this->kategori = is_array($kategori) ? $kategori : explode(',', $kategori);
+
         if (Auth::check()) {
             $this->syncLikesWithDatabase();
         } else {
             $this->likedBarangs = Session::get('liked_barangs', []);
         }
+
+        $this->rekomendasi = $rekomendasi;
     }
 
     public function like($barangId)
@@ -67,6 +70,7 @@ class BarangDisplay extends Component
         }
         $this->dispatch('likeUpdated');
     }
+
     private function syncLikesWithDatabase()
     {
         if (Auth::check()) {
@@ -83,18 +87,33 @@ class BarangDisplay extends Component
         }
     }
 
-
     public function render()
     {
+        //Carbon::setTestNow('2024-12-12'); Buat ngetest
         $likedItems = Auth::check()
             ? Auth::user()->likedBarangs
             : Barang::whereIn('id', Session::get('liked_barangs', []))->get();
 
-        $barangs = $this->kategori
-            ? Barang::whereHas('kategori', function ($query) {
-                $query->where('nama_kategori', $this->kategori);
-            })->paginate($this->jumlahPerHalaman)
-            : Barang::paginate($this->jumlahPerHalaman);
+        $query = Barang::query();
+
+        // Mengambil barang berdasarkan kategori jika ada
+        if (!empty($this->kategori)) {
+            $query->whereHas('kategori', function ($query) {
+                $query->whereIn('nama_kategori', $this->kategori);
+            });
+        }
+
+        // Hanya pilih barang yang memiliki 'rekomendasi' true
+        if ($this->rekomendasi) {
+            $query->where('rekomendasi', true);
+
+            // Randomisasi berdasarkan tanggal hari ini
+            $todaySeed = Carbon::today()->format('Y-m-d');
+            $query->orderByRaw('RAND(UNIX_TIMESTAMP(?))', [$todaySeed]);
+        }
+
+        // Ambil barang dengan pagination
+        $barangs = $query->paginate($this->jumlahPerHalaman);
 
         return view('livewire.component.barang-display', [
             'barangs' => $barangs,

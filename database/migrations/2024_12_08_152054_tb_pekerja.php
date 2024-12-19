@@ -17,7 +17,7 @@ return new class extends Migration
             $table->string('email');
             $table->string('telepon'); 
             $table->text('alamat');
-            $table->enum('status',['TERSEDIA','ONGOING'])->default('TERSEDIA');
+            $table->string('status')->default('TERSEDIA');
             $table->timestamps();
         });
     }

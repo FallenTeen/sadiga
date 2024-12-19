@@ -15,14 +15,16 @@
                 <div id="sosmed" class="font-poppins">Ikuti Kami Di</div>
                 <ul class="flex gap-4 items-center -translate-y-[2.5px]">
                     <li><a><img src="https://img.icons8.com/?size=100&id=59813&format=png&color=FFFFFF"
-                                alt="Instagram @dansttyn" class="w-[30px] cursor-pointer hover:scale-105 duration-150"></a></li>
-                    <li><a><img src="https://img.icons8.com/?size=100&id=60014&format=png&color=FFFFFF" 
-                                alt="tuwiter" class="w-[30px] cursor-pointer hover:scale-105 duration-150"></a></li>
+                                alt="Instagram @dansttyn"
+                                class="w-[30px] cursor-pointer hover:scale-105 duration-150"></a></li>
+                    <li><a><img src="https://img.icons8.com/?size=100&id=60014&format=png&color=FFFFFF" alt="tuwiter"
+                                class="w-[30px] cursor-pointer hover:scale-105 duration-150"></a></li>
                 </ul>
             </div>
             <div class="items-right text-white hover:underline cursor-pointer">
                 <a class="flex items-center font-poppins gap-2">
-                    <img src="https://img.icons8.com/?size=100&id=89777&format=png&color=FFFFFF" class="w-[30px]" alt="">
+                    <img src="https://img.icons8.com/?size=100&id=89777&format=png&color=FFFFFF" class="w-[30px]"
+                        alt="">
                     <div class="translate-y-0.5">Pilih Bahasa</div>
                 </a>
             </div>
@@ -32,10 +34,9 @@
     <!-- KYUARR -->
     <div id="qr-code" class="hidden">
         <div
-            class="absolute flex bg-white w-[240px] h-[280px] rounded-xl top-10 left-32 font-poppins font-normal text-md flex-col justify-center items-center text-center border border-maincolordark">
+            class="absolute flex bg-white w-[240px] h-[280px] rounded-xl top-10 left-32 font-poppins font-normal text-md flex-col justify-center items-center text-center border border-maincolordark z-30">
             <span class="mx-8">Download E-Katalog Untuk Mobile</span>
             <img src="{{ asset('assets/images/QR.png') }}" alt="Deskripsi Gambar" class="mt-2 w-[200px] h-[190px]">
         </div>
-    </div>
     </div>
 </nav>
