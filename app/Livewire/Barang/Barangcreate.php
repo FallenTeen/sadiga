@@ -7,12 +7,14 @@ use Livewire\WithFileUploads;
 use App\Models\Barang;
 use App\Models\Kategori;
 use Illuminate\Support\Facades\Storage;
+use App\Models\User;
+use App\Notifications\BarangBaru;
 
 class Barangcreate extends Component
 {
     use WithFileUploads;
     public $currentStep = 1;
-    public $merk, $nama_barang, $gambar, $kategori_id;
+    public $barang, $merk, $nama_barang, $gambar, $kategori_id;
     public $harga_beli, $harga, $stok, $deskripsi, $gambar_desk = [];
     public $maxGambarDesk = 10;
     public $harga_akhir, $margin, $diskon;
@@ -94,7 +96,7 @@ class Barangcreate extends Component
 
     public function save()
     {
-        $this->validate([ // Validasi untuk semua langkah
+        $this->validate([
             'merk' => 'required|string|max:255',
             'nama_barang' => 'required|string|max:255',
             'kategori_id' => 'required|exists:tb_kategori,id',
@@ -106,7 +108,7 @@ class Barangcreate extends Component
             'gambar_desk.*' => 'nullable|image|max:1024',
         ]);
 
-        Barang::create([
+        $barang = Barang::create([
             'merk' => $this->merk,
             'nama_barang' => $this->nama_barang,
             'kategori_id' => $this->kategori_id,
@@ -119,6 +121,10 @@ class Barangcreate extends Component
             'gambar_desk' => json_encode($this->uploadImages($this->gambar_desk)),
         ]);
 
+        $admin = User::where('role', 'admin')->first(); // Ambil user dengan role admin
+        if ($admin) {
+            $admin->notify(new BarangBaru($barang->id));
+        }
         session()->flash('message', 'Barang successfully created!');
         return redirect('/productmanage');
     }

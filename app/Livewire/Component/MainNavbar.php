@@ -5,6 +5,7 @@ namespace App\Livewire\Component;
 use Livewire\Component;
 use Illuminate\Support\Facades\Auth;
 use Livewire\WithPagination;
+use Illuminate\Support\Facades\Redirect;
 
 class MainNavbar extends Component
 {
@@ -21,6 +22,11 @@ class MainNavbar extends Component
         }
     }
 
+    public function search()
+    {
+        return redirect()->route('produk', ['search' => $this->searchTerm]);
+    }
+
     public function updateLikedItems()
     {
         if (auth()->check()) {
@@ -29,7 +35,7 @@ class MainNavbar extends Component
             $this->likedItems = collect();
         }
     }
-    
+
 
     public function render()
     {

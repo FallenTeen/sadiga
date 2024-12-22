@@ -2,6 +2,7 @@
 
 use App\Models\User;
 use Illuminate\Auth\Events\Registered;
+use App\Notifications\UserBaru;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\Rules;
@@ -29,11 +30,18 @@ new #[Layout('layouts.guest')] class extends Component
         $validated['password'] = Hash::make($validated['password']);
 
         event(new Registered($user = User::create($validated)));
+        
+        $adminUsers = User::where('role', 'admin')->get();
+        foreach ($adminUsers as $admin) {
+            $admin->notify(new UserBaru($user));
+        }
+        
 
         Auth::login($user);
 
         $this->redirect(route('dashboard', absolute: false), navigate: true);
     }
+    
 }; ?>
 
 <div>

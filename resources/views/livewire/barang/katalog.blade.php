@@ -26,6 +26,13 @@
             @livewire('component.main-navbar')
         </div>
     </div>
+
+    <section id="Hasil Pencarian" class="">
+        @livewire('component.barang-display-search', ['search' => request()->query('search')])
+
+    </section>
+
+
     <section id="Rekomendasi" class="">
         <div class="px-8 py-8 grid bg-white shadow-md mx-8 my-8">
             <h1 class="font-bold text-3xl font-gray-800">Produk Remomendasi</h1>

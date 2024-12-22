@@ -70,11 +70,11 @@
 
         <div class="w-1/3 min-w-[200px] py-5">
             <div class="relative">
-                <input type="text"
+                <input type="text" wire:model="searchTerm"
                     class="w-full bg-transparent placeholder:text-slate-400 text-white text-sm border border-slate-200 rounded-md py-2 transition duration-300 ease focus:outline-none focus:border-slate-400 hover:border-slate-300 shadow-sm focus:shadow"
                     placeholder="Cari apa yang kamu butuhkan" />
                 <a class="absolute top-1 right-1 flex items-center rounded py-1 px-2.5 border border-transparent text-center text-sm text-white transition-all shadow-sm hover:shadow-none active:bg-maincolordark hover:bg-maincolordark active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none hover:cursor-pointer"
-                    type="button">
+                    wire:click.prevent="search" type="button">
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="currentColor"
                         class="w-4 h-4 mr-1.5">
                         <path fill-rule="evenodd"
@@ -85,6 +85,7 @@
                 </a>
             </div>
         </div>
+
 
         <div class="flex items-center lg:space-x-2">
             <div class="relative">
