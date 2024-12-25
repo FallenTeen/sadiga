@@ -55,7 +55,7 @@
     <section id="Jasa">
         <div class="px-8 py-8 grid bg-white shadow-md mx-8 my-8">
             <h1 class="font-bold text-3xl font-gray-800">Jasa</h1>
-            @livewire('component.barang-display', ['jumlahPerHalaman' => 100, 'kategori' => ['Jasa'], 'rekomendasi' => false, 'class' => 'flex justify-around gap-y-10 pt-16 pb-24'])
+            @livewire('component.jasa-display')
         </div>
     </section>
     @livewire('component.footer')
@@ -64,7 +64,6 @@
 
 <script>
     document.documentElement.style.setProperty('--navbar-height', document.getElementById('mainnav').offsetHeight + 'px');
-    // Carousel
     let currentIndex = 0;
     const items = document.querySelectorAll('#carousel > div');
     const totalItems = items.length;
@@ -93,15 +92,13 @@
             const startPosition = window.pageYOffset;
             const targetPosition = targetElement.getBoundingClientRect().top + startPosition;
             const distance = targetPosition - startPosition;
-            const duration = 1000; // Durasi dalam ms
+            const duration = 1000;
             let startTime = null;
 
-            // Easing function (ease-in-out)
             const easeInOutQuad = (t) => {
                 return t < 0.5 ? 2 * t * t : -1 + (4 - 2 * t) * t;
             };
 
-            // Animation loop
             const animation = (currentTime) => {
                 if (startTime === null) startTime = currentTime;
                 const timeElapsed = currentTime - startTime;

@@ -32,6 +32,8 @@ class jasa extends Model
             $this->attributes['status'] = $value; // Menyimpan status sesuai input jika pekerja_id sudah ada
         }
     }
+
+    
     public function pekerja()
     {
         return $this->belongsTo(Pekerja::class, 'pekerja_id');

@@ -24,11 +24,13 @@
                 </div>
                 <div class="items-right text-white hover:underline cursor-pointer">
                     <a class="flex items-center font-poppins gap-2">
-                        <img src="https://img.icons8.com/?size=100&id=89777&format=png&color=FFFFFF" class="w-[30px]"
-                            alt="">
-                        <div class="translate-y-0.5">Pilih Bahasa</div>
+                        <div class="translate-y-0.5">
+                            <span id="current-date-time"></span>
+                        </div>
                     </a>
                 </div>
+
+
             </div>
         </div>
 
@@ -263,5 +265,23 @@
                 rekomendasi.classList.remove('bg-white', 'text-gray-800');
             }
         });
+
+        function updateDateTime() {
+            const now = new Date();
+            const options = {
+                weekday: 'short',
+                year: 'numeric',
+                month: 'short',
+                day: 'numeric',
+                hour: '2-digit',
+                minute: '2-digit',
+                hour12: true
+            };
+            const formattedDateTime = now.toLocaleString('id-ID', options);
+            document.getElementById("current-date-time").textContent = formattedDateTime;
+        }
+
+        updateDateTime();
+        setInterval(updateDateTime, 60000);
     </script>
 </div>

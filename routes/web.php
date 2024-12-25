@@ -9,18 +9,26 @@ Route::get('/barang/{id}', \App\Livewire\Component\ProdukDesk::class)->name('bar
 Route::get('/produk', function (Request $request) {
     $searchTerm = request()->query('search');
 
-    // You can filter products based on the search term
-    $products = \App\Models\Barang::where('nama_barang', 'like', "%{$searchTerm}%")
+    $barangResults = \App\Models\Barang::where('nama_barang', 'like', "%{$searchTerm}%")
         ->orWhere('deskripsi', 'like', "%{$searchTerm}%")
-        ->get();
+        ->orWhere('merk', 'like', "%{$searchTerm}%")
+        ->select('id', 'nama_barang as name', DB::raw('"barang" as source'));
+
+    $jasaResults = \App\Models\Jasa::query()
+        ->where('nama_jasa', 'like', "%{$searchTerm}%")
+        ->select('id', 'nama_jasa as name', DB::raw('"jasa" as source')); 
+
+    $products = $barangResults->union($jasaResults)->get();
 
     return view('livewire.barang.katalog', compact('products', 'searchTerm'));
 })->name('produk');
 
+
 Route::middleware(['auth', 'role.redir'])->group(function () {
-    Route::get('/dashboard', function () {
-        return view('backoffice.dashboard');
-    })->name('dashboard');
+    Route::get(
+        '/dashboard',
+        \App\Livewire\Backoffice\Dashboard::class
+    )->name('dashboard');
 
     Route::get(
         '/productmanage',
@@ -38,7 +46,7 @@ Route::middleware(['auth', 'role.redir'])->group(function () {
     Route::get('/servicemanage', \App\Livewire\Service\ServiceIndex::class)
         ->name('servicemanage');
 
-        Route::get('/notifikasi', \App\Livewire\Notifikasi\Notifikasi::class)
+    Route::get('/notifikasi', \App\Livewire\Notifikasi\Notifikasi::class)
         ->name('notifikasi');
 });
 

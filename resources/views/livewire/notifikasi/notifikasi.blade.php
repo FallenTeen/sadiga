@@ -43,7 +43,7 @@
                 </div>
             </div>
         @empty
-            <p class="text-gray-500">Tidak ada notifikasi.</p>
+            <p class="text-gray-500 text-center bg-white shadow-md p-8 rounded-md">Tidak ada notifikasi.</p>
         @endforelse
     </div>
 </div>

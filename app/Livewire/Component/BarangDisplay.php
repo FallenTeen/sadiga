@@ -5,6 +5,7 @@ namespace App\Livewire\Component;
 use Livewire\Component;
 use Livewire\WithPagination;
 use App\Models\Barang;
+use App\Models\jasa;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
 use Carbon\Carbon;
@@ -89,30 +90,25 @@ class BarangDisplay extends Component
 
     public function render()
     {
-        //Carbon::setTestNow('2024-12-12'); Buat ngetest
         $likedItems = Auth::check()
             ? Auth::user()->likedBarangs
             : Barang::whereIn('id', Session::get('liked_barangs', []))->get();
 
         $query = Barang::query();
 
-        // Mengambil barang berdasarkan kategori jika ada
         if (!empty($this->kategori)) {
             $query->whereHas('kategori', function ($query) {
                 $query->whereIn('nama_kategori', $this->kategori);
             });
         }
 
-        // Hanya pilih barang yang memiliki 'rekomendasi' true
         if ($this->rekomendasi) {
             $query->where('rekomendasi', true);
 
-            // Randomisasi berdasarkan tanggal hari ini
             $todaySeed = Carbon::today()->format('Y-m-d');
             $query->orderByRaw('RAND(UNIX_TIMESTAMP(?))', [$todaySeed]);
         }
 
-        // Ambil barang dengan pagination
         $barangs = $query->paginate($this->jumlahPerHalaman);
 
         return view('livewire.component.barang-display', [

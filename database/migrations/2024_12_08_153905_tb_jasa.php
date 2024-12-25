@@ -19,6 +19,7 @@ return new class extends Migration {
             $table->unsignedBigInteger('pekerja_id')->nullable();
             $table->enum('status', ['TERSEDIA', 'SELESAI', 'PENDING', 'ONGOING'])->default('TERSEDIA');
             $table->text('snk');
+            $table->boolean('rekomendasi')->default(false);
             $table->timestamps();
 
             $table->foreign('kategori_id')->references('id')->on('tb_kategori')->onDelete('cascade');
