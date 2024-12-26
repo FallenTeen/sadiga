@@ -53,5 +53,11 @@ Route::middleware(['auth', 'role.redir'])->group(function () {
 Route::view('profile', 'profile')
     ->middleware(['auth'])
     ->name('profile');
+Route::view('profileUser', 'profileUser')
+    ->middleware(['auth'])
+    ->name('profileUser');
+
+    
+
 
 require __DIR__ . '/auth.php';

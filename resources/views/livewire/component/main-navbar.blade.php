@@ -159,20 +159,80 @@
         </div>
     </div>
 
+    <!-- Categories Hover Content -->
     <div id="hover-content"
-        class="hidden z-20 bg-white text-gray-800 p-4 rounded-b-md justify-center absolute w-11/12 -translate-x-1/2 left-1/2">
-        <p class="cursor-pointer hover:bg-gray-200">Item 1</p>
-        <p class="cursor-pointer hover:bg-gray-200">Item 2</p>
-        <p class="cursor-pointer hover:bg-gray-200">Item 3</p>
+        class="hidden z-20 bg-white text-gray-800 p-6 rounded-b-xl shadow-xl justify-center absolute w-11/12 -translate-x-1/2 left-1/2">
+        @foreach($categoriesWithTopItems as $categoryData)
+            @if($categoryData['topItems']->isNotEmpty())
+                <div class="flex gap-24 mb-8 last:mb-0">
+                    <div class="justify-center item-center flex w-1/4 text-lg">
+                        <div class="grid grid-rows-2 justify-center text-center gap-3">
+                            <span
+                                class="text-3xl font-bold bg-gradient-to-r from-blue-600 to-blue-800 bg-clip-text text-transparent">
+                                {{ $categoryData['category']->nama_kategori }}
+                            </span>
+                            <span class="text-sm font-medium text-gray-600 max-w-[200px]">
+                                {{ $categoryData['category']->deskripsi }}
+                            </span>
+                        </div>
+                    </div>
+
+                    <div class="w-3/4 grid grid-cols-3 gap-6">
+                        @foreach($categoryData['topItems'] as $barang)
+                            <a href="{{ route('barang.show', $barang->id) }}"
+                                class="group w-full h-24 bg-white/80 border-0 shadow-sm hover:shadow-md rounded-xl hover:scale-102 duration-300">
+                                <div class="flex h-full gap-4 p-4">
+                                    <div class="w-1/4 flex items-center justify-center bg-gray-50/80 rounded-lg p-1">
+                                        <img wire:ignore src="{{ asset('storage/' . $barang->gambar) }}"
+                                            alt="{{ $barang->nama_barang }}" loading="lazy"
+                                            class="w-full h-full object-contain rounded-lg group-hover:scale-110 duration-300" />
+                                    </div>
+                                    <div class="w-3/4 grid grid-rows-2 gap-1">
+                                        <div class="row-span-1 text-sm font-semibold text-gray-800 line-clamp-1">
+                                            {{ $barang->nama_barang }}
+                                        </div>
+                                        <div class="row-span-1 text-sm font-bold text-blue-600">
+                                            Rp {{ number_format($barang->harga, 0, ',', '.') }}
+                                        </div>
+                                    </div>
+                                </div>
+                            </a>
+                        @endforeach
+                    </div>
+                </div>
+            @endif
+        @endforeach
     </div>
 
+    <!-- Recommendations Hover Content -->
     <div id="hover-content-rekomendasi"
-        class="hidden z-20 bg-white text-gray-800 p-4 rounded-b-md justify-center absolute w-11/12 -translate-x-1/2 left-1/2">
-        <p class="cursor-pointer hover:bg-gray-200">Item </p>
-        <p class="cursor-pointer hover:bg-gray-200">Item 2</p>
-        <p class="cursor-pointer hover:bg-gray-200">Item 3</p>
+        class="hidden z-20 bg-white text-gray-800 p-6 rounded-b-xl shadow-xl justify-center absolute w-11/12 -translate-x-1/2 left-1/2">
+        <div class="grid grid-cols-4 gap-6">
+            @foreach($recommendedItems as $barang)
+                <a href="{{ route('barang.show', $barang->id) }}"
+                    class="group w-full h-24 bg-white/80 border-0 shadow-sm hover:shadow-md rounded-xl hover:scale-102 duration-300">
+                    <div class="flex h-full gap-4 p-4">
+                        <div class="w-1/4 flex items-center justify-center bg-gray-50/80 rounded-lg p-1">
+                            <img wire:ignore src="{{ asset('storage/' . $barang->gambar) }}"
+                                alt="{{ $barang->nama_barang }}" loading="lazy"
+                                class="w-full h-full object-contain rounded-lg group-hover:scale-110 duration-300" />
+                        </div>
+                        <div class="w-3/4 grid grid-rows-4 gap-0.5">
+                            <div class="row-span-1 text-sm font-semibold text-gray-800 line-clamp-1">
+                                {{ $barang->nama_barang }}
+                            </div>
+                            <div class="row-span-2 text-xs text-gray-600 line-clamp-2">
+                                {{ $barang->deskripsi }}
+                            </div>
+                            <div class="row-span-1 text-sm font-bold text-blue-600">
+                                Rp {{ number_format($barang->harga, 0, ',', '.') }}
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            @endforeach
+        </div>
     </div>
-
     <script>
         const kategori = document.getElementById('kategori');
         const hoverContent = document.getElementById('hover-content');
@@ -282,6 +342,6 @@
         }
 
         updateDateTime();
-        setInterval(updateDateTime, 60000);
+        nterval(updateDateTime, 60000);
     </script>
 </div>
