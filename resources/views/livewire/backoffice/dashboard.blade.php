@@ -156,24 +156,23 @@
                         <div class="col-span-1 rounded-md p-4 bg-white shadow-lg">
                             <div class="grid grid-rows-7 h-full">
                                 <div class="row-span-1"></div>
-                                <a href="{{ route('productmanage.index', ['#section1']) }}" class="row-span-3 flex flex-col justify-center items-center hover:scale-105 hover:text-blue-600 duration-300">
+                                <a href="{{ route('productmanage.index', ['#section1']) }}"
+                                    class="row-span-3 flex flex-col justify-center items-center hover:scale-105 hover:text-blue-600 duration-300">
                                     <span class="font-bold text-5xl">{{ $jmlItemBaruPerInterval->sum('count') }}</span>
                                     <span class="text-sm text-gray-600 mt-2">Barang dan Jasa</span>
                                 </a>
                                 <div class="row-span-1"></div>
                                 <div class="row-span-2 flex-row justify-center text-center text-sm">
-                                    <h1>Pada</h1>
+                                    @if ($filterType == 'weekly')
+                                        <div class="text-md">Pada Minggu ini</div>
+                                    @else
+                                        <h1>Pada</h1>
+                                    @endif
                                     <ul class="max-h-[80px] overflow-y-auto space-y-1 text-xs">
                                         @foreach($jmlItemBaruPerInterval as $item)
                                             <li class="flex gap-2 text-center justify-center items-center">
-                                                @if($filterType === 'weekly')
-                                                    <span class="text-gray-700">Minggu Ini</span>
-                                                    <span class="text-gray-500">{{ $item->month_name }}</span>
-                                                @elseif($filterType === 'monthly')
-                                                    <span class="text-gray-700">{{ $item->month_name }}</span>
-                                                    <span class="text-gray-500">{{ $item->year }}</span>
-                                                @else
-                                                @endif
+                                                <span class="text-gray-700">{{ $item->month_name }}</span>
+                                                <span class="text-gray-500">{{ $item->year }}</span>
                                             </li>
                                         @endforeach
 
@@ -212,74 +211,30 @@
                     <div class="items-center flex text-center justify-center pt-8">
                         <h1>Grafik Items Disukai</h1>
                     </div>
-                    <canvas id="grafikItemDisukai"></canvas>
+                    <div wire:ignore>
+                        <canvas id="grafikLikedItems" class="max-h-full max-w-full"></canvas>
+                    </div>
+                    @script
+                    <script>
+                        const ctx = document.getElementById('grafikLikedItems');
+
+                        new Chart(ctx, {
+                            type: 'pie',
+                            data: {
+                                labels: @json(array_keys($likedItemsPerCategory->toArray())),
+                                datasets: [{
+                                    label: 'Data Item Disukai',
+                                    data: @json(array_values($likedItemsPerCategory->toArray())),
+                                    borderWidth: 1
+                                }]
+                            },
+                        });
+                    </script>
+
+                    @endscript
                 </div>
-                <script>
-                    const ctx = document.getElementById('grafikItemDisukai').getContext('2d');
 
-                    const grafikItemDisukai = new Chart(ctx, {
-                        type: 'line',
-                        data: {
-                            labels: @json($grafikAnalisaItemDisukai->pluck('date')),
-                            datasets: [{
-                                label: 'AC Disukai',
-                                data: @json($grafikAnalisaItemDisukai->pluck('count')),
-                                borderColor: 'rgb(75, 192, 192)',
-                                tension: 0.1
-                            }]
-                        },
-                        options: {
-                            responsive: true,
-                            scales: {
-                                x: {
-                                    type: 'category',
-                                    title: {
-                                        display: true,
-                                        text: 'Tanggal'
-                                    }
-                                },
-                                y: {
-                                    title: {
-                                        display: true,
-                                        text: 'Jumlah Item Disukai'
-                                    }
-                                }
-                            }
-                        }
-                    });
-
-                    document.addEventListener('livewire:load', function () {
-                        // Data for the pie chart
-                        const itemsPerCategoryData = @this.get('chartData.itemsPerCategory');
-                        const likedItemsPerCategoryData = @this.get('chartData.likedItemsPerCategory');
-
-                        // Chart for items per category
-                        const itemsPerCategoryCtx = document.getElementById('itemsPerCategoryChart').getContext('2d');
-                        new Chart(itemsPerCategoryCtx, {
-                            type: 'pie',
-                            data: {
-                                labels: Object.keys(itemsPerCategoryData),
-                                datasets: [{
-                                    data: Object.values(itemsPerCategoryData),
-                                    backgroundColor: ['#FF6384', '#36A2EB', '#FFCE56', '#4BC0C0', '#FF9F40'], // You can add more colors if needed
-                                }]
-                            }
-                        });
-
-                        // Chart for liked items per category
-                        const likedItemsPerCategoryCtx = document.getElementById('likedItemsPerCategoryChart').getContext('2d');
-                        new Chart(likedItemsPerCategoryCtx, {
-                            type: 'pie',
-                            data: {
-                                labels: Object.keys(likedItemsPerCategoryData),
-                                datasets: [{
-                                    data: Object.values(likedItemsPerCategoryData),
-                                    backgroundColor: ['#FF6384', '#36A2EB', '#FFCE56', '#4BC0C0', '#FF9F40'], // You can add more colors if needed
-                                }]
-                            }
-                        });
-                    });
-                </script>
+                
 
             </div>
         </div> <!-- Bawah -->

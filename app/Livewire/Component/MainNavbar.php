@@ -7,6 +7,9 @@ use Illuminate\Support\Facades\Auth;
 use Livewire\WithPagination;
 use Illuminate\Support\Facades\Redirect;
 
+use App\Models\Kategori;
+use App\Models\Barang;
+
 class MainNavbar extends Component
 {
     public $likedItems = [], $searchTerm = '';

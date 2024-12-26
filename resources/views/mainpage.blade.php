@@ -186,7 +186,7 @@
                     berkualitas dan layanan profesional dari tim kami!
                 </p>
                 <div class="flex justify-center gap-10">
-                    <a href="#"
+                    <a href="#contact"
                         class="bg-none border border-white text-white font-bold py-2 px-6 rounded-md hover:bg-white hover:text-gray-900 transition duration-300 hover:shadow-lg">
                         Hubungi Kami
                     </a>
@@ -206,7 +206,7 @@
                     <h2 class="font-poppins text-gray-900">Segera dapatkan produk-produk unggulan kami di bawah ini</h2>
                 </div>
 
-                <div class="flex">
+                <div class="flex items-center justify-center">
                     @livewire('component.barang-display', ['jumlahPerHalaman' => 3, 'kategori' => ['AC', 'Produk'], 'rekomendasi' => true, 'class' => 'flex items-center grid grid-cols-3 gap-x-[10vh] gap-y-8 mx-32 pt-20 pb-24'])
 
                 </div>
@@ -289,7 +289,7 @@
         </div>
     </section>
 
-    <section id="banner">
+    <!-- <section id="banner">
         <div class="flex w-full px-20 py-32">
             <svg width="100%" height="100%" viewBox="0 0 1771 825" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <rect width="100%" height="100%" fill="#105AB4" />
@@ -314,11 +314,117 @@
             </svg>
 
         </div>
-    </section>
+    </section> -->
 
     <section>
         <div>
             @livewire('component.feedback-carousel')
+        </div>
+    </section>
+
+    <section id="contact">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="lg:text-center">
+                <h2 class="text-base text-blue-600 font-semibold tracking-wide uppercase">Contact Us</h2>
+                <p class="mt-2 text-3xl leading-8 font-extrabold tracking-tight text-gray-900 sm:text-4xl">
+                    Satria Dirgantara
+                </p>
+                <p class="mt-4 max-w-2xl text-xl text-gray-500 lg:mx-auto">
+                    Silahkan hubungi kami untuk konsultasi dan melakukan pembelian produk yang kami sediakan.
+                </p>
+            </div>
+        </div>
+        <div class="grid grid-cols-2 px-12 py-12">
+            <div class="col-span-1 grid grid-rows-2 justify-center">
+                <div class="row-span-1">
+                    <div class="flex items-start">
+                        <div class="flex-shrink-0">
+                            <div class="flex items-center justify-center h-12 w-12 rounded-md bg-blue-500 text-white">
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                    stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                                    <path stroke-linecap="round" stroke-linejoin="round"
+                                        d="M12 21a9.004 9.004 0 008.716-6.747M12 21a9.004 9.004 0 01-8.716-6.747M12 21c2.485 0 4.5-4.03 4.5-9S14.485 3 12 3m0 18c-2.485 0-4.5-4.03-4.5-9S9.515 3 12 3m0 0a8.997 8.997 0 017.843 4.582M12 3a8.997 8.997 0 00-7.843 4.582m15.686 0A11.953 11.953 0 0112 10.5c-2.998 0-5.74-1.1-7.843-2.918m15.686 0A8.959 8.959 0 0121 12c0 .778-.099 1.533-.284 2.253m0 0A17.919 17.919 0 0112 16.5c-3.162 0-6.133-.815-8.716-2.247m0 0A9.015 9.015 0 013 12c0-1.605.42-3.113 1.157-4.418" />
+                                </svg>
+                            </div>
+                        </div>
+                        <div class="ml-4">
+                            <dt class="text-lg font-medium text-gray-900">Alamat</dt>
+                            <dd class="mt-2 text-base text-gray-500">
+                                Jalan xxxxx<br> Purwokerto Utara, 53352
+                            </dd>
+                        </div>
+                    </div>
+                </div>
+                <div class="row-span1">
+                    <div class="flex items-start">
+                        <div class="flex-shrink-0">
+                            <div class="flex items-center justify-center h-12 w-12 rounded-md bg-blue-500 text-white">
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                    stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                                    <path stroke-linecap="round" stroke-linejoin="round"
+                                        d="M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                </svg>
+                            </div>
+                        </div>
+                        <div class="ml-4">
+                            <dt class="text-lg font-medium text-gray-900">Jam Buka</dt>
+                            <dd class="mt-2 text-base text-gray-500">
+                                <div class="flex justify-between">
+                                    <span>Senin - Jumat</span>
+                                    <span>09.00-20.00 WIB</span>
+                                </div>
+                                <div class="flex justify-between">
+                                    <span>Sabtu</span>
+                                    <span>09.00-17.00 WIB</span>
+                                </div>
+                                <div class="flex justify-between">
+                                    <span>Minggu</span>
+                                    <span>Libur</span>
+                                </div>
+                            </dd>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-span-1 grid grid-rows-2 justify-center">
+                <div class="row-span-1">
+                    <div class="flex items-start">
+                        <div class="flex-shrink-0">
+                            <div class="flex items-center justify-center h-12 w-12 rounded-md bg-blue-500 text-white">
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                    stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                                    <path stroke-linecap="round" stroke-linejoin="round"
+                                        d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 002.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.38a12.035 12.035 0 01-7.143-7.143c-.162-.441.004-.928.38-1.21l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 00-1.091-.852H4.5A2.25 2.25 0 002.25 4.5v2.25z" />
+                                </svg>
+                            </div>
+                        </div>
+                        <div class="ml-4">
+                            <dt class="text-lg font-medium text-gray-900">Nomor Whatsapp</dt>
+                            <dd class="mt-2 text-base text-gray-500">
+                                085156208507 atau klik <a href="wa.me/+6285156208507"
+                                    class="font-semibold text-blue-600 hover:underline hover:scale-105 duration-300">Disini</a>
+                            </dd>
+                        </div>
+                    </div>
+                </div>
+                <div class="row-span1">
+                    <div class="flex items-start">
+                        <div class="flex-shrink-0">
+                            <div class="flex items-center justify-center h-12 w-12 rounded-md bg-blue-500 text-white">
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                    stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                                    <path stroke-linecap="round" stroke-linejoin="round"
+                                        d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75" />
+                                </svg>
+                            </div>
+                        </div>
+                        <div class="ml-4">
+                            <dt class="text-lg font-medium text-gray-900">Email</dt>
+                            <dd class="mt-2 text-base text-gray-500">satriadirgantara@gmail.com</dd>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </section>
     @livewire('component.footer')

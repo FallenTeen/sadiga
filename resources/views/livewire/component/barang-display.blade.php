@@ -1,4 +1,5 @@
-<div class="{{ $class ?? '' }} {{ Str::contains($class, 'grid-cols') ? '' : 'grid-cols-4' }} grid gap-6 px-4 py-6">
+<div
+    class="{{ $class ?? '' }} {{ Str::contains($class, 'grid-cols') ? '' : 'grid-cols-4' }} grid gap-6 px-4 py-6 justify-center items-center">
     @if($barangs->count())
         @foreach($barangs as $barang)
             <a href="{{ route('barang.show', $barang->id) }}"
@@ -44,6 +45,6 @@
             </a>
         @endforeach
     @else
-        <p class="text-center text-gray-500">Tidak ada Barang</p>
+        <p class="text-center text-gray-500 bg-black w-full">Tidak ada Barang</p>
     @endif
 </div>

@@ -36,9 +36,9 @@ new #[Layout('layouts.guest')] class extends Component
     }
 }; ?>
 
-<div>
-    <div class="mb-4 text-sm text-gray-600 dark:text-gray-400">
-        {{ __('Forgot your password? No problem. Just let us know your email address and we will email you a password reset link that will allow you to choose a new one.') }}
+<div class="bg-sky-300 backdrop-blur-sm p-8 bg-opacity-10 rounded-md">
+    <div class="mb-4 text-sm text-white dark:text-gray-400">
+        {{ __('Lupa sandi anda? jangan khawatir. Kami akan mengirimkan email kepada anda untuk pemulihan sandi anda') }}
     </div>
 
     <!-- Session Status -->
