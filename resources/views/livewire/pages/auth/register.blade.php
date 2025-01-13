@@ -49,7 +49,7 @@ new #[Layout('layouts.guest')] class extends Component
         <form wire:submit="register">
             <!-- Name -->
             <div>
-                <x-input-label for="name" :value="__('Name')" />
+                <x-input-label for="name" :value="__('Nama')" />
                 <x-text-input wire:model="name" id="name" class="block mt-1 w-full" type="text" name="name" required autofocus autocomplete="name" />
                 <x-input-error :messages="$errors->get('name')" class="mt-2" />
             </div>
@@ -75,7 +75,7 @@ new #[Layout('layouts.guest')] class extends Component
 
             <!-- Confirm Password -->
             <div class="mt-4">
-                <x-input-label for="password_confirmation" :value="__('Confirm Password')" />
+                <x-input-label for="password_confirmation" :value="__('Ulangi Password')" />
 
                 <x-text-input wire:model="password_confirmation" id="password_confirmation" class="block mt-1 w-full"
                                 type="password"
@@ -86,7 +86,7 @@ new #[Layout('layouts.guest')] class extends Component
 
             <div class="flex items-center justify-end mt-4">
                 <a class="underline text-sm text-white dark:text-gray-400 hover:text-gray-200 dark:hover:text-gray-100 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 dark:focus:ring-offset-gray-800" href="{{ route('login') }}" wire:navigate>
-                    {{ __('Already registered?') }}
+                    {{ __('Sudah Punya Akun?') }}
                 </a>
 
                 <x-primary-button class="ms-4">
@@ -95,7 +95,7 @@ new #[Layout('layouts.guest')] class extends Component
             </div>
         </form>
     </div>
-    <div class="flex items-center bg-white rounded-r-md font-poppins text-maincolor">
+    <div class="hidden lg:flex items-center bg-white rounded-r-md font-poppins text-maincolor">
         <div class="px-8">
             <h1 class="font-bold text-2xl text-center">Selamat Datang</h1>
             <h2 class="font-semibold text-md text-center mb-8">Di Satria Dirgantara E-Commerce</h2>

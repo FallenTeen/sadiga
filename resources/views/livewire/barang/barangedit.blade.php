@@ -2,9 +2,15 @@
     <div class="fixed w-full z-20">
         @livewire('layout.navigation')
     </div>
-
-    <aside id="default-sidebar"
-        class="fixed top-0 left-0 w-64 h-screen pt-20 transition-transform bg-white dark:bg-gray-800 sm:translate-x-0">
+    <button id="toggleSidebar" class="lg:hidden fixed bottom-5 left-5 z-50 p-2 bg-blue-500 text-white rounded-lg">
+        <svg id="sidebarIcon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+            stroke="currentColor" class="w-6 h-6 transition-transform duration-300">
+            <path stroke-linecap="round" stroke-linejoin="round"
+                d="M15.75 9V5.25A2.25 2.25 0 0 0 13.5 3h-6a2.25 2.25 0 0 0-2.25 2.25v13.5A2.25 2.25 0 0 0 7.5 21h6a2.25 2.25 0 0 0 2.25-2.25V15m3 0 3-3m0 0-3-3m3 3H9" />
+        </svg>
+    </button>
+    <aside id="sidebaradmin"
+        class="fixed top-0 left-0 w-64 h-screen pt-20 transition-transform transform bg-white dark:bg-gray-800 lg:flex lg:translate-x-0 -translate-x-full">
         <div class="h-full px-3 py-4 overflow-y-auto">
             <div class="grid mb-6">
                 <h1 class="text-lg font-semibold">Edit Barang</h1>
@@ -57,11 +63,10 @@
     <!-- Main Content -->
     <main class="sm:ml-64 p-4 pt-20">
         <div class="container mx-auto p-6">
-
             <div id="section1" class="bg-white p-6 shadow-md rounded-lg mb-12">
                 <h2 class="text-2xl font-semibold mb-4">Detail Utama</h2>
                 <form wire:submit.prevent="saveDetailUtama">
-                    <div class="grid grid-cols-2 gap-12 px-8">
+                    <div class="grid lg:grid-cols-2 grid-cols-1 gap-12 lg:px-8 px-2">
 
                         <div id="updGambar" class="w-full">
                             <div class="mb-4">
@@ -114,8 +119,8 @@
             <div id="section2" class="bg-white p-6 shadow-md rounded-lg mb-12">
                 <h2 class="text-2xl font-semibold mb-4">Manajemen Harga</h2>
                 <form wire:submit.prevent="saveManajemenHarga">
-                    <div class="px-8">
-                        <div class="grid grid-cols-2 gap-x-12">
+                    <div class="lg:px-8 px-2">
+                        <div class="grid grid-cols-2 lg:gap-x-12 gap-x-4">
                             <div class="mb-2 w-full">
                                 <label for="harga_beli" class="block text-sm font-medium text-gray-700">Harga
                                     Beli</label>
@@ -142,7 +147,8 @@
                             </div>
 
                             <div class="mb-2 w-full">
-                                <label for="margin" class="block text-sm font-medium text-gray-700"></label>
+                                <label for="margin"
+                                    class="block text-sm font-medium text-gray-700">Keuntungan/rugi</label>
                                 <input type="text" id="margin" class="mt-1 p-2 border rounded w-full"
                                     wire:model="margin" readonly>
                                 <p class="text-xs pl-2 font-light text-gray-400">Jumlah keuntungan/kerugian</p>
@@ -178,7 +184,7 @@
                         @endif
 
                         <!-- Deskripsi Field -->
-                        <div class="mb-6 px-8">
+                        <div class="mb-6 lg:px-8 px-2">
                             <label for="deskripsi" class="block text-sm font-medium text-gray-700">
                                 Deskripsi
                             </label>
@@ -190,7 +196,7 @@
                         </div>
 
                         <!-- Styled Upload Box -->
-                        <div class="mb-6 px-8">
+                        <div class="mb-6 lg:px-8 px-2">
                             <label for="gambar_desk" class="block text-sm font-medium text-gray-700">
                                 Upload Gambar Deskripsi
                             </label>
@@ -249,7 +255,7 @@
 
                         <!-- Submit Button -->
                         <button type="submit"
-                            class="mt-8 w-full mx-8 bg-blue-500 text-white py-2 px-4 rounded-lg hover:bg-blue-600 focus:outline-none focus:ring focus:ring-blue-200">
+                            class="mt-8 w-full lg:mx-8 mx-auto bg-blue-500 text-white py-2 px-4 rounded-lg hover:bg-blue-600 focus:outline-none focus:ring focus:ring-blue-200">
                             Simpan Deskripsi dan Gambar
                         </button>
                     </form>
@@ -299,6 +305,29 @@
         document.getElementById('diskon').addEventListener('input', updatePricing);
 
         window.onload = updatePricing;
+
+        document.getElementById('toggleSidebar').addEventListener('click', function () {
+            const toggleSidebarButton = document.getElementById('toggleSidebar');
+            const sidebar = document.getElementById('sidebaradmin');
+            const sidebarIcon = document.getElementById('sidebarIcon');
+
+            toggleSidebarButton.addEventListener('click', function () {
+                const isHidden = sidebar.classList.contains('-translate-x-full');
+
+                // Toggle sidebar visibility
+                sidebar.classList.toggle('-translate-x-full');
+                sidebar.classList.toggle('translate-x-0');
+
+                // Rotate the icon
+                if (isHidden) {
+                    sidebarIcon.classList.add('rotate-180');
+                } else {
+                    sidebarIcon.classList.remove('rotate-180');
+                }
+            });
+
+        });
+
     </script>
 
 </div>

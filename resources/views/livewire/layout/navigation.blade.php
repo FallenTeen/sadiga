@@ -118,14 +118,36 @@ new class extends Component
 
     <div :class="{'block': open, 'hidden': ! open}" class="hidden sm:hidden">
         <div class="pt-2 pb-3 space-y-1">
-            <x-responsive-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')" wire:navigate>
-                {{ __('Dashboard') }}
-            </x-responsive-nav-link>
+        <x-responsive-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')" wire:navigate>
+            {{ __('Dashboard') }}
+        </x-responsive-nav-link>
+
+        <x-responsive-nav-link 
+            :href="route('productmanage.index')" 
+            :active="in_array(request()->route()->getName(), ['productmanage.index', 'productmanage.create', 'productmanage.edit'])" 
+            wire:navigate>
+            {{ __('Produk') }}
+        </x-responsive-nav-link>
+
+        <x-responsive-nav-link :href="route('servicemanage')" :active="request()->routeIs('servicemanage')" wire:navigate>
+            {{ __('Service') }}
+        </x-responsive-nav-link>
+
+        <x-responsive-nav-link :href="route('notifikasi')" :active="request()->routeIs('notifikasi')" wire:navigate class="relative flex items-center justify-between">
+            {{ __('Notifikasi') }}
+            @if ($this->jmlNotifBlmDIbaca() > 0)
+                <span class="bg-red-500 text-white text-sm font-bold rounded-full h-5 w-5 flex justify-center items-center -mt-2 -mr-2">
+                    {{ $this->jmlNotifBlmDIbaca() }}
+                </span>
+            @endif
+            
+        </x-responsive-nav-link>
+
         </div>
         <div class="pt-4 pb-1 border-t border-gray-200 dark:border-gray-600">
             <div class="px-4">
-                <div class="font-medium text-base text-gray-800 dark:text-gray-200" x-data="{{ json_encode(['name' => auth()->user()->name]) }}" x-text="name" x-on:profile-updated.window="name = $event.detail.name"></div>
-                <div class="font-medium text-sm text-gray-500">{{ auth()->user()->email }}</div>
+                <div class="font-medium text-base text-white dark:text-gray-200" x-data="{{ json_encode(['name' => auth()->user()->name]) }}" x-text="name" x-on:profile-updated.window="name = $event.detail.name"></div>
+                <div class="font-medium text-sm text-gray-200">{{ auth()->user()->email }}</div>
             </div>
 
             <div class="mt-3 space-y-1">

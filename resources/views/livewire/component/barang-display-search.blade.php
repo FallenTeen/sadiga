@@ -3,7 +3,7 @@
         <div class="px-8 py-8 grid bg-white shadow-md mx-8 my-8">
             <h1 class="font-bold text-3xl font-gray-800">Hasil Pencarian: {{ $search }}</h1>
             <div
-                class="grid gap-6 px-4 py-6 grid-cols-4">
+                class="grid gap-6 px-4 py-6 grid-cols-2 lg:grid-cols-4">
                 @if($barangs->count())
                     @foreach($barangs as $product)
                         <a href="{{ route('barang.show', $product->id) }}"

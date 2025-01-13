@@ -20,11 +20,15 @@
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
 
-<body data-logged-in="{{ Auth::check() ? 'true' : 'false' }}" class="font-poppins bg-gray-100">
+<body data-logged-in="{{ Auth::check() ? 'true' : 'false' }}" class="font-poppins">
     <div class="sticky z-10 show pb-[var(--navbar-height)]">
-        <div class="fixed left-0 w-full z-10 transition-transform" id="mainnav">
+        <div class="fixed left-0 w-full z-10 transition-transform  hidden lg:block" id="mainnav">
             @livewire('component.main-navbar')
         </div>
+        <div class="block lg:hidden">
+            @livewire('component.responsive-navbar')
+        </div>
+
     </div>
 
     <section id="Hasil Pencarian" class="">
@@ -35,21 +39,21 @@
 
     <section id="Rekomendasi" class="">
         <div class="px-8 py-8 grid bg-white shadow-md mx-8 my-8">
-            <h1 class="font-bold text-3xl font-gray-800">Produk Remomendasi</h1>
-            @livewire('component.barang-display', ['jumlahPerHalaman' => 100, 'kategori' => ['AC', 'Produk'], 'rekomendasi' => true, 'class' => 'flex justify-around gap-y-10 pt-16 pb-24'])
+            <h1 class="font-bold text-3xl font-gray-800">Produk Rekomendasi</h1>
+            @livewire('component.barang-display', ['jumlahPerHalaman' => 100, 'kategori' => ['AC', 'Produk'], 'rekomendasi' => true, 'class' => 'grid grid-cols-2 lg:grid-cols-4 justify-around gap-y-10 pt-16 pb-24'])
         </div>
 
     </section>
     <section id="AC">
         <div class="px-8 py-8 grid bg-white shadow-md mx-8 my-8">
             <h1 class="font-bold text-3xl font-gray-800">Produk Air Conditioner</h1>
-            @livewire('component.barang-display', ['jumlahPerHalaman' => 100, 'kategori' => ['AC'], 'rekomendasi' => false, 'class' => 'flex justify-around gap-y-10 pt-16 pb-24'])
+            @livewire('component.barang-display', ['jumlahPerHalaman' => 100, 'kategori' => ['AC'], 'rekomendasi' => false, 'class' => 'grid grid-cols-2 lg:grid-cols-4 justify-around gap-y-10 pt-16 pb-24'])
         </div>
     </section>
     <section id="Produk">
         <div class="px-8 py-8 grid bg-white shadow-md mx-8 my-8">
             <h1 class="font-bold text-3xl font-gray-800">Produk Peralatan lain</h1>
-            @livewire('component.barang-display', ['jumlahPerHalaman' => 100, 'kategori' => ['Produk'], 'rekomendasi' => false, 'class' => 'flex justify-around gap-y-10 pt-16 pb-24'])
+            @livewire('component.barang-display', ['jumlahPerHalaman' => 100, 'kategori' => ['Produk'], 'rekomendasi' => false, 'class' => 'grid grid-cols-2 lg:grid-cols-4 justify-around gap-y-10 pt-16 pb-24'])
         </div>
     </section>
     <section id="Jasa">

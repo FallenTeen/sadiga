@@ -1,9 +1,16 @@
-<div class="font-poppins">
+<div class="font-poppins flex">
     <div class="fixed w-full z-20">
         @livewire('layout.navigation')
     </div>
-    <aside id="default-sidebar"
-        class="fixed top-0 left-0 w-64 h-screen pt-20 transition-transform bg-white dark:bg-gray-800 sm:translate-x-0">
+    <button id="toggleSidebar" class="lg:hidden fixed bottom-5 left-5 z-50 p-2 bg-blue-500 text-white rounded-lg">
+        <svg id="sidebarIcon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+            stroke="currentColor" class="w-6 h-6 transition-transform duration-300">
+            <path stroke-linecap="round" stroke-linejoin="round"
+                d="M15.75 9V5.25A2.25 2.25 0 0 0 13.5 3h-6a2.25 2.25 0 0 0-2.25 2.25v13.5A2.25 2.25 0 0 0 7.5 21h6a2.25 2.25 0 0 0 2.25-2.25V15m3 0 3-3m0 0-3-3m3 3H9" />
+        </svg>
+    </button>
+    <aside id="sidebaradmin"
+        class="fixed top-0 left-0 w-64 h-screen pt-20 transition-transform transform bg-white dark:bg-gray-800 lg:flex lg:translate-x-0 -translate-x-full">
         <div class="h-full px-3 py-4 overflow-y-auto">
             <div class="grid mb-6">
                 <h1 class="text-lg font-semibold">Manage Sevice</h1>
@@ -49,7 +56,7 @@
         </div>
     </aside>
 
-    <main class="sm:ml-64 p-4 pt-20 px-12">
+    <main class="container sm:ml-64 p-4 pt-20 px-12">
         <!-- Tabel Kategori -->
         @if($currentTab == 'kategori')
             <!-- Tombol Tambah Kategori -->
@@ -132,9 +139,9 @@
                                 <td class="px-6 py-4 text-sm text-gray-800">{{ $kategori->deskripsi }}</td>
                                 <td class="px-6 py-4 text-sm text-gray-800">
                                     <button wire:click="editKategori({{ $kategori->id }})"
-                                        class="px-4 py-2 bg-maincolor text-white rounded">Edit</button>
+                                        class="px-4 py-2 bg-maincolor text-white rounded w-full lg:w-auto">Edit</button>
                                     <button wire:click="deleteKategori({{ $kategori->id }})"
-                                        class="px-4 py-2 bg-red-600 text-white rounded">Hapus</button>
+                                        class="px-4 py-2 bg-red-600 text-white rounded w-full lg:w-auto">Hapus</button>
                                 </td>
                             </tr>
                         @endforeach
@@ -151,7 +158,7 @@
             </div>
             @if($showJasaModal)
                 <div class="fixed inset-0 flex justify-center items-center z-50 bg-black bg-opacity-50">
-                    <div class="bg-white rounded-lg p-6 w-1/3">
+                    <div class="bg-white rounded-lg p-6 w-full lg:w-1/3">
                         <h2 class="text-xl font-semibold mb-4">Tambah Jasa</h2>
                         <form wire:submit.prevent="storeJasa">
                             <div class="mb-4">
@@ -187,7 +194,7 @@
 
             @if($showEditJasaModal)
                 <div class="fixed inset-0 flex justify-center items-center z-50 bg-black bg-opacity-50">
-                    <div class="bg-white rounded-lg p-6 w-1/3">
+                    <div class="bg-white rounded-lg p-6 w-full lg:w-1/3">
                         <h2 class="text-xl font-semibold mb-4">Edit Jasa</h2>
                         <form wire:submit.prevent="updateJasa">
                             <div class="mb-4">
@@ -240,9 +247,9 @@
                                 </td>
                                 <td class="px-6 py-4 text-sm text-gray-800">
                                     <button wire:click="editJasa({{ $jasa->id }})"
-                                        class="px-4 py-2 bg-maincolor text-white rounded">Edit</button>
+                                        class="px-4 py-2 bg-maincolor text-white rounded w-full lg:w-auto">Edit</button>
                                     <button wire:click="deleteJasa({{ $jasa->id }})"
-                                        class="px-4 py-2 bg-red-600 text-white rounded">Hapus</button>
+                                        class="px-4 py-2 bg-red-600 text-white rounded w-full lg:w-auto">Hapus</button>
                                 </td>
                             </tr>
                         @endforeach
@@ -261,7 +268,7 @@
 
             @if($showPekerjaModal)
                 <div class="fixed inset-0 flex justify-center items-center z-50 bg-black bg-opacity-50">
-                    <div class="bg-white rounded-lg p-6 w-1/3">
+                    <div class="bg-white rounded-lg p-6 w-full lg:w-1/3">
                         <h2 class="text-xl font-semibold mb-4">Tambah Pekerja</h2>
                         <form wire:submit.prevent="storePekerja">
                             <div class="mb-4">
@@ -297,7 +304,7 @@
 
             @if($showEditPekerjaModal)
                 <div class="fixed inset-0 flex justify-center items-center z-50 bg-black bg-opacity-50">
-                    <div class="bg-white rounded-lg p-6 w-1/3">
+                    <div class="bg-white rounded-lg p-6 w-full lg:w-1/3">
                         <h2 class="text-xl font-semibold mb-4">Edit Pekerja</h2>
                         <form wire:submit.prevent="updatePekerja">
                             <div class="mb-4">
@@ -375,9 +382,9 @@
                                 <td class="px-6 py-4 text-sm text-gray-800">{{ $pekerja->alamat }}</td>
                                 <td class="px-6 py-4 text-sm text-gray-800">
                                     <button wire:click="editPekerja({{ $pekerja->id }})"
-                                        class="px-4 py-2 bg-maincolor text-white rounded">Edit</button>
+                                        class="px-4 py-2 bg-maincolor text-white rounded w-full lg:w-auto">Edit</button>
                                     <button wire:click="deletePekerja({{ $pekerja->id }})"
-                                        class="px-4 py-2 bg-red-600 text-white rounded">Hapus</button>
+                                        class="px-4 py-2 bg-red-600 text-white rounded w-full lg:w-auto">Hapus</button>
                                 </td>
                             </tr>
                         @endforeach
@@ -386,4 +393,28 @@
             </div>
         @endif
     </main>
+    <script>
+        document.getElementById('toggleSidebar').addEventListener('click', function () {
+            const toggleSidebarButton = document.getElementById('toggleSidebar');
+            const sidebar = document.getElementById('sidebaradmin');
+            const sidebarIcon = document.getElementById('sidebarIcon');
+
+            toggleSidebarButton.addEventListener('click', function () {
+                const isHidden = sidebar.classList.contains('-translate-x-full');
+
+                // Toggle sidebar visibility
+                sidebar.classList.toggle('-translate-x-full');
+                sidebar.classList.toggle('translate-x-0');
+
+                // Rotate the icon
+                if (isHidden) {
+                    sidebarIcon.classList.add('rotate-180');
+                } else {
+                    sidebarIcon.classList.remove('rotate-180');
+                }
+            });
+
+        });
+
+    </script>
 </div>

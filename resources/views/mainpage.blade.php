@@ -21,11 +21,15 @@
 </head>
 
 <body data-logged-in="{{ Auth::check() ? 'true' : 'false' }}">
-    <div id="mainsearch" class="sticky z-10 show">
+    <div id="mainsearch" class="sticky z-10 show hidden lg:block">
         <div id="mainnav" class="fixed left-0 w-full z-10 transition-transform">
             @livewire('component.main-navbar')
         </div>
     </div>
+    <div class="block lg:hidden">
+        @livewire('component.responsive-navbar')
+    </div>
+
 
 
     <section id="section1main" class="h-100vh relative">
@@ -36,37 +40,38 @@
             </div>
 
             <div class="h-full flex items-center justify-between text-white px-8">
-                <div class="relative w-2/3 h-2/3 flex items-center justify-center">
+                <div class="relative w-2/3 h-2/3 items-center justify-center lg:flex hidden">
                     <div>
-                        <img class="object-none object-center bg-green-200 5/6 h-5/6 drop-shadow-md rounded-md"
-                            src="{{ asset('assets/images/Clean.jpg') }}" alt="Images harusnya disini hehe">
+                        <img class="ml-12 object-fit object-center w-5/6 h-5/6 items-center justify-center rounded-md"
+                            src="{{ asset('assets/images/Mainnicon.png') }}" alt="Images harusnya disini hehe">
                     </div>
                 </div>
-                <div id="profiletop" class="w-3/4 h-full flex flex-col items-start justify-center">
-                    <div>
-                        <h1 class="text-xl font-extrabold leading-tight drop-shadow-lg">
-                            Selamat Datang Di
-                        </h1>
-                        <h1 class="text-xl font-extrabold leading-tight drop-shadow-lg">
-                            SATRIA DIRGANTARA
-                        </h1>
-                        <h1 class="text-sm font-thin mb-4 leading-tight drop-shadow-lg">
-                            Telah dipercaya sejak 2024
-                        </h1>
-                        <p class="drop-shadow-lg text-6xl my-10 font-bold tracking-tight">
-                            SOLUSI TERBAIK UNTUK
-                            <span
-                                class="text-blue-600 ease-in-out hover:scale-105 inline-block hover:text-white transition-all duration-500 cursor-pointer">KESEJUKAN</span>
-                            DAN
-                            <span
-                                class="text-blue-600 ease-in-out hover:scale-105 inline-block hover:text-white transition-all duration-500 cursor-pointer">KENYAMANAN</span>
-                            ANDA.
-                        </p>
-                        <a href="#mengapakami"
-                            class="inline-block px-6 py-4 mt-10 bg-blue-600 text-lg rounded-xl font-semibold shadow-lg hover:bg-blue-700 transform hover:scale-105 transition-all duration-300">
-                            Mulai Lihat Barang
-                        </a>
-                    </div>
+                <div id="profiletop"
+                    class="w-full lg:w-3/4 h-full flex flex-col items-center lg:items-start justify-center">
+
+                    <h1 class="text-xl font-extrabold leading-tight drop-shadow-lg">
+                        Selamat Datang Di
+                    </h1>
+                    <h1 class="text-xl font-extrabold leading-tight drop-shadow-lg">
+                        SATRIA DIRGANTARA
+                    </h1>
+                    <h1 class="text-sm font-thin mb-4 leading-tight drop-shadow-lg">
+                        Telah dipercaya sejak 2024
+                    </h1>
+                    <p class="drop-shadow-lg text-6xl my-10 font-bold tracking-tight">
+                        SOLUSI TERBAIK UNTUK
+                        <span
+                            class="text-blue-600 ease-in-out hover:scale-105 inline-block hover:text-white transition-all duration-500 cursor-pointer">KESEJUKAN</span>
+                        DAN
+                        <span
+                            class="text-blue-600 ease-in-out hover:scale-105 inline-block hover:text-white transition-all duration-500 cursor-pointer">KENYAMANAN</span>
+                        ANDA.
+                    </p>
+                    <a href="#mengapakami"
+                        class="inline-block px-6 py-4 mt-10 bg-blue-600 text-lg rounded-xl font-semibold shadow-lg hover:bg-blue-700 transform hover:scale-105 transition-all duration-300">
+                        Mulai Lihat Barang
+                    </a>
+
                 </div>
             </div>
         </div>
@@ -81,104 +86,115 @@
             </h2>
         </div>
         <div class="w-full">
-            <div class="max-w-screen-lg mx-auto grid grid-cols-3 gap-10 text-center py-4">
+            <div class="max-w-screen-lg mx-auto lg:grid-cols-3 gap-10 text-center py-4">
                 <!-- Services -->
-                <div
-                    class="max-w-sm bg-white border border-gray-200 rounded-lg shadow-sm overflow-hidden hover:shadow-md transition-shadow duration-300 m-4 flex flex-col">
-                    <div class="p-6 flex flex-col items-center text-center flex-grow">
-                        <div class="p-4 rounded-full mb-4">
-                            <img src="{{ asset('assets/icons/services/Layanan-24-jam-2.svg') }}" alt="Service Icon"
-                                class="w-24 h-24">
+                <div class="flex items-center justify-center min-h-screen">
+                    <div class="flex flex-wrap lg:grid lg:grid-cols-3 justify-center">
+                        <!-- Layanan 24 Jam -->
+                        <div
+                            class="max-w-sm bg-white border border-gray-200 rounded-lg shadow-sm overflow-hidden hover:shadow-md transition-shadow duration-300 m-4 flex flex-col">
+                            <div class="p-6 flex flex-col items-center text-center flex-grow">
+                                <div class="p-4 rounded-full mb-4">
+                                    <img src="{{ asset('assets/icons/services/Layanan-24-jam-2.svg') }}"
+                                        alt="Service Icon" class="w-24 h-24">
+                                </div>
+                                <h3 class="text-gray-800 text-xl font-medium mb-2">Layanan 24 Jam</h3>
+                                <p class="text-gray-500 mb-4 text-sm">
+                                    Kami menyediakan layanan AC darurat 24 jam, untuk menjaga optimalisasi kebutuhan
+                                    anda.
+                                </p>
+                            </div>
+                            <div class="flex items-center justify-center space-x-2 text-gray-400 text-xs mb-4">
+                                <div class="flex items-center">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-1" fill="none"
+                                        viewBox="0 0 24 24" stroke="currentColor">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                            d="M3 10h2m4 0h12M3 6h2m4 0h12M3 14h2m4 0h12m-5 4h5" />
+                                    </svg>
+                                    <span>Professional</span>
+                                </div>
+                                <div class="flex items-center">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-1" fill="none"
+                                        viewBox="0 0 24 24" stroke="currentColor">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                            d="M16 12V7a4 4 0 10-8 0v5m0 4h8m0 4h-8m-6-4a2 2 0 012-2h12a2 2 0 012 2v6H4v-6z" />
+                                    </svg>
+                                    <span>24/7</span>
+                                </div>
+                            </div>
                         </div>
-                        <h3 class="text-gray-800 text-xl font-medium mb-2">Layanan 24 Jam</h3>
-                        <p class="text-gray-500 mb-4 text-sm">
-                            Kami menyediakan layanan AC darurat 24 jam, untuk menjaga optimalisasi kebutuhan anda.
-                        </p>
-                    </div>
-                    <div class="flex items-center justify-center space-x-2 text-gray-400 text-xs mb-4">
-                        <div class="flex items-center">
-                            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-1" fill="none" viewBox="0 0 24 24"
-                                stroke="currentColor">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                    d="M3 10h2m4 0h12M3 6h2m4 0h12M3 14h2m4 0h12m-5 4h5" />
-                            </svg>
-                            <span>Professional</span>
+
+                        <!-- Layanan Berkualitas -->
+                        <div
+                            class="max-w-sm bg-white border border-gray-200 rounded-lg shadow-sm overflow-hidden hover:shadow-md transition-shadow duration-300 m-4 flex flex-col">
+                            <div class="p-6 flex flex-col items-center text-center flex-grow">
+                                <div class="p-4 rounded-full mb-4">
+                                    <img src="{{ asset('assets/icons/services/Pelayanan-yang-distandarisasi.svg') }}"
+                                        alt="Service Icon" class="w-24 h-24">
+                                </div>
+                                <h3 class="text-gray-800 text-xl font-medium mb-2">Layanan Berkualitas</h3>
+                                <p class="text-gray-500 mb-4 text-sm">
+                                    Layanan AC kami mematuhi standar, dikelola oleh teknisi berpengalaman untuk menjamin
+                                    kualitas.
+                                </p>
+                            </div>
+                            <div class="flex items-center justify-center space-x-2 text-gray-400 text-xs mb-4">
+                                <div class="flex items-center">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-1" fill="none"
+                                        viewBox="0 0 24 24" stroke="currentColor">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                            d="M3 10h2m4 0h12M3 6h2m4 0h12M3 14h2m4 0h12m-5 4h5" />
+                                    </svg>
+                                    <span>Berstandar</span>
+                                </div>
+                                <div class="flex items-center">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-1" fill="none"
+                                        viewBox="0 0 24 24" stroke="currentColor">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                            d="M16 12V7a4 4 0 10-8 0v5m0 4h8m0 4h-8m-6-4a2 2 0 012-2h12a2 2 0 012 2v6H4v-6z" />
+                                    </svg>
+                                    <span>Stabil</span>
+                                </div>
+                            </div>
                         </div>
-                        <div class="flex items-center">
-                            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-1" fill="none" viewBox="0 0 24 24"
-                                stroke="currentColor">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                    d="M16 12V7a4 4 0 10-8 0v5m0 4h8m0 4h-8m-6-4a2 2 0 012-2h12a2 2 0 012 2v6H4v-6z" />
-                            </svg>
-                            <span>24/7</span>
+
+                        <!-- Dukungan Pelanggan -->
+                        <div
+                            class="max-w-sm bg-white border border-gray-200 rounded-lg shadow-sm overflow-hidden hover:shadow-md transition-shadow duration-300 m-4 flex flex-col">
+                            <div class="p-6 flex flex-col items-center text-center flex-grow">
+                                <div class="p-4 rounded-full mb-4">
+                                    <img src="{{ asset('assets/icons/services/Dukungan.svg') }}" alt="Service Icon"
+                                        class="w-24 h-24">
+                                </div>
+                                <h3 class="text-gray-800 text-xl font-medium mb-2">Dukungan Pelanggan</h3>
+                                <p class="text-gray-500 mb-4 text-sm">
+                                    Kami siap memberikan dukungan penuh dalam setiap langkah pembelian produk kami.
+                                </p>
+                            </div>
+                            <div class="flex items-center justify-center space-x-2 text-gray-400 text-xs mb-4">
+                                <div class="flex items-center">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-1" fill="none"
+                                        viewBox="0 0 24 24" stroke="currentColor">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                            d="M3 10h2m4 0h12M3 6h2m4 0h12M3 14h2m4 0h12m-5 4h5" />
+                                    </svg>
+                                    <span>Berpengalaman</span>
+                                </div>
+                                <div class="flex items-center">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-1" fill="none"
+                                        viewBox="0 0 24 24" stroke="currentColor">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                            d="M16 12V7a4 4 0 10-8 0v5m0 4h8m0 4h-8m-6-4a2 2 0 012-2h12a2 2 0 012 2v6H4v-6z" />
+                                    </svg>
+                                    <span>Professional</span>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
 
-                <div
-                    class="max-w-sm bg-white border border-gray-200 rounded-lg shadow-sm overflow-hidden hover:shadow-md transition-shadow duration-300 m-4 flex flex-col">
-                    <div class="p-6 flex flex-col items-center text-center flex-grow">
-                        <div class="p-4 rounded-full mb-4">
-                            <img src="{{ asset('assets/icons/services/Pelayanan-yang-distandarisasi.svg') }}"
-                                alt="Service Icon" class="w-24 h-24">
-                        </div>
-                        <h3 class="text-gray-800 text-xl font-medium mb-2">Layanan Berkualitas</h3>
-                        <p class="text-gray-500 mb-4 text-sm">
-                            Layanan AC kami mematuhi standar, dikelola oleh teknisi berpengalaman untuk menjamin
-                            kualitas.
-                        </p>
-                    </div>
-                    <div class="flex items-center justify-center space-x-2 text-gray-400 text-xs mb-4">
-                        <div class="flex items-center">
-                            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-1" fill="none" viewBox="0 0 24 24"
-                                stroke="currentColor">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                    d="M3 10h2m4 0h12M3 6h2m4 0h12M3 14h2m4 0h12m-5 4h5" />
-                            </svg>
-                            <span>Berstandar</span>
-                        </div>
-                        <div class="flex items-center">
-                            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-1" fill="none" viewBox="0 0 24 24"
-                                stroke="currentColor">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                    d="M16 12V7a4 4 0 10-8 0v5m0 4h8m0 4h-8m-6-4a2 2 0 012-2h12a2 2 0 012 2v6H4v-6z" />
-                            </svg>
-                            <span>Stabil</span>
-                        </div>
-                    </div>
-                </div>
-                <div
-                    class="max-w-sm bg-white border border-gray-200 rounded-lg shadow-sm overflow-hidden hover:shadow-md transition-shadow duration-300 m-4 flex flex-col">
-                    <div class="p-6 flex flex-col items-center text-center flex-grow">
-                        <div class="p-4 rounded-full mb-4">
-                            <img src="{{ asset('assets/icons/services/Dukungan.svg') }}" alt="Service Icon"
-                                class="w-24 h-24">
-                        </div>
-                        <h3 class="text-gray-800 text-xl font-medium mb-2">Dukungan Pelanggan</h3>
-                        <p class="text-gray-500 mb-4 text-sm">
-                            Kami siap memberikan dukungan penuh dalam setiap langkah pembelian produk kami.
-                        </p>
-                    </div>
-                    <div class="flex items-center justify-center space-x-2 text-gray-400 text-xs mb-4">
-                        <div class="flex items-center">
-                            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-1" fill="none" viewBox="0 0 24 24"
-                                stroke="currentColor">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                    d="M3 10h2m4 0h12M3 6h2m4 0h12M3 14h2m4 0h12m-5 4h5" />
-                            </svg>
-                            <span>Berpengalaman</span>
-                        </div>
-                        <div class="flex items-center">
-                            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-1" fill="none" viewBox="0 0 24 24"
-                                stroke="currentColor">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                    d="M16 12V7a4 4 0 10-8 0v5m0 4h8m0 4h-8m-6-4a2 2 0 012-2h12a2 2 0 012 2v6H4v-6z" />
-                            </svg>
-                            <span>Professional</span>
-                        </div>
-                    </div>
-                </div>
             </div>
+
             <div class="p-6 mt-8 text-white bg-maincolor">
                 <h2 class="text-3xl font-semibold mb-4 text-center">Siap untuk Meningkatkan Kenyamanan Anda?</h2>
                 <p class="mb-4 text-center text-white">
@@ -196,6 +212,8 @@
                     </a>
                 </div>
             </div>
+        </div>
+
     </section>
 
     <section id="barang" class="">
@@ -207,7 +225,7 @@
                 </div>
 
                 <div class="flex items-center justify-center">
-                    @livewire('component.barang-display', ['jumlahPerHalaman' => 3, 'kategori' => ['AC', 'Produk'], 'rekomendasi' => true, 'class' => 'flex items-center grid grid-cols-3 gap-x-[10vh] gap-y-8 mx-32 pt-20 pb-24'])
+                    @livewire('component.barang-display', ['jumlahPerHalaman' => 3, 'kategori' => ['AC', 'Produk'], 'rekomendasi' => true, 'class' => 'flex items-center grid lg:grid-cols-3 grid-cols-1 gap-x-[10vh] gap-y-8 mx-32 pt-20 pb-24'])
 
                 </div>
 
@@ -255,7 +273,7 @@
                         </div>
 
                         <div>
-                            @livewire('component.barang-display', ['jumlahPerHalaman' => 8, 'kategori' => 'AC', 'class' => 'flex justify-around grid grid-cols-4 gap-x-[10vh] gap-y-8'])
+                            @livewire('component.barang-display', ['jumlahPerHalaman' => 8, 'kategori' => 'AC', 'class' => 'flex justify-around grid grid-cols-2 lg:grid-cols-4 gap-x-[10vh] gap-y-8'])
                         </div>
                     </div>
                 </div>
@@ -266,7 +284,7 @@
                         </div>
 
                         <div>
-                            @livewire('component.barang-display', ['jumlahPerHalaman' => 8, 'kategori' => 'produk', 'class' => 'flex justify-around grid grid-cols-4 gap-x-[10vh] gap-y-8'])
+                            @livewire('component.barang-display', ['jumlahPerHalaman' => 8, 'kategori' => 'produk', 'class' => 'flex justify-around grid-cols-2 lg:grid-cols-4 gap-x-[10vh] gap-y-8'])
                         </div>
                     </div>
                 </div>

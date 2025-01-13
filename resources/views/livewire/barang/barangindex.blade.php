@@ -3,8 +3,8 @@
         @livewire('layout.navigation')
     </div>
     <div class="px-12 pt-3">
-        <div class="flex justify-between items-center mb-4">
-            <div class="grid grid-cols-2">
+        <div class="flex-col flex lg:grid lg:justify-end items-center mb-4">
+            <div class="grid grid-cols-1 lg:grid-cols-2">
                 <div class="pr-4 mb-4">
                     <label for="kategori" class="block text-sm font-medium text-gray-700 mb-2">Cari Barang</label>
                     <input wire:model.live.debounce.300ms="search" type="text" id="search"
@@ -24,7 +24,7 @@
                     </select>
                 </div>
             </div>
-            <div>
+            <div class="lg:justify-end lg:flex">
                 <button wire:click="addBarang"
                     class="flex items-center px-3 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 focus:ring-2 focus:ring-blue-400">
                     <svg class="w-4 h-4 mr-1" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"

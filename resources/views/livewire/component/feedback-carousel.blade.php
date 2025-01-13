@@ -2,10 +2,31 @@
     <h2 class="text-4xl font-bold text-maincolor mb-16">Feedback Corner</h2>
 
     <div class="relative w-full overflow-hidden">
-        <div class="flex transition-transform duration-300 ease-in-out"
+        <div class="hidden lg:flex transition-transform duration-300 ease-in-out"
             style="transform: translateX(-{{ $slideNo * 33.33 }}%);">
             @foreach ($feedbacks as $index => $feedback)
                 <div class="min-w-[33.33%] p-6 flex justify-center">
+                    <div class="max-w-sm p-6 transition-all duration-300 ease-in-out
+                                            {{ $index % 2 == 0 ? 'bg-maincolor text-white' : 'bg-gray-100' }}">
+                        <p class="text-6xl {{ $index % 2 == 0 ? '' : 'text-maincolor' }}">“</p>
+                        <h3 class="text-lg font-semibold {{ $index % 2 == 0 ? '' : 'text-maincolor' }} mb-2">
+                            {{ $feedback->nama }}
+                        </h3>
+                        <p class="text-sm {{ $index % 2 == 0 ? '' : 'text-gray-700' }} line-clamp-5">
+                            {{ $feedback->komentar }}
+                        </p>
+                    </div>
+                </div>
+            @endforeach
+        </div>
+
+
+
+        
+        <div class="flex lg:hidden transition-transform duration-300 ease-in-out"
+            style="transform: translateX(-{{ $slideNo * 100 }}%);">
+            @foreach ($feedbacks as $index => $feedback)
+                <div class="min-w-[100%] p-6 flex justify-center">
                     <div class="max-w-sm p-6 transition-all duration-300 ease-in-out
                                             {{ $index % 2 == 0 ? 'bg-maincolor text-white' : 'bg-gray-100' }}">
                         <p class="text-6xl {{ $index % 2 == 0 ? '' : 'text-maincolor' }}">“</p>

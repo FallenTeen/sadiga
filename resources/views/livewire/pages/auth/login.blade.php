@@ -55,7 +55,7 @@ new #[Layout('layouts.guest')] class extends Component
         <form wire:submit="login">
             <!-- Email Address -->
             <div class="">
-                <x-input-label for="email" :value="__('Username')" />
+                <x-input-label for="email" :value="__('Email')" />
                 <x-text-input wire:model="form.email" id="email" class="block mt-1 w-full" type="email" name="email" required autofocus autocomplete="username" />
                 <x-input-error :messages="$errors->get('form.email')" class="mt-2" />
             </div>
@@ -98,7 +98,7 @@ new #[Layout('layouts.guest')] class extends Component
         </form>
     </div>
 
-    <div class="flex items-center bg-white rounded-r-md font-poppins text-maincolor">
+    <div class="items-center bg-white rounded-r-md font-poppins text-maincolor hidden lg:flex">
         <div class="px-8">
             <h1 class="font-bold text-2xl text-center">Selamat Datang</h1>
             <h2 class="font-semibold text-md text-center mb-8">Di Satria Dirgantara E-Commerce</h2>

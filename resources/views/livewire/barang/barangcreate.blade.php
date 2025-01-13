@@ -1,5 +1,5 @@
 <div class="font-poppins">
-    <div class="flex items-start max-w-screen-lg sm:px-8 mx-auto pt-8">
+    <div class="flex items-start max-w-screen-lg sm:px-8 mx-auto pt-8 lg:px-0 px-8">
         <div class="w-full">
             <div class="flex items-center w-full">
                 <div
@@ -72,7 +72,7 @@
                 </div>
                 <form wire:submit.prevent="nextStep">
                     <div class="space-y-6">
-                        <div class="grid grid-cols-4 gap-6 w-full">
+                        <div class="grid lg:grid-cols-4 lg:gap-8 grid-cols-1 w-full">
                             <div class="flex items-center justify-center w-full col-span-1">
                                 <label for="gambar"
                                     class="flex flex-col items-center justify-center w-full h-56 border-2 border-gray-300 border-dashed rounded-lg cursor-pointer bg-gray-50 hover:bg-gray-100">
@@ -157,9 +157,9 @@
                 </div>
                 <form wire:submit.prevent="nextStep">
                     <div class="space-y-6">
-                        <div class="grid grid-cols-2 gap-8">
+                        <div class="lg:grid lg:grid-cols-2 lg:gap-8 flex-flex-col">
                             <div class="grid grid-rows-2 space-y-2">
-                                <div class="grid grid-cols-3 gap-8"><!-- Harga Beli & Stok -->
+                                <div class="grid lg:grid-cols-3 grid-cols-1"><!-- Harga Beli & Stok -->
                                     <div class="col-span-2">
                                         <label for="harga_beli" class="block text-sm font-medium text-gray-700">Harga
                                             Beli</label>
@@ -239,7 +239,7 @@
         @if ($currentStep == 3)
             <div class="space-y-6 bg-white p-6 rounded-md">
                 <div class="flex mb-4 items-center">
-                    <div class="h-10 w-10 bg-blue-500 rounded-full items-center justify-center flex mr-4">
+                    <div class="h-10 w-10 bg-blue-500 rounded-full items-center justify-center flex px-4 lg:p-0 mr-4">
                         <p class="font-bold text-white">03.</p>
                     </div>
                     <div class="grid -gap-y-4">
@@ -249,7 +249,7 @@
                     </div>
                 </div>
 
-                <div class="grid grid-cols-2 gap-6 w-full h-[600px]"><!-- kontainer utama dengan tinggi tetap -->
+                <div class="grid lg:grid-cols-2 grid-cols-1 gap-6 w-full h-[600px]"><!-- kontainer utama dengan tinggi tetap -->
                     <!-- KIRI -->
                     <div class="flex flex-col h-full">
                         <div class="flex-grow-[7]">

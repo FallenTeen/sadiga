@@ -23,7 +23,7 @@ class Dashboard extends Component
         } else {
             $this->currentTimeOfDay = 'Malam';
         }
-        $this->currentDateTime = Carbon::now('Asia/Jakarta')->format('l, j F Y, H:i');
+        $this->currentDateTime = Carbon::now('Asia/Jakarta')->format('l, j F Y');
         $this->filterData($this->filterType);
     }
 
@@ -85,7 +85,6 @@ class Dashboard extends Component
 
         $this->dispatch('dataUpdated');
     }
-
 
     public function getItemsPerInterval($filterType, $startDate)
     {

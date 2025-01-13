@@ -3,7 +3,7 @@
     @if($jasas->isEmpty())
         <div class="text-center text-gray-500">Tidak ada jasa yang ditemukan</div>
     @else
-        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
             @foreach($jasas as $jasa)
                 <div
                     class="bg-white p-6 rounded-lg shadow-md hover:shadow-xl transition-all duration-300 transform hover:scale-105">

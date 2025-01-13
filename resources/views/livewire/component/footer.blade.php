@@ -1,55 +1,56 @@
-<footer class="bg-blue-600 text-white font-poppins grid">
-    <div class="flex pt-8 gap-6 mx-6">
-        <div class="grow grid justify-center">
-            <div class="text-4xl font-bold flex items-center h-10">
-                Sadiga
+<footer class="bg-blue-600 text-white font-poppins flex flex-col">
+    <div class="flex lg:flex-row flex-col pt-8 gap-6 mx-6">
+        <div class="flex lg:grow px-12 justify-between">
+            <div>
+                <div class="text-4xl font-bold flex items-center h-10">
+                    Sadiga
+                </div>
+                <div>
+                    <div class="pt-8 font-semibold text-lg">
+                        Our Social Media
+                    </div>
+                    <div class="flex items-center">
+                        <div class="h-[60px] w-[60px]">
+                            <img src="{{ asset('assets/icons/twitter.svg') }}" class="h-[50px]" alt="Twitter Icon">
+                        </div>
+                        <div class="h-[60px] w-[60px]">
+                            <img src="{{ asset('assets/icons/facebook.svg') }}" class="h-[50px]" alt="Facebook Icon">
+                        </div>
+                        <div class="h-[60px] w-[60px]">
+                            <img src="{{ asset('assets/icons/instagram.svg') }}" class="h-[50px]" alt="Twitter Icon">
+                        </div>
+                    </div>
+                </div>
             </div>
             <div>
-                <div class="pt-8 font-semibold text-lg">
-                    Our Social Media
-                </div>
-                <div class="flex items-center">
-                    <div class="h-[60px] w-[60px]">
-                        <img src="{{ asset('assets/icons/twitter.svg') }}" class="h-[50px]" alt="Twitter Icon">
-                    </div>
-                    <div class="h-[60px] w-[60px]">
-                        <img src="{{ asset('assets/icons/facebook.svg') }}" class="h-[50px]" alt="Facebook Icon">
-                    </div>
-                    <div class="h-[60px] w-[60px]">
-                        <img src="{{ asset('assets/icons/instagram.svg') }}" class="h-[50px]" alt="Twitter Icon">
-                    </div>
-                </div>
+                <ul class="list-none">
+                    <div class="font-bold text-xl pb-4">Shop</div>
+                    <li class="py-2">
+                        <a href="#" class="text-white hover:underline">Semua Produk</a>
+                    </li>
+                    <li class="py-2">
+                        <a href="#" class="text-white hover:underline">Produk</a>
+                    </li>
+                    <li class="py-2">
+                        <a href="#" class="text-white hover:underline">Rekomendasi</a>
+                    </li>
+                </ul>
             </div>
 
-        </div>
-        <div class="w-1/6">
-            <ul class="list-none">
-                <div class="font-bold text-xl pb-4">Shop</div>
-                <li class="py-2">
-                    <a href="#" class="text-white hover:underline">Semua Produk</a>
-                </li>
-                <li class="py-2">
-                    <a href="#" class="text-white hover:underline">Produk</a>
-                </li>
-                <li class="py-2">
-                    <a href="#" class="text-white hover:underline">Rekomendasi</a>
-                </li>
-            </ul>
-        </div>
-
-        <div class="w-1/6">
-            <ul class="list-none">
-                <div class="font-bold text-xl pb-4">Informations</div>
-                <li class="py-2">
-                    <a href="#" class="text-white hover:underline">Tentang Kami</a>
-                </li>
-                <li class="py-2">
-                    <a href="#" class="text-white hover:underline">Kontak kami</a>
-                </li>
-                <li class="py-2">
-                    <a href="#" class="text-white hover:underline">News</a>
-                </li>
-            </ul>
+            <div>
+                <ul class="list-none">
+                    <div class="font-bold text-xl pb-4">Informations</div>
+                    <li class="py-2">
+                        <a href="#" class="text-white hover:underline">Tentang Kami</a>
+                    </li>
+                    <li class="py-2">
+                        <a href="#" class="text-white hover:underline">Kontak kami</a>
+                    </li>
+                    <li class="py-2">
+                        <a href="#" class="text-white hover:underline">News</a>
+                    </li>
+                </ul>
+            </div>
         </div>
 
         <div class="grow flex items-center">
@@ -79,7 +80,7 @@
 
     </div>
     <div class="w-full mt-8 border-t border-blue-400 bg-blue-400 py-2 font-poppins font-semibold">
-        <div class="flex gap-8 justify-center">
+        <div class="flex gap-8 justify-center overflow-auto">
             <div class="flex items-center">
                 <div class="px-2">Partnership</div>
                 <img src="{{ asset('assets/icons/sponsors/apple.png') }}" class="w-[30px] invert" alt="Apple">
