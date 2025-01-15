@@ -13,11 +13,14 @@
     <!-- FONT POPPINS BUAT TEXT/DESKRIPSI -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
     <link
         href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
         rel="stylesheet">
     <title>PT. Aneka Sarana Teknik</title>
     @vite(['resources/css/app.css', 'resources/js/app.js'])
+    <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
+
 </head>
 
 <body data-logged-in="{{ Auth::check() ? 'true' : 'false' }}">
@@ -30,8 +33,6 @@
         @livewire('component.responsive-navbar')
     </div>
 
-
-
     <section id="section1main" class="h-100vh relative">
         <div class="h-screen bg-cover bg-center bg-fixed bg-bglight relative">
             <!-- Overlay untuk opacity di bagian bawah -->
@@ -43,22 +44,28 @@
                 <div class="relative w-2/3 h-2/3 items-center justify-center lg:flex hidden">
                     <div>
                         <img class="ml-12 object-fit object-center w-5/6 h-5/6 items-center justify-center rounded-md"
-                            src="{{ asset('assets/images/Mainnicon.png') }}" alt="Images harusnya disini hehe">
+                            src="{{ asset('assets/images/Mainnicon.png') }}" alt="Images harusnya disini hehe"
+                            data-aos="fade-up" id="my-image">
+
                     </div>
                 </div>
                 <div id="profiletop"
                     class="w-full lg:w-3/4 h-full flex flex-col items-center lg:items-start justify-center">
 
-                    <h1 class="text-xl font-extrabold leading-tight drop-shadow-lg pt-12 lg:pt-0 translate-y-10 lg:translate-y-0">
+                    <h1 data-aos="fade-left"
+                        class="text-xl font-extrabold leading-tight drop-shadow-lg pt-12 lg:pt-0 translate-y-10 lg:translate-y-0">
                         Selamat Datang Di
                     </h1>
-                    <h1 class="text-xl font-extrabold leading-tight drop-shadow-lg translate-y-10 lg:translate-y-0">
+                    <h1 data-aos="fade-left" data-aos-delay="100"
+                        class="text-xl font-extrabold leading-tight drop-shadow-lg translate-y-10 lg:translate-y-0">
                         ANEKA SARANA TEKNIK
                     </h1>
-                    <h1 class="text-sm font-thin mb-4 leading-tight drop-shadow-lg translate-y-10 lg:translate-y-0">
+                    <h1 data-aos="fade-left" data-aos-delay="200"
+                        class="text-sm font-thin mb-4 leading-tight drop-shadow-lg translate-y-10 lg:translate-y-0">
                         Telah dipercaya sejak 2024
                     </h1>
-                    <p class="drop-shadow-lg text-6xl my-10 font-bold tracking-tight">
+                    <p data-aos="fade-left" data-aos-delay="300"
+                        class="drop-shadow-lg text-6xl my-10 font-bold tracking-tight">
                         SOLUSI TERBAIK UNTUK
                         <span
                             class="text-blue-600 ease-in-out hover:scale-105 inline-block hover:text-white transition-all duration-500 cursor-pointer">KESEJUKAN</span>
@@ -67,7 +74,7 @@
                             class="text-blue-600 ease-in-out hover:scale-105 inline-block hover:text-white transition-all duration-500 cursor-pointer">KENYAMANAN</span>
                         ANDA.
                     </p>
-                    <a href="#mengapakami"
+                    <a data-aos="fade-in" data-aos-delay="400" href="#mengapakami"
                         class="inline-block px-6 py-4 mt-10 bg-blue-600 text-lg rounded-xl font-semibold shadow-lg hover:bg-blue-700 transform hover:scale-105 transition-all duration-300">
                         Mulai Lihat Barang
                     </a>
@@ -78,20 +85,20 @@
     </section>
 
 
-    <section id="mengapakami" class="w-full bg-white to-blue-200 py-8 font-poppins">
-        <div id="titleatas" class="max-w-screen-lg mx-auto text-center mb-8">
+    <section id="mengapakami" class="w-full bg-white to-blue-200 font-poppins">
+        <div id="titleatas" class="max-w-screen-lg mx-auto text-center">
             <p class="font-poppins font-semibold text-2xl text-gray-900">Mengapa Kami?</p>
             <h2 class="font-poppins text-gray-900">
                 Kami menyediakan layanan termurah, terlengkap, dan tercepat
             </h2>
         </div>
         <div class="w-full">
-            <div class="max-w-screen-lg mx-auto lg:grid-cols-3 gap-10 text-center py-4">
+            <div class="max-w-screen-lg mx-auto gap-10 text-center">
                 <!-- Services -->
-                <div class="flex items-center justify-center min-h-screen">
+                <div class="flex items-center justify-center">
                     <div class="flex flex-wrap lg:grid lg:grid-cols-3 justify-center">
                         <!-- Layanan 24 Jam -->
-                        <div
+                        <div data-aos="fade-right"
                             class="max-w-sm bg-white border border-gray-200 rounded-lg shadow-sm overflow-hidden hover:shadow-md transition-shadow duration-300 m-4 flex flex-col">
                             <div class="p-6 flex flex-col items-center text-center flex-grow">
                                 <div class="p-4 rounded-full mb-4">
@@ -125,7 +132,7 @@
                         </div>
 
                         <!-- Layanan Berkualitas -->
-                        <div
+                        <div data-aos="fade-up"
                             class="max-w-sm bg-white border border-gray-200 rounded-lg shadow-sm overflow-hidden hover:shadow-md transition-shadow duration-300 m-4 flex flex-col">
                             <div class="p-6 flex flex-col items-center text-center flex-grow">
                                 <div class="p-4 rounded-full mb-4">
@@ -159,7 +166,7 @@
                         </div>
 
                         <!-- Dukungan Pelanggan -->
-                        <div
+                        <div data-aos="fade-left"
                             class="max-w-sm bg-white border border-gray-200 rounded-lg shadow-sm overflow-hidden hover:shadow-md transition-shadow duration-300 m-4 flex flex-col">
                             <div class="p-6 flex flex-col items-center text-center flex-grow">
                                 <div class="p-4 rounded-full mb-4">
@@ -214,6 +221,7 @@
             </div>
         </div>
 
+
     </section>
 
     <section id="barang" class="">
@@ -224,7 +232,7 @@
                     <h2 class="font-poppins text-gray-900">Segera dapatkan produk-produk unggulan kami di bawah ini</h2>
                 </div>
 
-                <div class="flex items-center justify-center">
+                <div class="flex items-center justify-center" data-aos="fade-in">
                     @livewire('component.barang-display', ['jumlahPerHalaman' => 3, 'kategori' => ['AC', 'Produk'], 'rekomendasi' => true, 'class' => 'flex items-center grid lg:grid-cols-3 grid-cols-1 gap-x-[10vh] gap-y-8 lg:mx-32 pt-20 pb-24'])
 
                 </div>
@@ -260,7 +268,7 @@
             </div> -->
         </div>
 
-        <div class="relative w-full overflow-hidden">
+        <div class="relative w-full overflow-hidden" data-aos="fade-in">
             <div class="flex transition-transform duration-300 ease-in-out" id="carousel">
                 <div class="min-w-full bg-white p-4 rounded-lg shadow-md text-gray-800">
                     <div class="bg-white p-6 shadow-lg text-gray-800">
@@ -335,7 +343,7 @@
     </section> -->
 
     <section>
-        <div>
+        <div >
             @livewire('component.feedback-carousel')
         </div>
     </section>
@@ -423,9 +431,26 @@
 
     @livewire('component.footer')
     <script src="{{ mix('js/app.js') }}"></script>
+    <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+
 </body>
 
 <script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const image = document.getElementById('my-image');
+
+        image.addEventListener('load', function () {
+            AOS.init({
+                duration: 1000,
+                easing: 'ease-in-out',
+                once: true,
+                offset: 200
+            });
+        });
+        if (image.complete) {
+            image.dispatchEvent(new Event('load'));
+        }
+    });
 
     // Carousel
     let currentIndex = 0;

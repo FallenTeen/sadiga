@@ -342,6 +342,7 @@
         }
 
         updateDateTime();
-        nterval(updateDateTime, 60000);
+        
+        interval(updateDateTime, 60000);
     </script>
 </div>
