@@ -1,4 +1,5 @@
 <div>
+
     <body data-logged-in="{{ Auth::check() ? 'true' : 'false' }}">
         <div class="font-poppins">
             <!-- Navbar -->
@@ -16,18 +17,18 @@
                 <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 bg-white">
                     <div class="grid grid-cols-1 gap-4 bg-white">
                         <div class="relative w-full h-64 lg:h-80 overflow-hidden rounded-lg">
-                            @if ($barang->gambar)
-                                <a href="{{ asset('storage/' . $barang->gambar) }}" target="_blank">
-                                    <img src="{{ asset('storage/' . $barang->gambar) }}"
-                                         alt="{{ $barang->nama_barang }}"
-                                         class="w-full h-full object-contain cursor-pointer transition-transform hover:scale-105">
-                                </a>
-                            @else
-                                <div class="flex items-center justify-center h-full">
-                                    <span class="text-gray-500">Tidak ada gambar</span>
-                                </div>
-                            @endif
+                            @php
+                                $imagePath = $barang->gambar && file_exists(public_path('storage/' . $barang->gambar))
+                                    ? 'storage/' . $barang->gambar
+                                    : 'storage/images/default.png';
+                            @endphp
+
+                            <a href="{{ asset($imagePath) }}" target="_blank">
+                                <img src="{{ asset($imagePath) }}" alt="{{ $barang->nama_barang }}"
+                                    class="w-full h-full object-contain cursor-pointer transition-transform hover:scale-105">
+                            </a>
                         </div>
+
 
                         <!-- Additional Images -->
                         @if (!empty($gambar_desk) && count($gambar_desk) > 0)
@@ -36,10 +37,9 @@
                                 <div class="flex space-x-4 overflow-x-auto">
                                     @foreach ($gambar_desk as $gambar)
                                         <a href="{{ asset('storage/' . $gambar) }}" target="_blank"
-                                           class="flex-shrink-0 w-32 h-32 lg:w-48 lg:h-48 overflow-hidden rounded-lg bg-white">
-                                            <img src="{{ asset('storage/' . $gambar) }}"
-                                                 alt="Gambar Deskripsi"
-                                                 class="w-full h-full object-contain cursor-pointer transition-transform hover:scale-105">
+                                            class="flex-shrink-0 w-32 h-32 lg:w-48 lg:h-48 overflow-hidden rounded-lg bg-white">
+                                            <img src="{{ asset('storage/' . $gambar) }}" alt="Gambar Deskripsi"
+                                                class="w-full h-full object-contain cursor-pointer transition-transform hover:scale-105">
                                         </a>
                                     @endforeach
                                 </div>
@@ -62,7 +62,8 @@
                                 </span>
                             @endif
                             <div class="mt-4">
-                                <p class="text-xl font-bold text-gray-900">Rp {{ number_format($barang->harga_akhir, 2, ',', '.') }}</p>
+                                <p class="text-xl font-bold text-gray-900">Rp
+                                    {{ number_format($barang->harga_akhir, 2, ',', '.') }}</p>
                                 @if ($barang->stok > 0)
                                     <p class="text-sm text-green-700">Stok tersedia: {{ $barang->stok }}</p>
                                 @else
@@ -74,21 +75,21 @@
                         <div class="mt-6 flex flex-wrap gap-4">
                             <!-- Buttons -->
                             <button wire:click="toggleLike"
-                                    class="px-4 py-2 bg-blue-500 text-white rounded-lg shadow hover:bg-blue-600 transition">
+                                class="px-4 py-2 bg-blue-500 text-white rounded-lg shadow hover:bg-blue-600 transition">
                                 {{ $isLiked ? 'Batalkan Sukai' : 'Sukai Item' }}
                             </button>
                             <a href="https://wa.me/6285156208507?text={{ urlencode('Halo, saya ingin memesan barang ini') }}"
-                               target="_blank"
-                               class="px-4 py-2 bg-green-500 text-white rounded-lg shadow hover:bg-green-600 transition">
+                                target="_blank"
+                                class="px-4 py-2 bg-green-500 text-white rounded-lg shadow hover:bg-green-600 transition">
                                 Pesan Barang Ini
                             </a>
                             <button id="copyUrlButton"
-                                    class="px-4 py-2 bg-gray-500 text-white rounded-lg shadow hover:bg-gray-600 transition">
+                                class="px-4 py-2 bg-gray-500 text-white rounded-lg shadow hover:bg-gray-600 transition">
                                 Salin URL
                             </button>
                         </div>
-                        <a href="{{ route('/') }}"
-                           class="block mt-8 text-blue-500 hover:underline">Kembali ke Katalog</a>
+                        <a href="{{ route('/') }}" class="block mt-8 text-blue-500 hover:underline">Kembali ke
+                            Katalog</a>
                     </div>
                 </div>
             </div>

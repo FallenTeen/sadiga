@@ -24,7 +24,6 @@ class Barang extends Seeder
                 'stok' => 30,
                 'kategori_id' => 2,
                 'deskripsi' => 'AC Daikin Inverter 1.5 PK, hemat energi dan ramah lingkungan',
-                'gambar' => 'assets/images/barang/AC-DAIKIN.png',
                 'margin' => 6000000.00 - 5500000.00,  // Added margin
                 'created_at' => now(),
                 'updated_at' => now(),
@@ -39,7 +38,6 @@ class Barang extends Seeder
                 'stok' => 25,
                 'kategori_id' => 2,
                 'deskripsi' => 'AC Sharp 1.5 PK dengan teknologi Plasmacluster',
-                'gambar' => 'assets/images/barang/AC-SHARP.png',
                 'margin' => 5000000.00 - 4500000.00,  // Added margin
                 'created_at' => now(),
                 'updated_at' => now(),
@@ -54,7 +52,6 @@ class Barang extends Seeder
                 'stok' => 25,
                 'kategori_id' => 2,
                 'deskripsi' => 'AC Samsung 1.5 PK dengan mode tidur otomatis',
-                'gambar' => 'assets/images/barang/AC-SAMSUNG.png',
                 'margin' => 5500000.00 - 5000000.00,  // Added margin
                 'created_at' => now(),
                 'updated_at' => now(),
@@ -69,7 +66,6 @@ class Barang extends Seeder
                 'stok' => 20,
                 'kategori_id' => 2,
                 'deskripsi' => 'AC LG Dual Inverter 1.5 PK dengan efisiensi energi tinggi dan pendinginan cepat',
-                'gambar' => 'assets/images/barang/AC-LG.png',
                 'margin' => 5800000.00 - 5300000.00,  // Added margin
                 'created_at' => now(),
                 'updated_at' => now(),
@@ -84,7 +80,6 @@ class Barang extends Seeder
                 'stok' => 15,
                 'kategori_id' => 2,
                 'deskripsi' => 'Panasonic Eco Smart AC 1 PK dengan teknologi nanoe-G yang mampu menyaring bakteri',
-                'gambar' => 'assets/images/barang/AC-Panasonic.png',
                 'margin' => 4500000.00 - 4000000.00,  // Added margin
                 'created_at' => now(),
                 'updated_at' => now(),
@@ -99,7 +94,6 @@ class Barang extends Seeder
                 'stok' => 18,
                 'kategori_id' => 2,
                 'deskripsi' => 'Mitsubishi Electric AC 1 PK dengan sistem aliran udara lebar dan hemat listrik',
-                'gambar' => 'assets/images/barang/AC-Mitsubishi.png',
                 'margin' => 4800000.00 - 4400000.00,  // Added margin
                 'created_at' => now(),
                 'updated_at' => now(),
@@ -114,7 +108,6 @@ class Barang extends Seeder
                 'stok' => 22,
                 'kategori_id' => 2,
                 'deskripsi' => 'Toshiba Inverter AC 1.5 PK dengan teknologi inverter dan fitur auto-cleaning',
-                'gambar' => 'assets/images/barang/AC-Mitsubishi.png',
                 'margin' => 5300000.00 - 4900000.00,  // Added margin
                 'created_at' => now(),
                 'updated_at' => now(),
@@ -129,7 +122,6 @@ class Barang extends Seeder
                 'stok' => 12,
                 'kategori_id' => 2,
                 'deskripsi' => 'Hitachi Standard AC 1 PK, dilengkapi dengan filter anti-bakteri dan ramah lingkungan',
-                'gambar' => 'assets/images/barang/AC-Panasonic.png',
                 'margin' => 4700000.00 - 4300000.00,  // Added margin
                 'created_at' => now(),
                 'updated_at' => now(),
@@ -148,7 +140,6 @@ class Barang extends Seeder
                 'stok' => 200,
                 'kategori_id' => 3,
                 'deskripsi' => 'Filter AC untuk menjaga kebersihan udara',
-                'gambar' => 'assets/images/barang/Filter-AC1.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ],
@@ -163,7 +154,6 @@ class Barang extends Seeder
                 'stok' => 150,
                 'kategori_id' => 3,
                 'deskripsi' => 'Remote control universal untuk berbagai jenis AC',
-                'gambar' => 'assets/images/barang/Remote-substitusi-universal.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ],
@@ -178,7 +168,6 @@ class Barang extends Seeder
                 'stok' => 80,
                 'kategori_id' => 3,
                 'deskripsi' => 'Kipas angin portable untuk ruangan kecil',
-                'gambar' => 'assets/images/barang/kipas-angkot-portable.webp',
                 'created_at' => now(),
                 'updated_at' => now(),
             ],
@@ -193,7 +182,6 @@ class Barang extends Seeder
                 'stok' => 60,
                 'kategori_id' => 3,
                 'deskripsi' => 'Pembersih udara dengan teknologi filter HEPA',
-                'gambar' => 'assets/images/barang/pembersih-udara.webp',
                 'created_at' => now(),
                 'updated_at' => now(),
             ],
@@ -208,7 +196,6 @@ class Barang extends Seeder
                 'stok' => 50,
                 'kategori_id' => 3,
                 'deskripsi' => 'Penghangat ruangan untuk cuaca dingin',
-                'gambar' => 'assets/images/barang/penghangat-ruangan.webp',
                 'created_at' => now(),
                 'updated_at' => now(),
             ],

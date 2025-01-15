@@ -70,17 +70,13 @@ class Dashboard extends Component
             ->orderByDesc('liked_by_users_count')
             ->take(3)
             ->get();
-
-        // Correct join and select raw to get the data with the category name
         $this->grafikAnalisaItemDisukai = Barang::selectRaw('DATE(tb_barang.created_at) as date, tb_kategori.nama_kategori, COUNT(*) as count')
-            ->join('tb_kategori', 'tb_kategori.id', '=', 'tb_barang.kategori_id') // Proper join with 2 arguments
+            ->join('tb_kategori', 'tb_kategori.id', '=', 'tb_barang.kategori_id')
             ->where('tb_barang.created_at', '>=', $startDate)
-            ->groupBy('date', 'tb_kategori.nama_kategori') // Group by the date and category name
+            ->groupBy('date', 'tb_kategori.nama_kategori') 
             ->get();
-
-        // Mapping the result to get the liked items per category
         $this->likedItemsPerCategory = $this->grafikAnalisaItemDisukai->mapWithKeys(function ($group) {
-            return [$group->nama_kategori => $group->count]; // Map category name to total likes
+            return [$group->nama_kategori => $group->count];
         });
 
         $this->dispatch('dataUpdated');
@@ -95,7 +91,7 @@ class Dashboard extends Component
                     ->groupByRaw('YEAR(created_at), WEEK(created_at)')
                     ->get()
                     ->map(function ($item) {
-                        $item->week_name = 'Minggu ke-' . Carbon::parse("{$item->year}-W{$item->week_number}")->isoWeek();
+                        $item->week_name = 'Minggu ke-' . Carbon::now()->setISODate($item->year, $item->week_number)->format('W');
                         return $item;
                     });
             case 'monthly':

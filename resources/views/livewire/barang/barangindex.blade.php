@@ -3,7 +3,7 @@
         @livewire('layout.navigation')
     </div>
     <div class="px-12 pt-3">
-        <div class="flex-col flex lg:grid lg:justify-end items-center mb-4">
+        <div class="flex-col flex lg:grid lg:grid-cols-2 lg:justify-end items-center mb-4">
             <div class="grid grid-cols-1 lg:grid-cols-2">
                 <div class="pr-4 mb-4">
                     <label for="kategori" class="block text-sm font-medium text-gray-700 mb-2">Cari Barang</label>
