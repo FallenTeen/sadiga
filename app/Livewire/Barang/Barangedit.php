@@ -66,6 +66,7 @@ class Barangedit extends Component
         }
 
         Barang::where('id', $this->barangId)->update($validatedData);
+        sweetalert()->success('Detail barang berhasil diubah');
         session()->flash('message_detail', 'Detail Barang berhasil diubah');
     }
 
@@ -124,6 +125,7 @@ class Barangedit extends Component
         ];
 
         Barang::where('id', $this->barangId)->update($dataToUpdate);
+        sweetalert()->success('Detail barang berhasil diubah');
         session()->flash('message_harga', 'Manajemen harga berhasil diperbarui!');
     }
 
@@ -166,6 +168,7 @@ class Barangedit extends Component
 
         $this->gambar_desk = [];
         session()->flash('message_desk', 'Deskripsi dan gambar berhasil disimpan!');
+        sweetalert()->success('Detail barang berhasil diubah');
     }
 
     public function removeExistingImage($path)
@@ -181,6 +184,7 @@ class Barangedit extends Component
         $barang->save();
 
         session()->flash('message_del_gambar', 'Gambar berhasil dihapus!');
+        sweetalert()->success('Gamabr berhasil dihapus');
     }
 
 

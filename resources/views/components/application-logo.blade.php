@@ -1,3 +1,3 @@
 <H1 class="font-poppins font-extrabold text-4xl text-white">
-    SADIGA.
+    Aneka Sarana Teknik.
 </H1>

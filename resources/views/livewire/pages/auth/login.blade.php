@@ -21,6 +21,7 @@ new #[Layout('layouts.guest')] class extends Component
 
         Session::regenerate();
         $this->syncLikesWithDatabase();
+        sweetalert()->success('Selamat Datang.');
 
         $this->redirectIntended(default: route('dashboard', absolute: false), navigate: true);
     }
@@ -101,7 +102,7 @@ new #[Layout('layouts.guest')] class extends Component
     <div class="items-center bg-white rounded-r-md font-poppins text-maincolor hidden lg:flex">
         <div class="px-8">
             <h1 class="font-bold text-2xl text-center">Selamat Datang</h1>
-            <h2 class="font-semibold text-md text-center mb-8">Di Satria Dirgantara E-Commerce</h2>
+            <h2 class="font-semibold text-md text-center mb-8">Di PT. Aneka Sarana Teknik E-Catalogue</h2>
             <a
                 href="/"
                 class="flex justify-center gap-2 items-center mx-auto text-lg bg-gray-50 lg:font-semibold isolation-auto border-maincolor before:absolute before:w-full before:transition-all before:duration-700 before:hover:w-full before:-left-full before:hover:left-0 before:rounded-full before:bg-maincolor hover:text-gray-50 before:-z-10 before:aspect-square before:hover:scale-150 before:hover:duration-700 relative z-10 px-4 py-2 overflow-hidden border-2 rounded-full group">

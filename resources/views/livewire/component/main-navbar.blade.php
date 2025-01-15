@@ -51,9 +51,9 @@
             <div class="relative group shrink-0 pr-8">
                 <a href="#mainsearch" title="" class="flex items-center">
                     <span
-                        class="z-20 font-poppins text-gray-200 font-bold text-4xl ease-in duration-200 hover:scale-110 hover:text-white">Sadiga.</span>
-                    <img src="{{ asset('assets/logo/main.png') }}" alt="SaDiga"
-                        class="w-6 z-10 absolute -left-16 transform translate-x-20 transition-all duration-500 ease-in-out opacity-0 group-hover:translate-x-1 group-hover:opacity-100 group-hover:w-12">
+                        class="z-20 font-poppins text-gray-200 font-bold text-2xl ease-in duration-200 hover:translate-x-6 hover:text-white">PT. Aneka Sarana Teknik</span>
+                    <img src="{{ asset('assets/logo/main.png') }}" alt="Aneka Sarana Teknik"
+                        class="w-6 z-10 absolute -left-10 transform translate-x-20 transition-all duration-500 ease-in-out opacity-0 group-hover:translate-x-1 group-hover:opacity-100 group-hover:w-12">
                 </a>
             </div>
 

@@ -4,8 +4,8 @@
         <div class="flex flex-col lg:flex-row lg:grow lg:px-12 justify-between">
             <!-- Bagian Sosial Media -->
             <div class="flex flex-col flex-1 lg:pr-4">
-                <div class="text-4xl font-bold flex items-center h-10">
-                    Sadiga
+                <div class="text-3xl font-bold flex items-center h-10">
+                    PT. Aneka Sarana Teknik
                 </div>
                 <div>
                     <div class="pt-8 font-semibold text-lg">

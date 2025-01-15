@@ -27,8 +27,8 @@ new class extends Component
             <div class="flex w-1/4">
                 <div class="shrink-0 flex items-center">
                     <a href="{{ route('dashboard') }}" wire:navigate>
-                    <H1 class="font-poppins font-extrabold text-4xl text-white">
-                        SADIGA.
+                    <H1 class="font-poppins font-extrabold text-2xl text-white">
+                        PT. Aneka Sarana Teknik
                     </H1>
                     </a>
                 </div>

@@ -71,6 +71,7 @@ class Barangindex extends Component
         $barang->delete();
 
         session()->flash('message', 'Barang berhasil dihapus!');
+        sweetalert()->success('Barang berhasil dihapus');
         $this->resetPage();
     }
     public function toggleRecommended($barangId)

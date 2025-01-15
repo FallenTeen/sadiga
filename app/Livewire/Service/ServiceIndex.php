@@ -46,6 +46,7 @@ class ServiceIndex extends Component
         $this->showKategoriModal = false;
         $this->kategoris = Kategori::all();
         session()->flash('message', 'Kategori berhasil ditambahkan.');
+        sweetalert()->success('Kategori berhasil ditambahkan');
     }
     public function editKategori($id)
     {
@@ -73,6 +74,7 @@ class ServiceIndex extends Component
         $this->showEditKategoriModal = false;
         $this->kategoris = Kategori::all();
         session()->flash('message', 'Kategori berhasil diupdate.');
+        sweetalert()->success('Kategori berhasil diupdate');
     }
 
     public function deleteKategori($id)
@@ -80,8 +82,10 @@ class ServiceIndex extends Component
         $kategori = Kategori::find($id);
         if ($kategori) {
             $kategori->delete();
+            sweetalert()->success('Kategori berhasil dihapus');
             $this->kategoris = Kategori::all();
         }
+        sweetalert()->warning('Terjadi kesalahan');
     }
 
 
@@ -113,6 +117,7 @@ class ServiceIndex extends Component
         $this->showJasaModal = false;
         $this->jasas = Jasa::all();
         session()->flash('message', 'Jasa berhasil ditambahkan.');
+        sweetalert()->success('Jasa berhasil ditambahkan');
     }
     public function editJasa($id)
     {
@@ -144,6 +149,7 @@ class ServiceIndex extends Component
         $this->showEditJasaModal = false;
         $this->jasas = Jasa::all();
         session()->flash('message', 'jasa berhasil diupdate.');
+        sweetalert()->success('Jasa berhasil diupdate');
     }
 
     public function deleteJasa($id)
@@ -151,8 +157,10 @@ class ServiceIndex extends Component
         $jasa = Jasa::find($id);
         if ($jasa) {
             $jasa->delete();
+            sweetalert()->success('Jasa berhasil dihapus');
             $this->jasas = Jasa::all();
         }
+        sweetalert()->warning('Terjadi kesalahan');
     }
 
 
@@ -183,6 +191,7 @@ class ServiceIndex extends Component
         ]);
 
         session()->flash('message', 'Pekerja berhasil ditambahkan.');
+        sweetalert()->success('Pekerja berhasil ditambahkan');
         $this->resetInputFields();
         $this->showPekerjaModal = false;
         $this->pekerjas = Pekerja::all();
@@ -220,6 +229,7 @@ class ServiceIndex extends Component
         ]);
 
         session()->flash('message', 'Pekerja berhasil diupdate.');
+        sweetalert()->success('Data pekerja berhasil diupdate');
         $this->resetInputFields();
         $this->showEditPekerjaModal = false;
         $this->pekerjas = Pekerja::all();
@@ -236,6 +246,7 @@ class ServiceIndex extends Component
             $this->pekerjas = Pekerja::all();
 
             session()->flash('message', 'Status pekerja updated successfully.');
+            sweetalert()->success('Berhasil mengupdate status');
         }
     }
 
@@ -247,6 +258,7 @@ class ServiceIndex extends Component
         if ($pekerja) {
             $pekerja->delete();
             session()->flash('message', 'Pekerja berhasil dihapus.');
+            sweetalert()->success('Pekerja berhasil dihapus');
         }
         $this->pekerjas = Pekerja::all();
     }

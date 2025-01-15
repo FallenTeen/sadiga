@@ -12,7 +12,7 @@ use App\Models\Barang;
 
 class MainNavbar extends Component
 {
-    public $likedItems = [], $searchTerm = '';
+    public $likedItems = [], $searchTerm = '', $recommendedItems = [], $categoriesWithTopItems = [];
 
     protected $listeners = ['likeUpdated' => 'updateLikedItems'];
 

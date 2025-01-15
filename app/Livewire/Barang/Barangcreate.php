@@ -126,6 +126,7 @@ class Barangcreate extends Component
             $admin->notify(new BarangBaru($barang->id));
         }
         session()->flash('message', 'Barang successfully created!');
+        sweetalert()->success('Barang berhasil ditambahkan');
         return redirect('/productmanage');
     }
 

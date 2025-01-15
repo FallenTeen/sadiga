@@ -16,7 +16,7 @@
     <link
         href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
         rel="stylesheet">
-    <title>Sadiga</title>
+    <title>PT. Aneka Sarana Teknik</title>
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
 
@@ -53,7 +53,7 @@
                         Selamat Datang Di
                     </h1>
                     <h1 class="text-xl font-extrabold leading-tight drop-shadow-lg">
-                        SATRIA DIRGANTARA
+                        ANEKA SARANA TEKNIK
                     </h1>
                     <h1 class="text-sm font-thin mb-4 leading-tight drop-shadow-lg">
                         Telah dipercaya sejak 2024
@@ -345,7 +345,7 @@
             <div class="lg:text-center">
                 <h2 class="text-base text-blue-600 font-semibold tracking-wide uppercase">Contact Us</h2>
                 <p class="mt-2 text-3xl leading-8 font-extrabold tracking-tight text-gray-900 sm:text-4xl">
-                    Satria Dirgantara
+                    PT. ANEKA SARANA TEKNIK
                 </p>
                 <p class="mt-4 max-w-2xl text-xl text-gray-500 lg:mx-auto">
                     Silahkan hubungi kami untuk konsultasi dan melakukan pembelian produk yang kami sediakan.
@@ -415,7 +415,7 @@
                 </div>
                 <div>
                     <dt class="text-lg font-medium text-gray-900">Email</dt>
-                    <dd class="mt-2 text-base text-gray-500">satriadirgantara@gmail.com</dd>
+                    <dd class="mt-2 text-base text-gray-500">anekasaranateknik@gmail.com</dd>
                 </div>
             </div>
         </div>
