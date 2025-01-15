@@ -26,7 +26,7 @@
             @livewire('component.main-navbar')
         </div>
     </div>
-    <div class="block lg:hidden">
+    <div class="fixed top-0 w-full z-10 block lg:hidden">
         @livewire('component.responsive-navbar')
     </div>
 
@@ -49,13 +49,13 @@
                 <div id="profiletop"
                     class="w-full lg:w-3/4 h-full flex flex-col items-center lg:items-start justify-center">
 
-                    <h1 class="text-xl font-extrabold leading-tight drop-shadow-lg pt-12 lg:pt-0">
+                    <h1 class="text-xl font-extrabold leading-tight drop-shadow-lg pt-12 lg:pt-0 translate-y-10 lg:translate-y-0">
                         Selamat Datang Di
                     </h1>
-                    <h1 class="text-xl font-extrabold leading-tight drop-shadow-lg">
+                    <h1 class="text-xl font-extrabold leading-tight drop-shadow-lg translate-y-10 lg:translate-y-0">
                         ANEKA SARANA TEKNIK
                     </h1>
-                    <h1 class="text-sm font-thin mb-4 leading-tight drop-shadow-lg">
+                    <h1 class="text-sm font-thin mb-4 leading-tight drop-shadow-lg translate-y-10 lg:translate-y-0">
                         Telah dipercaya sejak 2024
                     </h1>
                     <p class="drop-shadow-lg text-6xl my-10 font-bold tracking-tight">
